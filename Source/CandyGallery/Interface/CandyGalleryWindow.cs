@@ -739,9 +739,9 @@ namespace CandyGallery.Interface
             else
             {
                 var result = MessageBox.Show(
-                    $"No '{GifsFolderName}' folder exists inside of your start folder: '{UserSettings.StartFolderPath}'" +
-                    $"\n\nWould you like to create a '{GifsFolderName}' folder?",
-                    $"No '{GifsFolderName}' Folder Found!", MessageBoxButtons.YesNo,
+                    $"No {GifsFolderName.Replace('\\', '\'')} folder exists inside of your start folder: '{UserSettings.StartFolderPath}'" +
+                    $"\n\nWould you like to create a {GifsFolderName.Replace('\\', '\'')} folder?",
+                    $"No {GifsFolderName.Replace('\\', '\'')} Folder Found!", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
@@ -770,9 +770,9 @@ namespace CandyGallery.Interface
             else
             {
                 var result = MessageBox.Show(
-                    $"No '{VideosFolderName}' folder exists inside of your start folder: '{UserSettings.StartFolderPath}'" +
-                    $"\n\nWould you like to create a '{VideosFolderName}' folder?",
-                    $"No '{VideosFolderName}' Folder Found!", MessageBoxButtons.YesNo,
+                    $"No {VideosFolderName.Replace('\\', '\'')} folder exists inside of your start folder: '{UserSettings.StartFolderPath}'" +
+                    $"\n\nWould you like to create a {VideosFolderName.Replace('\\', '\'')} folder?",
+                    $"No {VideosFolderName.Replace('\\', '\'')} Folder Found!", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information);
 
                 if (result == DialogResult.Yes)
@@ -806,8 +806,6 @@ namespace CandyGallery.Interface
         // Main randomizer logic
         public void Randomize()
         {
-            ResetImageIntoView();
-            UserSettings.PerSessionSettings.ForwardList.Clear();
             string item;
 
             if (chkFilterByNewest.Checked)
@@ -825,14 +823,27 @@ namespace CandyGallery.Interface
                 item = GetRandomFileFromListRecursive(subDirectoriesOnCurrentPath.Any() ? subDirectoriesOnCurrentPath : filesOnCurrentPath);
             }
 
-            AddCurrentItemToBackList();
-            lblCurrentMediaPath.Text = item;
-            LoadItemIntoViewer(item);
+            if (item != null)
+            {
+                ResetImageIntoView();
+                UserSettings.PerSessionSettings.ForwardList.Clear();
+                AddCurrentItemToBackList();
+                lblCurrentMediaPath.Text = item;
+                LoadItemIntoViewer(item);
+            }
+
             btnRandomize.Focus();
         }
 
         public string GetRandomFileFromListRecursive(List<string> listOfItems)
         {
+            if (!chkEnableShortcutType.Checked)
+            {
+                listOfItems = listOfItems.FindAll(item => CandyGalleryHelpers.IsShortcutTypeMedia(item) == false);
+            }
+
+            if (!listOfItems.Any()) return null;
+
             while (true)
             {
                 var randomItemIndex = RandomInteger(0, listOfItems.Count);
@@ -1086,65 +1097,63 @@ namespace CandyGallery.Interface
             if (chkSlideShow.Checked) return;
             var showingQualityImage = false;
 
-            if (picBxCandyGallery.Image.Height <= 425 && picBxCandyGallery.Image.Width <= 625 ||
-                picBxCandyGallery.Image.Height <= 625 && picBxCandyGallery.Image.Width <= 425)
-            {
-                var cleanUp = MessageBox.Show(
-                    @"Image resolution is low. Would you like to clean out low resolution images from this folder?",
-                    @"Low Image Resolution", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var cleanUp = MessageBox.Show(
+                @"Image resolution is low. Would you like to clean out low resolution images from this folder?",
+                @"Low Image Resolution", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                var originalCursor = Cursor.Current;
-                if (cleanUp == DialogResult.Yes)
+            var originalCursor = Cursor.Current;
+            if (cleanUp == DialogResult.Yes)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                var deletedCount = 0;
+                var deletedFiles = new List<string>();
+                foreach (var file in Directory.GetFiles(
+                    Path.GetDirectoryName(picBxCandyGallery.ImageLocation)
+                    ?? MessageBox.Show("Oops... Something went wrong.\n\nNo files were deleted.", "Delete Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error).ToString()))
                 {
-                    Cursor.Current = Cursors.WaitCursor;
-                    var deletedCount = 0;
-                    var deletedFiles = new List<string>();
-                    foreach (var file in Directory.GetFiles(
-                        Path.GetDirectoryName(picBxCandyGallery.ImageLocation)
-                        ?? MessageBox.Show("Oops... Something went wrong.\n\nNo files were deleted.", "Delete Failed",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error).ToString()))
+                    if (!CandyGalleryHelpers.IsImageTypeMedia(file)) continue;
+
+                    try
                     {
-                        try
+                        using (var image = Image.FromFile(file))
                         {
-                            using (var image = Image.FromFile(file))
+                            if (image.Height <= 425 && image.Width <= 625
+                                || image.Height <= 625 && image.Width <= 425)
                             {
-                                if (image.Height <= 425 && image.Width <= 625 ||
-                                    image.Height <= 625 && image.Width <= 425)
+                                deletedFiles.Add(file);
+                                deletedCount += 1;
+                            }
+                            else
+                            {
+                                if (!showingQualityImage)
                                 {
-                                    deletedFiles.Add(file);
-                                    deletedCount += 1;
-                                }
-                                else
-                                {
-                                    if (!showingQualityImage)
-                                    {
-                                        UserSettings.PerSessionSettings.ForwardList.Clear();
-                                        lblCurrentMediaPath.Text = file;
-                                        picBxCandyGallery.ImageLocation = file;
-                                        showingQualityImage = true;
-                                    }
+                                    UserSettings.PerSessionSettings.ForwardList.Clear();
+                                    lblCurrentMediaPath.Text = file;
+                                    picBxCandyGallery.ImageLocation = file;
+                                    showingQualityImage = true;
                                 }
                             }
                         }
-                        catch (Exception)
-                        {
-                            deletedFiles.Add(file);
-                            deletedCount += 1;
-                        }
                     }
-
-                    foreach (var file in deletedFiles)
+                    catch (Exception)
                     {
-                        File.Delete(file);
+                        deletedFiles.Add(file);
+                        deletedCount += 1;
                     }
-
-                    var message = string.Join(Environment.NewLine, deletedFiles);
-                    Cursor.Current = originalCursor;
-
-                    MessageBox.Show($"The following files were deleted ({deletedCount}):\n\n{message}",
-                        @"Clean Up Complete",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                foreach (var file in deletedFiles)
+                {
+                    File.Delete(file);
+                }
+
+                var message = string.Join(Environment.NewLine, deletedFiles);
+                Cursor.Current = originalCursor;
+
+                MessageBox.Show($"The following files were deleted ({deletedCount}):\n\n{message}",
+                    @"Clean Up Complete",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -1334,7 +1343,9 @@ namespace CandyGallery.Interface
 
         private void PictureBox_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            if (!picBxCandyGallery.ImageLocation.ToLower().EndsWith(".gif"))
+            if ((picBxCandyGallery.Image.Height <= 425 && picBxCandyGallery.Image.Width <= 625
+                 || picBxCandyGallery.Image.Height <= 625 && picBxCandyGallery.Image.Width <= 425)
+                && CandyGalleryHelpers.IsImageTypeMedia(picBxCandyGallery.ImageLocation))
             {
                 LowResolutionImageRemoval();
                 GC.Collect();

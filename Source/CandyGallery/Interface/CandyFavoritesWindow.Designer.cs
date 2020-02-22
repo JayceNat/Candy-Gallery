@@ -68,7 +68,7 @@ namespace CandyGallery.Interface
             this.tblLPFormTopControls.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tblLPFormTopControls.ColumnCount = 2;
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tblLPFormTopControls.Controls.Add(this.btnExitFavorites, 1, 0);
@@ -89,10 +89,10 @@ namespace CandyGallery.Interface
             this.btnExitFavorites.FlatAppearance.BorderSize = 0;
             this.btnExitFavorites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExitFavorites.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitFavorites.Location = new System.Drawing.Point(1237, 1);
+            this.btnExitFavorites.Location = new System.Drawing.Point(1236, 1);
             this.btnExitFavorites.Margin = new System.Windows.Forms.Padding(0);
             this.btnExitFavorites.Name = "btnExitFavorites";
-            this.btnExitFavorites.Size = new System.Drawing.Size(46, 18);
+            this.btnExitFavorites.Size = new System.Drawing.Size(47, 18);
             this.btnExitFavorites.TabIndex = 7;
             this.btnExitFavorites.Text = "X";
             this.btnExitFavorites.UseVisualStyleBackColor = false;
@@ -111,7 +111,7 @@ namespace CandyGallery.Interface
             this.tblLPTitleContainer.Name = "tblLPTitleContainer";
             this.tblLPTitleContainer.RowCount = 1;
             this.tblLPTitleContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPTitleContainer.Size = new System.Drawing.Size(1235, 18);
+            this.tblLPTitleContainer.Size = new System.Drawing.Size(1234, 18);
             this.tblLPTitleContainer.TabIndex = 10;
             this.tblLPTitleContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CandyFavoritesWindow_MouseDown);
             // 
@@ -125,7 +125,7 @@ namespace CandyGallery.Interface
             this.lblCandyFavoritesTitle.Location = new System.Drawing.Point(46, 0);
             this.lblCandyFavoritesTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lblCandyFavoritesTitle.Name = "lblCandyFavoritesTitle";
-            this.lblCandyFavoritesTitle.Size = new System.Drawing.Size(1189, 18);
+            this.lblCandyFavoritesTitle.Size = new System.Drawing.Size(1188, 18);
             this.lblCandyFavoritesTitle.TabIndex = 10;
             this.lblCandyFavoritesTitle.Text = "Candy Favorites";
             this.lblCandyFavoritesTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -237,7 +237,7 @@ namespace CandyGallery.Interface
             this.lblFilterFavoriteType.BackColor = System.Drawing.Color.Transparent;
             this.lblFilterFavoriteType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFilterFavoriteType.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblFilterFavoriteType.Location = new System.Drawing.Point(40, 698);
+            this.lblFilterFavoriteType.Location = new System.Drawing.Point(64, 659);
             this.lblFilterFavoriteType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFilterFavoriteType.Name = "lblFilterFavoriteType";
             this.lblFilterFavoriteType.Size = new System.Drawing.Size(100, 13);
@@ -254,7 +254,7 @@ namespace CandyGallery.Interface
             this.cmbBxFavoriteTypeFilter.FormattingEnabled = true;
             this.cmbBxFavoriteTypeFilter.Items.AddRange(new object[] {
             "All"});
-            this.cmbBxFavoriteTypeFilter.Location = new System.Drawing.Point(145, 696);
+            this.cmbBxFavoriteTypeFilter.Location = new System.Drawing.Point(169, 657);
             this.cmbBxFavoriteTypeFilter.Name = "cmbBxFavoriteTypeFilter";
             this.cmbBxFavoriteTypeFilter.Size = new System.Drawing.Size(96, 21);
             this.cmbBxFavoriteTypeFilter.TabIndex = 49;
@@ -268,7 +268,7 @@ namespace CandyGallery.Interface
             this.lblJumpToFavorite.BackColor = System.Drawing.Color.Transparent;
             this.lblJumpToFavorite.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblJumpToFavorite.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblJumpToFavorite.Location = new System.Drawing.Point(52, 672);
+            this.lblJumpToFavorite.Location = new System.Drawing.Point(76, 686);
             this.lblJumpToFavorite.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblJumpToFavorite.Name = "lblJumpToFavorite";
             this.lblJumpToFavorite.Size = new System.Drawing.Size(88, 13);
@@ -282,7 +282,7 @@ namespace CandyGallery.Interface
             this.cmbBxFavoriteItemIndex.BackColor = System.Drawing.Color.LightGray;
             this.cmbBxFavoriteItemIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbBxFavoriteItemIndex.FormattingEnabled = true;
-            this.cmbBxFavoriteItemIndex.Location = new System.Drawing.Point(145, 670);
+            this.cmbBxFavoriteItemIndex.Location = new System.Drawing.Point(169, 684);
             this.cmbBxFavoriteItemIndex.Name = "cmbBxFavoriteItemIndex";
             this.cmbBxFavoriteItemIndex.Size = new System.Drawing.Size(96, 21);
             this.cmbBxFavoriteItemIndex.TabIndex = 47;

@@ -293,6 +293,7 @@ namespace CandyGallery.Interface
 
         private void ViewFavorite_Click(object sender, EventArgs e)
         {
+            if (picBxFavoriteMain.Image == null) return;
             var index = CurrentMainDisplayedFavoriteIndex - 1;
             btnExitFavorites.PerformClick();
             Program.CandyGalleryWindow.DisplayMediaInMainPictureBox(
@@ -302,6 +303,7 @@ namespace CandyGallery.Interface
 
         private void FavoriteMain_Click(object sender, EventArgs e)
         {
+            
             btnViewFavorite.PerformClick();
         }
 

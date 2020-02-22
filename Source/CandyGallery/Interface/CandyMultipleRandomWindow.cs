@@ -217,6 +217,12 @@ namespace CandyGallery.Interface
         {
             if (!string.IsNullOrWhiteSpace(pictureBox.ImageLocation))
             {
+                if (pictureBox.ImageLocation == CurrentMediaSelection
+                    && pictureBox.BorderStyle == BorderStyle.Fixed3D)
+                {
+                    btnOpenSelection.PerformClick();
+                    return;
+                }
                 DeselectMediaSelection();
                 CurrentMediaSelection = pictureBox.ImageLocation;
                 pictureBox.BorderStyle = BorderStyle.Fixed3D;
