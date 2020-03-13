@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\CandyGalleryHelpers.cs" />
+    <Compile Include="Helpers\CandyImageFilters.cs" />
     <Compile Include="Interface\CandyFavoritesWindow.cs">
       <SubType>Form</SubType>
     </Compile>

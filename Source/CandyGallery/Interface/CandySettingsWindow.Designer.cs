@@ -273,7 +273,12 @@ namespace CandyGallery.Interface
             this.cmbBxImageFilterToApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbBxImageFilterToApply.FormattingEnabled = true;
             this.cmbBxImageFilterToApply.Items.AddRange(new object[] {
-            "Blur"});
+            "Blur",
+            "Pixelate",
+            "Colorize",
+            "Grayscale",
+            "Sepia",
+            "Negative"});
             this.cmbBxImageFilterToApply.Location = new System.Drawing.Point(269, 133);
             this.cmbBxImageFilterToApply.Name = "cmbBxImageFilterToApply";
             this.cmbBxImageFilterToApply.Size = new System.Drawing.Size(96, 21);

@@ -386,6 +386,8 @@ namespace CandyGallery.Interface
 
         private void FilterStrengthUp_Click(object sender, EventArgs e)
         {
+            var originalCursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
             if (lblCurrentMediaPath.Text != "")
             {
                 if (UserSettings.ImageFilterAmount + 5 >= 100)
@@ -403,11 +405,14 @@ namespace CandyGallery.Interface
                 picBxCandyGallery.Image = filteredImage ?? picBxCandyGallery.ErrorImage;
             }
 
+            Cursor.Current = originalCursor;
             btnRandomize.Focus();
         }
 
         private void FilterStrengthDown_Click(object sender, EventArgs e)
         {
+            var originalCursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
             if (lblCurrentMediaPath.Text != "")
             {
                 if (UserSettings.ImageFilterAmount - 5 <= 5)
@@ -425,6 +430,7 @@ namespace CandyGallery.Interface
                 picBxCandyGallery.Image = filteredImage ?? picBxCandyGallery.ErrorImage;
             }
 
+            Cursor.Current = originalCursor;
             btnRandomize.Focus();
         }
 
@@ -623,6 +629,8 @@ namespace CandyGallery.Interface
 
         private void ApplyImageFilter_CheckedChanged(object sender, EventArgs e)
         {
+            var originalCursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
             UserSettings.ApplyImageFilter = chkApplyImageFilter.Checked;
             if (UserSettings.ApplyImageFilter && !string.IsNullOrWhiteSpace(lblCurrentMediaPath.Text))
             {
@@ -636,6 +644,7 @@ namespace CandyGallery.Interface
                 btnFilterStrengthUp.Hide();
                 btnFilterStrengthDown.Hide();
                 lblCurrentFilterStrength.Hide();
+                GC.Collect();
                 picBxCandyGallery.ImageLocation = lblCurrentMediaPath.Text;
             }
             else
@@ -645,6 +654,7 @@ namespace CandyGallery.Interface
                 lblCurrentFilterStrength.Hide();
             }
 
+            Cursor.Current = originalCursor;
             btnRandomize.Focus();
         }
 
@@ -1270,7 +1280,7 @@ namespace CandyGallery.Interface
             {
                 WindowState = FormWindowState.Normal;
             }
-            
+
             Cursor.Show();
         }
 
@@ -1452,12 +1462,27 @@ namespace CandyGallery.Interface
             try
             {
                 var image = new Bitmap(path);
-                var radius = UserSettings.ImageFilterAmount > 7 ? UserSettings.ImageFilterAmount : 7;
+                var amount = UserSettings.ImageFilterAmount > 7 ? UserSettings.ImageFilterAmount : 7;
 
                 switch (UserSettings.ImageFilterType)
                 {
                     case ImageFilterType.Blur:
-                        StackBlur.StackBlur.Process(image, radius);
+                        StackBlur.StackBlur.Process(image, amount);
+                        break;
+                    case ImageFilterType.Pixelate:
+                        image = CandyImageFilters.Pixelate(image, amount);
+                        break;
+                    case ImageFilterType.Grayscale:
+                        CandyImageFilters.Grayscale(image, amount);
+                        break;
+                    case ImageFilterType.Sepia:
+                        CandyImageFilters.Sepia(image, amount);
+                        break;
+                    case ImageFilterType.Negative:
+                        CandyImageFilters.Negative(image);
+                        break;
+                    case ImageFilterType.Colorize:
+                        CandyImageFilters.Colorize(image, amount);
                         break;
                 }
 
