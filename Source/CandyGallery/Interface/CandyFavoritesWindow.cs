@@ -19,6 +19,7 @@ namespace CandyGallery.Interface
         ////////// Used to make form draggable
 
         public int CurrentMainDisplayedFavoriteIndex = 1;
+        public static Image errorImg = Program.CandyGalleryWindow.picBxCandyGallery.ErrorImage;
 
         public CandyFavoritesWindow()
         {
@@ -65,6 +66,8 @@ namespace CandyGallery.Interface
 
         private void FavoriteItemIndex_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var cursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
             var index = int.Parse(cmbBxFavoriteItemIndex.Text);
             var userFavorites = Program.CandyGalleryWindow.UserSettings.UserFavorites;
             CurrentMainDisplayedFavoriteIndex = index;
@@ -94,6 +97,7 @@ namespace CandyGallery.Interface
                 }
             }
             StylePictureBoxes();
+            Cursor.Current = cursor;
         }
 
         private void FavoriteTypeFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,6 +107,8 @@ namespace CandyGallery.Interface
 
         private void LastFavorite_Click(object sender, EventArgs e)
         {
+            var cursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
             if (picBxFavoriteLast.Image != null)
             {
                 CurrentMainDisplayedFavoriteIndex -= 1;
@@ -114,8 +120,15 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    picBxFavoriteNextNext.Image = null;
-                    picBxFavoriteNextNext.ImageLocation = picBxFavoriteNext.ImageLocation;
+                    if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+                    {
+                        picBxFavoriteNextNext.Image = picBxFavoriteNext.Image;
+                    }
+                    else
+                    {
+                        picBxFavoriteNextNext.Image = null;
+                        picBxFavoriteNextNext.ImageLocation = picBxFavoriteNext.ImageLocation;
+                    }
                 }
 
                 if (picBxFavoriteMain.Image == picBxFavoriteMain.InitialImage)
@@ -125,8 +138,15 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    picBxFavoriteNext.Image = null;
-                    picBxFavoriteNext.ImageLocation = picBxFavoriteMain.ImageLocation;
+                    if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+                    {
+                        picBxFavoriteNext.Image = picBxFavoriteMain.Image;
+                    }
+                    else
+                    {
+                        picBxFavoriteNext.Image = null;
+                        picBxFavoriteNext.ImageLocation = picBxFavoriteMain.ImageLocation;
+                    }
                 }
 
                 if (picBxFavoriteLast.Image == picBxFavoriteLast.InitialImage)
@@ -136,8 +156,15 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    picBxFavoriteMain.Image = null;
-                    picBxFavoriteMain.ImageLocation = picBxFavoriteLast.ImageLocation;
+                    if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+                    {
+                        picBxFavoriteMain.Image = picBxFavoriteLast.Image;
+                    }
+                    else
+                    {
+                        picBxFavoriteMain.Image = null;
+                        picBxFavoriteMain.ImageLocation = picBxFavoriteLast.ImageLocation;
+                    }
                 }
 
                 if (picBxFavoriteLastLast.Image == picBxFavoriteLastLast.InitialImage)
@@ -147,8 +174,15 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    picBxFavoriteLast.Image = null;
-                    picBxFavoriteLast.ImageLocation = picBxFavoriteLastLast.ImageLocation;
+                    if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+                    {
+                        picBxFavoriteLast.Image = picBxFavoriteLastLast.Image;
+                    }
+                    else
+                    {
+                        picBxFavoriteLast.Image = null;
+                        picBxFavoriteLast.ImageLocation = picBxFavoriteLastLast.ImageLocation;
+                    }
                 }
 
                 HandleLastLastPicBoxMediaFlow();
@@ -156,10 +190,13 @@ namespace CandyGallery.Interface
                     .UserFavorites[CurrentMainDisplayedFavoriteIndex - 1].FullPath;
                 StylePictureBoxes();
             }
+            Cursor.Current = cursor;
         }
 
         private void NextFavorite_Click(object sender, EventArgs e)
         {
+            var cursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
             if (picBxFavoriteNext.Image != null)
             {
                 CurrentMainDisplayedFavoriteIndex += 1;
@@ -171,8 +208,15 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    picBxFavoriteLastLast.Image = null;
-                    picBxFavoriteLastLast.ImageLocation = picBxFavoriteLast.ImageLocation;
+                    if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+                    {
+                        picBxFavoriteLastLast.Image = picBxFavoriteLast.Image;
+                    }
+                    else
+                    {
+                        picBxFavoriteLastLast.Image = null;
+                        picBxFavoriteLastLast.ImageLocation = picBxFavoriteLast.ImageLocation;
+                    }
                 }
 
                 if (picBxFavoriteMain.Image == picBxFavoriteMain.InitialImage)
@@ -182,8 +226,15 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    picBxFavoriteLast.Image = null;
-                    picBxFavoriteLast.ImageLocation = picBxFavoriteMain.ImageLocation;
+                    if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+                    {
+                        picBxFavoriteLast.Image = picBxFavoriteMain.Image;
+                    }
+                    else
+                    {
+                        picBxFavoriteLast.Image = null;
+                        picBxFavoriteLast.ImageLocation = picBxFavoriteMain.ImageLocation;
+                    }
                 }
 
                 if (picBxFavoriteNext.Image == picBxFavoriteNext.InitialImage)
@@ -193,8 +244,15 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    picBxFavoriteMain.Image = null;
-                    picBxFavoriteMain.ImageLocation = picBxFavoriteNext.ImageLocation;
+                    if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+                    {
+                        picBxFavoriteMain.Image = picBxFavoriteNext.Image;
+                    }
+                    else
+                    {
+                        picBxFavoriteMain.Image = null;
+                        picBxFavoriteMain.ImageLocation = picBxFavoriteNext.ImageLocation;
+                    }
                 }
 
                 if (picBxFavoriteNextNext.Image == picBxFavoriteNextNext.InitialImage)
@@ -204,8 +262,15 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    picBxFavoriteNext.Image = null;
-                    picBxFavoriteNext.ImageLocation = picBxFavoriteNextNext.ImageLocation;
+                    if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+                    {
+                        picBxFavoriteNext.Image = picBxFavoriteNextNext.Image;
+                    }
+                    else
+                    {
+                        picBxFavoriteNext.Image = null;
+                        picBxFavoriteNext.ImageLocation = picBxFavoriteNextNext.ImageLocation;
+                    }
                 }
 
                 HandleNextNextPicBoxMediaFlow();
@@ -213,6 +278,7 @@ namespace CandyGallery.Interface
                     .UserFavorites[CurrentMainDisplayedFavoriteIndex - 1].FullPath;
                 StylePictureBoxes();
             }
+            Cursor.Current = cursor;
         }
 
         private void DeleteFavorite_Click(object sender, EventArgs e)
@@ -453,8 +519,15 @@ namespace CandyGallery.Interface
             }
             else
             {
-                pictureBox.Image = null;
-                pictureBox.ImageLocation = favorite.FullPath;
+                if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+                {
+                    pictureBox.Image = Program.CandyGalleryWindow.ApplyFilterToImage(favorite.FullPath) ?? errorImg;
+                }
+                else
+                {
+                    pictureBox.Image = null;
+                    pictureBox.ImageLocation = favorite.FullPath;
+                }
             }
         }
 

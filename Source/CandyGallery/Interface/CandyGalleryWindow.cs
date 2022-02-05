@@ -1497,10 +1497,9 @@ namespace CandyGallery.Interface
 
         public void SetFavoriteAtNumber(int nonZeroIndex)
         {
-            var itemLocation = "";
-            var itemToFavorite = lblCurrentMediaPath.Text;
+            var itemLocation = lblCurrentMediaPath.Text;
             UserFavorite newFavorite;
-            if ((CandyGalleryHelpers.IsImageTypeMedia(itemToFavorite) || CandyGalleryHelpers.IsGifTypeMedia(itemToFavorite))
+            if ((CandyGalleryHelpers.IsImageTypeMedia(itemLocation) || CandyGalleryHelpers.IsGifTypeMedia(itemLocation))
                 && picBxCandyGallery.ImageLocation != null)
             {
                 itemLocation = picBxCandyGallery.ImageLocation;
@@ -1529,7 +1528,7 @@ namespace CandyGallery.Interface
                 newFavorite = new UserFavorite
                 {
                     Index = nonZeroIndex,
-                    FullPath = itemToFavorite,
+                    FullPath = itemLocation,
                     MediaType = MediaFilterType.Video
                 };
             }
@@ -1596,6 +1595,9 @@ namespace CandyGallery.Interface
                         break;
                     case ImageFilterType.Pixelate:
                         image = CandyImageFilters.Pixelate(image, amount);
+                        break;
+                    case ImageFilterType.Sobel:
+                        image = CandyImageFilters.SobelEdgeFilter(image, amount);
                         break;
                     case ImageFilterType.Grayscale:
                         CandyImageFilters.Grayscale(image, amount);

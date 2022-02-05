@@ -24,6 +24,7 @@ namespace CandyGallery.Interface
         public string CurrentMediaSelection = "";
         public bool FormMaximized = false;
         public int nameLength = "picBx".Length;
+        public Image errorImg = Program.CandyGalleryWindow.picBxCandyGallery.ErrorImage;
 
         public string itemFullPath1 { get; set; }
         public string itemFullPath2 { get; set; }
@@ -89,8 +90,6 @@ namespace CandyGallery.Interface
 
             if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
             {
-                var errorImg = Program.CandyGalleryWindow.picBxCandyGallery.ErrorImage;
-
                 picBx1.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath1) ?? errorImg;
                 picBx2.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath2) ?? errorImg;
                 picBx3.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath3) ?? errorImg;
@@ -448,8 +447,9 @@ namespace CandyGallery.Interface
         private string WaitForRandom(string path)
         {
             Thread.Sleep(15);
-            if (!(Program.CandyGalleryWindow.UserSettings.ImageFilterType == ImageFilterType.Blur || Program.CandyGalleryWindow.UserSettings.ImageFilterType == ImageFilterType.Pixelate)
-                && Program.CandyGalleryWindow.UserSettings.UnseenItems != null && Program.CandyGalleryWindow.UserSettings.UnseenItems.Count > 0)
+            if (Program.CandyGalleryWindow.UserSettings.UnseenItems != null
+                && Program.CandyGalleryWindow.UserSettings.UnseenItems.Count > 0
+                && !Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
             {
                 Program.CandyGalleryWindow.UserSettings.UnseenItems.Remove(path);
             }

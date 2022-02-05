@@ -277,6 +277,7 @@ namespace CandyGallery.Interface
             this.cmbBxImageFilterToApply.Items.AddRange(new object[] {
             "Blur",
             "Pixelate",
+            "Sobel",
             "Colorize",
             "Grayscale",
             "Sepia",

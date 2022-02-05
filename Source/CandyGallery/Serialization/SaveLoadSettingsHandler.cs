@@ -26,7 +26,7 @@ namespace CandyGallery.Serialization
                     try
                     {
                         var attemptedUserSettings = HandleXmlFileLoad(saveFile, username, userSettings, false);
-                        if (attemptedUserSettings != null)
+                        if (attemptedUserSettings != null && password == attemptedUserSettings.Pass)
                         {
                             userSettings = attemptedUserSettings;
                             userSettings.PerSessionSettings.LoadedSettingsFileWasEncrypted = false;
@@ -35,17 +35,30 @@ namespace CandyGallery.Serialization
                     }
                     catch (Exception e)
                     {
-                        // File must be encrypted then...
+                        // File must be encrypted then... try again based on inner value encryption first
                         try
                         {
-                            contents = DecryptString(contents);
-                            File.WriteAllText(saveFile, contents);
-                            userSettings = HandleXmlFileLoad(saveFile, username, userSettings);
+                            var attemptedUserSettings = HandleXmlFileLoad(saveFile, username, userSettings);
+                            if (attemptedUserSettings != null && password == attemptedUserSettings.Pass)
+                            {
+                                userSettings = attemptedUserSettings;
+                            }
+                            else throw new Exception();
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show($@"Error loading user settings for ""{username}"": " + e.Message,
-                                @"Error Loading Settings File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            // File must be fully encrypted
+                            try
+                            {
+                                contents = DecryptString(contents);
+                                File.WriteAllText(saveFile, contents);
+                                userSettings = HandleXmlFileLoad(saveFile, username, userSettings);
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show($@"Error loading user settings for ""{username}"": " + e.Message,
+                                    @"Error Loading Settings File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
