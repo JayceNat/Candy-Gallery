@@ -23,12 +23,36 @@ namespace CandyGallery.Interface
 
         public string CurrentMediaSelection = "";
         public bool FormMaximized = false;
+        public int nameLength = "picBx".Length;
+        public Image errorImg = Program.CandyGalleryWindow.picBxCandyGallery.ErrorImage;
+
+        public string itemFullPath1 { get; set; }
+        public string itemFullPath2 { get; set; }
+        public string itemFullPath3 { get; set; }
+        public string itemFullPath4 { get; set; }
+        public string itemFullPath5 { get; set; }
+        public string itemFullPath6 { get; set; }
+        public string itemFullPath7 { get; set; }
+        public string itemFullPath8 { get; set; }
+        public string itemFullPath9 { get; set; }
+        public string itemFullPath10 { get; set; }
+        public string itemFullPath11 { get; set; }
+        public string itemFullPath12 { get; set; }
+        public string itemFullPath13 { get; set; }
+        public string itemFullPath14 { get; set; }
+        public string itemFullPath15 { get; set; }
 
         public CandyMultipleRandomWindow()
         {
             InitializeComponent();
             SetFormColors();
             SetPictureBoxContextStrips();
+            Shown += CandyMultiRandomWindow_Shown;
+        }
+
+        private void CandyMultiRandomWindow_Shown(object sender, EventArgs e)
+        {
+            btnRandomBlast.PerformClick();
         }
 
         public void CandyMultiRandomWindow_MouseDown(object sender, MouseEventArgs e)
@@ -42,26 +66,66 @@ namespace CandyGallery.Interface
 
         private void RandomBlast_Click(object sender, EventArgs e)
         {
+            var cursor = Cursors.Default;
+            Cursor.Current = Cursors.WaitCursor;
             NullAllPictureBoxes();
             DeselectMediaSelection();
-            Cursor.Current = Cursors.WaitCursor;
             var startFolder = Program.CandyGalleryWindow.UserSettings.StartFolderPath;
-            picBx1.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx2.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx3.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx4.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx5.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx6.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx7.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx8.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx9.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx10.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx11.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx12.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx13.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx14.ImageLocation = WaitForRandom(Randomize(startFolder));
-            picBx15.ImageLocation = WaitForRandom(Randomize(startFolder));
-            Cursor.Current = Cursors.Default;
+
+            itemFullPath1 = WaitForRandom(Randomize(startFolder));
+            itemFullPath2 = WaitForRandom(Randomize(startFolder));
+            itemFullPath3 = WaitForRandom(Randomize(startFolder));
+            itemFullPath4 = WaitForRandom(Randomize(startFolder));
+            itemFullPath5 = WaitForRandom(Randomize(startFolder));
+            itemFullPath6 = WaitForRandom(Randomize(startFolder));
+            itemFullPath7 = WaitForRandom(Randomize(startFolder));
+            itemFullPath8 = WaitForRandom(Randomize(startFolder));
+            itemFullPath9 = WaitForRandom(Randomize(startFolder));
+            itemFullPath10 = WaitForRandom(Randomize(startFolder));
+            itemFullPath11 = WaitForRandom(Randomize(startFolder));
+            itemFullPath12 = WaitForRandom(Randomize(startFolder));
+            itemFullPath13 = WaitForRandom(Randomize(startFolder));
+            itemFullPath14 = WaitForRandom(Randomize(startFolder));
+            itemFullPath15 = WaitForRandom(Randomize(startFolder));
+
+            if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+            {
+                picBx1.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath1) ?? errorImg;
+                picBx2.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath2) ?? errorImg;
+                picBx3.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath3) ?? errorImg;
+                picBx4.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath4) ?? errorImg;
+                picBx5.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath5) ?? errorImg;
+                picBx6.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath6) ?? errorImg;
+                picBx7.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath7) ?? errorImg;
+                picBx8.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath8) ?? errorImg;
+                picBx9.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath9) ?? errorImg;
+                picBx10.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath10) ?? errorImg;
+                picBx11.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath11) ?? errorImg;
+                picBx12.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath12) ?? errorImg;
+                picBx13.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath13) ?? errorImg;
+                picBx14.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath14) ?? errorImg;
+                picBx15.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath15) ?? errorImg;
+            }
+            else
+            {
+                picBx1.ImageLocation = itemFullPath1;
+                picBx2.ImageLocation = itemFullPath2;
+                picBx3.ImageLocation = itemFullPath3;
+                picBx4.ImageLocation = itemFullPath4;
+                picBx5.ImageLocation = itemFullPath5;
+                picBx6.ImageLocation = itemFullPath6;
+                picBx7.ImageLocation = itemFullPath7;
+                picBx8.ImageLocation = itemFullPath8;
+                picBx9.ImageLocation = itemFullPath9;
+                picBx10.ImageLocation = itemFullPath10;
+                picBx11.ImageLocation = itemFullPath11;
+                picBx12.ImageLocation = itemFullPath12;
+                picBx13.ImageLocation = itemFullPath13;
+                picBx14.ImageLocation = itemFullPath14;
+                picBx15.ImageLocation = itemFullPath15;
+            }
+            
+            Cursor.Current = cursor;
         }
 
         private void FavoriteSelection_Click(object sender, EventArgs e)
@@ -78,8 +142,8 @@ namespace CandyGallery.Interface
                 };
                 Program.CandyGalleryWindow.UserSettings.UserFavorites.Add(newFavorite);
                 DeselectMediaSelection();
-                MessageBox.Show($@"Created a new favorite for ""{itemName}"" as Favorite #{nonZeroIndex}!",
-                    @"Favorite Created!", MessageBoxButtons.OK);
+                //MessageBox.Show($@"Created a new favorite for ""{itemName}"" as Favorite #{nonZeroIndex}!",
+                //    @"Favorite Created!", MessageBoxButtons.OK);
             }
         }
 
@@ -116,13 +180,18 @@ namespace CandyGallery.Interface
         {
             if (!(sender is ToolStripMenuItem menuItem)) return;
             if (!(menuItem.GetCurrentParent() is ContextMenuStrip contextMenu)) return;
-            if (contextMenu.SourceControl is PictureBox pictureBox
-                && !string.IsNullOrEmpty(pictureBox.ImageLocation))
+            if (contextMenu.SourceControl is PictureBox pictureBox)
             {
-                Program.CandyGalleryWindow.DisplayMediaInMainPictureBox(pictureBox.ImageLocation);
-                pictureBox.ImageLocation = null;
-                pictureBox.Image = pictureBox.InitialImage;
-                DeselectMediaSelection();
+                var id = pictureBox.Name.Remove(0, nameLength);
+                var matchingLocation = GetMatchingImgLocation(id);
+                if (!string.IsNullOrEmpty(matchingLocation))
+                {
+                    Program.CandyGalleryWindow.DisplayMediaInMainPictureBox(matchingLocation);
+                    RemoveImgLocation(id);
+                    pictureBox.ImageLocation = null;
+                    pictureBox.Image = pictureBox.InitialImage;
+                    DeselectMediaSelection();
+                }
             }
         }
 
@@ -215,20 +284,67 @@ namespace CandyGallery.Interface
 
         private void SelectPictureBox(PictureBox pictureBox)
         {
-            if (!string.IsNullOrWhiteSpace(pictureBox.ImageLocation))
+            var matchingLocation = GetMatchingImgLocation(pictureBox.Name.Remove(0, nameLength));
+            if (!string.IsNullOrWhiteSpace(matchingLocation))
             {
-                if (pictureBox.ImageLocation == CurrentMediaSelection
+                if (matchingLocation == CurrentMediaSelection
                     && pictureBox.BorderStyle == BorderStyle.Fixed3D)
                 {
                     btnOpenSelection.PerformClick();
                     return;
                 }
                 DeselectMediaSelection();
-                CurrentMediaSelection = pictureBox.ImageLocation;
+                CurrentMediaSelection = matchingLocation;
                 pictureBox.BorderStyle = BorderStyle.Fixed3D;
                 pictureBox.BackColor =
                     CandyInterfaceColors.GetInterfaceColorByName(Program.CandyGalleryWindow.UserSettings
                         .UserInterfaceColorName);
+            }
+        }
+
+        private string GetMatchingImgLocation(string id)
+        {
+            switch (id)
+            {
+                case "1": return itemFullPath1;
+                case "2": return itemFullPath2;
+                case "3": return itemFullPath3;
+                case "4": return itemFullPath4;
+                case "5": return itemFullPath5;
+                case "6": return itemFullPath6;
+                case "7": return itemFullPath7;
+                case "8": return itemFullPath8;
+                case "9": return itemFullPath9;
+                case "10": return itemFullPath10;
+                case "11": return itemFullPath11;
+                case "12": return itemFullPath12;
+                case "13": return itemFullPath13;
+                case "14": return itemFullPath14;
+                case "15": return itemFullPath15;
+                default: return "";
+            }                    
+        }
+
+        public void RemoveImgLocation(string id)
+        {
+            switch (id)
+            {
+                case "1": itemFullPath1 = ""; break;
+                case "2": itemFullPath2 = ""; break;
+                case "3": itemFullPath3 = ""; break;
+                case "4": itemFullPath4 = ""; break;
+                case "5": itemFullPath5 = ""; break;
+                case "6": itemFullPath6 = ""; break;
+                case "7": itemFullPath7 = ""; break;
+                case "8": itemFullPath8 = ""; break;
+                case "9": itemFullPath9 = ""; break;
+                case "10": itemFullPath10 = ""; break;
+                case "11": itemFullPath11 = ""; break;
+                case "12": itemFullPath12 = ""; break;
+                case "13": itemFullPath13 = ""; break;
+                case "14": itemFullPath14 = ""; break;
+                case "15": itemFullPath15 = ""; break;
+                default: break;
             }
         }
 
@@ -331,6 +447,12 @@ namespace CandyGallery.Interface
         private string WaitForRandom(string path)
         {
             Thread.Sleep(15);
+            if (Program.CandyGalleryWindow.UserSettings.UnseenItems != null
+                && Program.CandyGalleryWindow.UserSettings.UnseenItems.Count > 0
+                && !Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
+            {
+                Program.CandyGalleryWindow.UserSettings.UnseenItems.Remove(path);
+            }
             return path;
         }
 

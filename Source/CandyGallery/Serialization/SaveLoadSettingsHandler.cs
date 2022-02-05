@@ -16,42 +16,56 @@ namespace CandyGallery.Serialization
             var appPath = Application.StartupPath;
             var userSettings = new UserSettings { UserName = username, Pass = password };
             var saveFile = $"{appPath}\\CandyGalleryUserSettings\\{username.ToLower()}_CandyGalleryUserSettings.xml";
-            if (File.Exists(saveFile) && File.ReadAllText(saveFile).Length != 0)
+            if (File.Exists(saveFile))
             {
-                try
+                userSettings.PerSessionSettings.FullPathToCurrentSettingsFile = saveFile;
+                var contents = File.ReadAllText(saveFile);
+                if (!string.IsNullOrWhiteSpace(contents))
                 {
-                    using (var reader = XmlReader.Create(saveFile))
+                    // Try reading it as if unencrypted first
+                    try
                     {
-                        // Skip root node
-                        reader.ReadToFollowing(
-                            "UserSettings"); // Name of first class
-
-                        userSettings = (UserSettings) Program.UserSettingsSerializer.Deserialize(reader);
-                        userSettings.Pass = DecryptString(userSettings.Pass);
-                        userSettings.StartFolderPath = DecryptString(userSettings.StartFolderPath);
-                        userSettings.UserInterfaceColorName = DecryptString(userSettings.UserInterfaceColorName);
-                        userSettings.PerSessionSettings.OriginalUsername = username;
-                        userSettings.PerSessionSettings.FullPathToCurrentSettingsFile = saveFile;
-
-                        foreach (var favorite in userSettings.UserFavorites)
+                        var attemptedUserSettings = HandleXmlFileLoad(saveFile, username, userSettings, false);
+                        if (attemptedUserSettings != null && password == attemptedUserSettings.Pass)
                         {
-                            favorite.FullPath = DecryptString(favorite.FullPath);
+                            userSettings = attemptedUserSettings;
+                            userSettings.PerSessionSettings.LoadedSettingsFileWasEncrypted = false;
                         }
-
-                        if (userSettings.PreserveSessionHistory)
+                        else throw new Exception();
+                    }
+                    catch (Exception e)
+                    {
+                        // File must be encrypted then... try again based on inner value encryption first
+                        try
                         {
-                            var decryptedHistory = userSettings.SessionHistory.Select(DecryptString).ToList();
-
-                            userSettings.SessionHistory = decryptedHistory;
-                            userSettings.PerSessionSettings.BackList = userSettings.SessionHistory;
-                            userSettings.SessionHistory = null;
+                            var attemptedUserSettings = HandleXmlFileLoad(saveFile, username, userSettings);
+                            if (attemptedUserSettings != null && password == attemptedUserSettings.Pass)
+                            {
+                                userSettings = attemptedUserSettings;
+                            }
+                            else throw new Exception();
+                        }
+                        catch (Exception ex)
+                        {
+                            // File must be fully encrypted
+                            try
+                            {
+                                contents = DecryptString(contents);
+                                File.WriteAllText(saveFile, contents);
+                                userSettings = HandleXmlFileLoad(saveFile, username, userSettings);
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show($@"Error loading user settings for ""{username}"": " + e.Message,
+                                    @"Error Loading Settings File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
-                catch (Exception e)
+                else
                 {
-                    MessageBox.Show($@"Error loading user settings for ""{username}"": " + e.Message,
-                        @"Error Loading Settings File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"No contents found inside the settings file for user \"{username}\". \nA new file will be created upon exit!",
+                        @"Missing Settings File", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -63,33 +77,104 @@ namespace CandyGallery.Serialization
             return userSettings;
         }
 
+        public static UserSettings HandleXmlFileLoad(string fullSaveFilePath, string username, UserSettings userSettings, bool treatFileAsEncrypted = true)
+        {
+            if (File.Exists(fullSaveFilePath))
+            {
+                try
+                {
+                    using (var reader = XmlReader.Create(fullSaveFilePath))
+                    {
+                        // Skip root node
+                        reader.ReadToFollowing(
+                            "UserSettings"); // Name of first class
+
+                        userSettings = (UserSettings)Program.UserSettingsSerializer.Deserialize(reader);
+
+                        userSettings.PerSessionSettings.OriginalUsername = username;
+                        userSettings.PerSessionSettings.FullPathToCurrentSettingsFile = fullSaveFilePath;
+
+                        if (treatFileAsEncrypted)
+                        {
+                            userSettings.Pass = DecryptString(userSettings.Pass);
+                            userSettings.StartFolderPath = DecryptString(userSettings.StartFolderPath);
+                            userSettings.UserInterfaceColorName = DecryptString(userSettings.UserInterfaceColorName);
+                            var decryptedUnseen = userSettings.UnseenItems.Select(DecryptString).ToList();
+                            userSettings.UnseenItems = decryptedUnseen;
+
+                            foreach (var favorite in userSettings.UserFavorites)
+                            {
+                                favorite.FullPath = DecryptString(favorite.FullPath);
+                            }
+                        }
+
+                        if (userSettings.PreserveSessionHistory)
+                        {
+                            if (treatFileAsEncrypted)
+                            {
+                                var decryptedHistory = userSettings.SessionHistory.Select(DecryptString).ToList();
+                                userSettings.SessionHistory = decryptedHistory;
+                            }
+
+                            userSettings.PerSessionSettings.BackList = userSettings.SessionHistory;
+                            userSettings.SessionHistory = null;
+                        }
+
+                        // Check if our Start Folder exists, if not then later ask user to locate it
+                        if (!Directory.Exists(userSettings.StartFolderPath))
+                        {
+                            userSettings.PerSessionSettings.StartFolderMissingOnLoad = true;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+
+            return userSettings;
+        }
+
         public static void SaveUserSettings(UserSettings userSettings)
         {
             // Reset settings that should not persist for next session
             userSettings.CurrentMediaTypeToDisplay = MediaFilterType.All;
-            userSettings.Pass = EncryptString(userSettings.Pass);
-            userSettings.StartFolderPath = EncryptString(userSettings.StartFolderPath);
-            userSettings.UserInterfaceColorName = EncryptString(userSettings.UserInterfaceColorName);
-            foreach (var favorite in userSettings.UserFavorites)
+            if (userSettings.EncryptSettingsFile)
             {
-                favorite.FullPath = EncryptString(favorite.FullPath);
-            }
+                userSettings.Pass = EncryptString(userSettings.Pass);
+                userSettings.StartFolderPath = EncryptString(userSettings.StartFolderPath);
+                userSettings.UserInterfaceColorName = EncryptString(userSettings.UserInterfaceColorName);
+                foreach (var favorite in userSettings.UserFavorites)
+                {
+                    favorite.FullPath = EncryptString(favorite.FullPath);
+                }
 
-            if (userSettings.PreserveSessionHistory)
-            {
-                var encryptedHistory = userSettings.SessionHistory.Select(EncryptString).ToList();
-                userSettings.SessionHistory = encryptedHistory;
+                if (userSettings.PreserveSessionHistory)
+                {
+                    var encryptedHistory = userSettings.SessionHistory.Select(EncryptString).ToList();
+                    userSettings.SessionHistory = encryptedHistory;
+                }
+
+                var encryptedUnseen = userSettings.UnseenItems.Select(EncryptString).ToList();
+                userSettings.UnseenItems = encryptedUnseen;
             }
 
             var appPath = Application.StartupPath;
             Directory.CreateDirectory($"{appPath}\\CandyGalleryUserSettings\\");
+            var saveFile = $"{appPath}\\CandyGalleryUserSettings\\{userSettings.UserName.ToLower()}_CandyGalleryUserSettings.xml";
             // This will create a file in the same directory as the .exe since we didn't specify a path
-            using (var xmlWriter = XmlWriter.Create($"{appPath}\\CandyGalleryUserSettings\\{userSettings.UserName.ToLower()}_CandyGalleryUserSettings.xml", new XmlWriterSettings { Indent = true }))
+            using (var xmlWriter = XmlWriter.Create(saveFile, new XmlWriterSettings { Indent = true }))
             {
                 xmlWriter.WriteStartElement("root");
 
                 // We only need to serialize the main object model; all the other ones are children of it or irrelevant
                 Program.UserSettingsSerializer.Serialize(xmlWriter, userSettings);
+            }
+
+            if (File.Exists(saveFile) && userSettings.EncryptSettingsFile)
+            {
+                EncryptSaveFileContents(saveFile);
             }
 
             if (userSettings.PerSessionSettings.OriginalUsername != null && userSettings.UserName != userSettings.PerSessionSettings.OriginalUsername)
@@ -102,43 +187,61 @@ namespace CandyGallery.Serialization
             }
         }
 
-        public static string DecryptUserSettingsDirectFromContent(XmlDocument xmlContent)
+        public static string DecryptUserSettingsDirectFromContent(XmlDocument xmlContent, bool decryptContent = true)
         {
             try
             {
-                // Encrypt relevant nodes
-                var decryptedPassword = DecryptString(xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.Pass)).InnerText);
-                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.Pass)).InnerText = decryptedPassword;
+                // Decrypt relevant nodes
+                var password = xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.Pass)).InnerText;
+                var startFolder = xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.StartFolderPath)).InnerText;
+                var interfaceColor = xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserInterfaceColorName)).InnerText;
 
-                var decryptedStartFolder = DecryptString(xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.StartFolderPath)).InnerText);
-                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.StartFolderPath)).InnerText = decryptedStartFolder;
-
-                var decryptedInterfaceColor =
-                    DecryptString(xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserInterfaceColorName)).InnerText);
-                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserInterfaceColorName)).InnerText = decryptedInterfaceColor;
-
-                foreach (XmlNode favorite in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserFavorites)).SelectNodes(nameof(UserFavorite)))
+                if (decryptContent)
                 {
-                    if (favorite.HasChildNodes)
+                    password = DecryptString(password);
+                    startFolder = DecryptString(startFolder);
+                    interfaceColor = DecryptString(interfaceColor);
+                }
+
+                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.Pass)).InnerText = password;
+                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.StartFolderPath)).InnerText = startFolder;
+                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserInterfaceColorName)).InnerText = interfaceColor;
+
+                foreach (XmlNode favoriteNode in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserFavorites)).SelectNodes(nameof(UserFavorite)))
+                {
+                    if (favoriteNode.HasChildNodes)
                     {
-                        var decryptedFavorite =
-                            DecryptString(favorite.SelectSingleNode(nameof(UserFavorite.FullPath))?.InnerText);
-                        if (decryptedFavorite != null)
+                        var favorite = favoriteNode.SelectSingleNode(nameof(UserFavorite.FullPath))?.InnerText;
+                        if (favorite != null)
                         {
-                            favorite.SelectSingleNode(nameof(UserFavorite.FullPath)).InnerText = decryptedFavorite;
+                            if (decryptContent) favorite = DecryptString(favorite);
+                            favoriteNode.SelectSingleNode(nameof(UserFavorite.FullPath)).InnerText = favorite;
                         }
                     }
                 }
 
-                foreach (XmlNode historyItem in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.SessionHistory)).SelectNodes("HistoryItem"))
+                foreach (XmlNode historyItemNode in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.SessionHistory)).SelectNodes("HistoryItem"))
                 {
-                    if (historyItem?.InnerText != null)
+                    if (historyItemNode?.InnerText != null)
                     {
-                        var decryptedHistItem =
-                            DecryptString(historyItem.InnerText);
-                        if (decryptedHistItem != null)
+                        var histItem = historyItemNode.InnerText;
+                        if (histItem != null)
                         {
-                            historyItem.InnerText = decryptedHistItem;
+                            if (decryptContent) histItem = DecryptString(histItem);
+                            historyItemNode.InnerText = histItem;
+                        }
+                    }
+                }
+
+                foreach (XmlNode unseenItemNode in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UnseenItems)).SelectNodes("UnseenItem"))
+                {
+                    if (unseenItemNode?.InnerText != null)
+                    {
+                        var unseenItem = unseenItemNode.InnerText;
+                        if (unseenItem != null)
+                        {
+                            if (decryptContent) unseenItem = DecryptString(unseenItem);
+                            unseenItemNode.InnerText = unseenItem;
                         }
                     }
                 }
@@ -153,48 +256,72 @@ namespace CandyGallery.Serialization
             }
         }
 
-        public static void EncryptAndSaveUserSettingsDirectToFile(XmlDocument xmlContent)
+        public static void EncryptAndSaveUserSettingsDirectToFile(XmlDocument xmlContent, bool encryptContent = true)
         {
             try
             {
                 // Encrypt relevant nodes
-                var encryptedPassword = EncryptString(xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.Pass)).InnerText);
-                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.Pass)).InnerText = encryptedPassword;
+                var password = xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.Pass)).InnerText;
+                var startFolder = xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.StartFolderPath)).InnerText;
+                var interfaceColor = xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserInterfaceColorName)).InnerText;
 
-                var encryptedStartFolder = EncryptString(xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.StartFolderPath)).InnerText);
-                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.StartFolderPath)).InnerText = encryptedStartFolder;
-
-                var encryptedInterfaceColor =
-                    EncryptString(xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserInterfaceColorName)).InnerText);
-                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserInterfaceColorName)).InnerText = encryptedInterfaceColor;
-
-                foreach (XmlNode favorite in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserFavorites)).SelectNodes(nameof(UserFavorite)))
+                if (encryptContent)
                 {
-                    if (favorite.HasChildNodes)
+                    password = EncryptString(password);
+                    startFolder = EncryptString(startFolder);
+                    interfaceColor = EncryptString(interfaceColor);
+                }
+
+                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.Pass)).InnerText = password;
+                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.StartFolderPath)).InnerText = startFolder;
+                xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserInterfaceColorName)).InnerText = interfaceColor;
+
+                foreach (XmlNode favoriteNode in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UserFavorites)).SelectNodes(nameof(UserFavorite)))
+                {
+                    if (favoriteNode.HasChildNodes)
                     {
-                        var encryptedFavorite =
-                            EncryptString(favorite.SelectSingleNode(nameof(UserFavorite.FullPath))?.InnerText);
-                        if (encryptedFavorite != null)
+                        var favorite = favoriteNode.SelectSingleNode(nameof(UserFavorite.FullPath))?.InnerText;
+                        if (favorite != null)
                         {
-                            favorite.SelectSingleNode(nameof(UserFavorite.FullPath)).InnerText = encryptedFavorite;
+                            if (encryptContent) favorite = EncryptString(favorite);
+                            favoriteNode.SelectSingleNode(nameof(UserFavorite.FullPath)).InnerText = favorite;
                         }
                     }
                 }
 
-                foreach (XmlNode historyItem in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.SessionHistory)).SelectNodes("HistoryItem"))
+                foreach (XmlNode historyItemNode in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.SessionHistory)).SelectNodes("HistoryItem"))
                 {
-                    if (historyItem?.InnerText != null)
+                    if (historyItemNode?.InnerText != null)
                     {
-                        var encryptedHistItem =
-                            EncryptString(historyItem.InnerText);
-                        if (encryptedHistItem != null)
+                        var histItem = historyItemNode.InnerText;
+                        if (histItem != null)
                         {
-                            historyItem.InnerText = encryptedHistItem;
+                            if (encryptContent) histItem = EncryptString(histItem);
+                            historyItemNode.InnerText = histItem;
+                        }
+                    }
+                }
+
+                foreach (XmlNode unseenItemNode in xmlContent.DocumentElement.SelectSingleNode(nameof(UserSettings)).SelectSingleNode(nameof(UserSettings.UnseenItems)).SelectNodes("UnseenItem"))
+                {
+                    if (unseenItemNode?.InnerText != null)
+                    {
+                        var unseenItem = unseenItemNode.InnerText;
+                        if (unseenItem != null)
+                        {
+                            if (encryptContent) unseenItem = EncryptString(unseenItem);
+                            unseenItemNode.InnerText = unseenItem;
                         }
                     }
                 }
 
                 xmlContent.Save(Program.CandyGalleryWindow.UserSettings.PerSessionSettings.FullPathToCurrentSettingsFile);
+                
+                if (encryptContent)
+                {
+                    EncryptSaveFileContents(Program.CandyGalleryWindow.UserSettings.PerSessionSettings.FullPathToCurrentSettingsFile);
+                }
+                
                 Environment.Exit(0);
             }
             catch (Exception)
@@ -207,15 +334,18 @@ namespace CandyGallery.Serialization
 
         public static string DecryptString(string stringToDecrypt)
         {
-            string decrypted;
-            try
+            string decrypted = "";
+            if (!string.IsNullOrWhiteSpace(stringToDecrypt))
             {
-                var b = Convert.FromBase64String(stringToDecrypt);
-                decrypted = ASCII.GetString(b);
-            }
-            catch (FormatException)
-            {
-                decrypted = "";
+                try
+                {
+                    var b = Convert.FromBase64String(stringToDecrypt);
+                    decrypted = ASCII.GetString(b);
+                }
+                catch (FormatException)
+                {
+                    decrypted = "";
+                }
             }
             return decrypted;
         }
@@ -225,6 +355,13 @@ namespace CandyGallery.Serialization
             var b = ASCII.GetBytes(stringToEncrypt);
             var encrypted = Convert.ToBase64String(b);
             return encrypted;
+        }
+
+        public static void EncryptSaveFileContents(string fullSaveFilePath)
+        {
+            var contents = File.ReadAllText(fullSaveFilePath);
+            contents = SaveLoadSettingsHandler.EncryptString(contents);
+            File.WriteAllText(fullSaveFilePath, contents);
         }
     }
 }

@@ -26,8 +26,10 @@ namespace CandyGallery.Interface
         public const int CS_DBLCLKS = 0x8;
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int WS_MINIMIZEBOX = 0x20000;
-        public string GifsFolderName = @"\CandyGalleryGifs\";
-        public string VideosFolderName = @"\CandyGalleryVideos\";
+        public static string CandyGalleryFolderName = @"\CandyGallery\";
+        public static string GifsFolderName = CandyGalleryFolderName + @"\CandyGalleryGifs\";
+        public static string VideosFolderName = CandyGalleryFolderName + @"\CandyGalleryVideos\";
+        public static string OtherFolderName = CandyGalleryFolderName + @"\CandyGalleryOther\";
         public readonly RNGCryptoServiceProvider Rand = new RNGCryptoServiceProvider();
         [DllImport("user32.dll")] public static extern bool ReleaseCapture();
         [DllImport("user32.dll")] public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -58,8 +60,7 @@ namespace CandyGallery.Interface
             UserSettings = temporaryUserSettings;
             InitializeComponent();
 
-            if (string.IsNullOrWhiteSpace(UserSettings.StartFolderPath) ||
-                !Directory.Exists(UserSettings.StartFolderPath))
+            if (string.IsNullOrWhiteSpace(UserSettings.StartFolderPath) || !Directory.Exists(UserSettings.StartFolderPath))
             {
                 var result = MessageBox.Show(
                     @"Please specify the folder containing your gallery (select the top-most folder in the hierarchy).",
@@ -81,6 +82,7 @@ namespace CandyGallery.Interface
                 else
                 {
                     Close();
+                    Environment.Exit(0);
                 }
             }
 
@@ -101,6 +103,8 @@ namespace CandyGallery.Interface
                 Directory.Exists(UserSettings.StartFolderPath + GifsFolderName);
             UserSettings.PerSessionSettings.UserHasVideosFolder =
                 Directory.Exists(UserSettings.StartFolderPath + VideosFolderName);
+            UserSettings.PerSessionSettings.UserHasOtherFolder =
+                Directory.Exists(UserSettings.StartFolderPath + OtherFolderName);
             LoadColorOntoInterface(CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName));
 
             picBxCandyGallery.ContextMenuStrip = toolStripContextMenuPicturebox;
@@ -299,6 +303,8 @@ namespace CandyGallery.Interface
                 {
                     Close();
                 }
+                UserSettings.UserName = Program.CandyGalleryWindow.UserSettings.UserName;
+                UserSettings.Pass = Program.CandyGalleryWindow.UserSettings.Pass;
             }
 
             btnRandomize.Focus();
@@ -458,6 +464,25 @@ namespace CandyGallery.Interface
                     GetOldestItems();
                 }
             }
+            else if (chkFilterByUnseen.Checked)
+            {
+                if (UserSettings.UnseenItems == null || UserSettings.UnseenItems.Count == 0)
+                {
+                    var result = MessageBox.Show(
+                    $"Unseen items list is empty! Would you like to refresh it?",
+                    $"All Items Seen!", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        var cursor = Cursor.Current;
+                        Cursor.Current = Cursors.WaitCursor;
+                        UserSettings.UnseenItems = new List<string>();
+                        GenerateUnseenItems(new DirectoryInfo(UserSettings.StartFolderPath));
+                        Cursor.Current = cursor;
+                    }
+                }
+            }
 
             Randomize();
             btnRandomize.Focus();
@@ -538,6 +563,9 @@ namespace CandyGallery.Interface
                 chkFilterByUnseen.Checked = false;
                 chkFilterByNewest.Checked = false;
                 chkFilterByOldest.Checked = false;
+                ResetFolderTypeButtonsColor();
+                btnAllType.ForeColor = Color.Black;
+                btnAllType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
 
                 if (CandyGalleryHelpers.IsVideoTypeMedia(currentMedia))
                 {
@@ -564,6 +592,9 @@ namespace CandyGallery.Interface
                 chkFilterByUnseen.Checked = false;
                 chkFilterByNewest.Checked = false;
                 chkFilterByOldest.Checked = false;
+                ResetFolderTypeButtonsColor();
+                btnAllType.ForeColor = Color.Black;
+                btnAllType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
 
                 UserSettings.PerSessionSettings.CurrentWorkingDirectory =
                     Directory.GetParent(Path.GetDirectoryName(currentMedia)).FullName;
@@ -723,12 +754,40 @@ namespace CandyGallery.Interface
             UncheckResultsFilters();
             picBxCandyGallery.Image = picBxCandyGallery.InitialImage;
             TypeMediaChangeButtonPressHelper("");
+            ResetFolderTypeButtonsColor();
             btnAllType.ForeColor = Color.Black;
             btnAllType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
-            btnGifType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
-            btnGifType.BackColor = Color.Black;
-            btnVideosType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
-            btnVideosType.BackColor = Color.Black;
+            btnRandomize.PerformClick();
+            btnRandomize.Focus();
+        }
+
+
+        private void OtherType_Click(object sender, EventArgs e)
+        {
+            UncheckResultsFilters();
+            if (UserSettings.PerSessionSettings.UserHasOtherFolder)
+            {
+                TypeMediaChangeButtonPressHelper(OtherFolderName);
+                ResetFolderTypeButtonsColor();
+                btnOtherType.ForeColor = Color.Black;
+                btnOtherType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
+                btnRandomize.PerformClick();
+            }
+            else
+            {
+                var result = MessageBox.Show(
+                    $"No '{OtherFolderName}' folder exists inside of your start folder: '{UserSettings.StartFolderPath}'" +
+                    $"\n\nWould you like to create a '{OtherFolderName}' folder?",
+                    $"No '{OtherFolderName}' Folder Found!", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information);
+
+                if (result == DialogResult.Yes)
+                {
+                    Directory.CreateDirectory(UserSettings.StartFolderPath + OtherFolderName);
+                    UserSettings.PerSessionSettings.UserHasOtherFolder = true;
+                }
+            }
+
             btnRandomize.Focus();
         }
 
@@ -738,20 +797,17 @@ namespace CandyGallery.Interface
             if (UserSettings.PerSessionSettings.UserHasGifsFolder)
             {
                 TypeMediaChangeButtonPressHelper(GifsFolderName);
-                btnAllType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
-                btnAllType.BackColor = Color.Black;
+                ResetFolderTypeButtonsColor();
                 btnGifType.ForeColor = Color.Black;
                 btnGifType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
-                btnVideosType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
-                btnVideosType.BackColor = Color.Black;
                 btnRandomize.PerformClick();
             }
             else
             {
                 var result = MessageBox.Show(
-                    $"No {GifsFolderName.Replace('\\', '\'')} folder exists inside of your start folder: '{UserSettings.StartFolderPath}'" +
-                    $"\n\nWould you like to create a {GifsFolderName.Replace('\\', '\'')} folder?",
-                    $"No {GifsFolderName.Replace('\\', '\'')} Folder Found!", MessageBoxButtons.YesNo,
+                    $"No '{GifsFolderName}' folder exists inside of your start folder: '{UserSettings.StartFolderPath}'" +
+                    $"\n\nWould you like to create a '{GifsFolderName}' folder?",
+                    $"No '{GifsFolderName}' Folder Found!", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
@@ -769,10 +825,7 @@ namespace CandyGallery.Interface
             if (UserSettings.PerSessionSettings.UserHasVideosFolder)
             {
                 TypeMediaChangeButtonPressHelper(VideosFolderName);
-                btnAllType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
-                btnAllType.BackColor = Color.Black;
-                btnGifType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
-                btnGifType.BackColor = Color.Black;
+                ResetFolderTypeButtonsColor();
                 btnVideosType.ForeColor = Color.Black;
                 btnVideosType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
                 btnRandomize.PerformClick();
@@ -780,9 +833,9 @@ namespace CandyGallery.Interface
             else
             {
                 var result = MessageBox.Show(
-                    $"No {VideosFolderName.Replace('\\', '\'')} folder exists inside of your start folder: '{UserSettings.StartFolderPath}'" +
-                    $"\n\nWould you like to create a {VideosFolderName.Replace('\\', '\'')} folder?",
-                    $"No {VideosFolderName.Replace('\\', '\'')} Folder Found!", MessageBoxButtons.YesNo,
+                    $"No '{VideosFolderName}' folder exists inside of your start folder: '{UserSettings.StartFolderPath}'" +
+                    $"\n\nWould you like to create a '{VideosFolderName}' folder?",
+                    $"No '{VideosFolderName}' Folder Found!", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information);
 
                 if (result == DialogResult.Yes)
@@ -793,6 +846,18 @@ namespace CandyGallery.Interface
             }
 
             btnRandomize.Focus();
+        }
+
+        private void ResetFolderTypeButtonsColor()
+        {
+            btnAllType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
+            btnAllType.BackColor = Color.Black;
+            btnGifType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
+            btnGifType.BackColor = Color.Black;
+            btnVideosType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
+            btnVideosType.BackColor = Color.Black;
+            btnOtherType.ForeColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
+            btnOtherType.BackColor = Color.Black;
         }
 
         private void EnableShortcuts_CheckedChanged(object sender, EventArgs e)
@@ -825,6 +890,22 @@ namespace CandyGallery.Interface
             else if (chkFilterByOldest.Checked)
             {
                 item = GetRandomFileFromListRecursive(UserSettings.PerSessionSettings.OldestMediaList);
+            }
+            else if (chkFilterByUnseen.Checked)
+            {
+                var validItemList = UserSettings.UnseenItems;
+                if (!string.IsNullOrEmpty(UserSettings.PerSessionSettings.CurrentWorkingDirectory))
+                {
+                    validItemList = validItemList.FindAll(i => i.StartsWith(UserSettings.PerSessionSettings.CurrentWorkingDirectory));
+                    if (!validItemList.Any())
+                    {
+                        MessageBox.Show(
+                            @"Every item in the currently selected working directory has been seen: '" + UserSettings.PerSessionSettings.CurrentWorkingDirectory + "'",
+                            @"No Unseen Items", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        chkFilterByUnseen.Checked = false;
+                    }
+                }
+                item = GetRandomFileFromListRecursive(validItemList);
             }
             else
             {
@@ -951,6 +1032,8 @@ namespace CandyGallery.Interface
             btnGifType.BackColor = btnGifType.BackColor == Color.Black ? Color.Black : newUiColor;
             btnVideosType.ForeColor = btnVideosType.ForeColor == Color.Black ? Color.Black : newUiColor;
             btnVideosType.BackColor = btnVideosType.BackColor == Color.Black ? Color.Black : newUiColor;
+            btnOtherType.ForeColor = btnOtherType.ForeColor == Color.Black ? Color.Black : newUiColor;
+            btnOtherType.BackColor = btnOtherType.BackColor == Color.Black ? Color.Black : newUiColor;
 
             lblCandyTitle.ForeColor = newUiColor;
             lblCurrentMediaPath.ForeColor = newUiColor;
@@ -1041,8 +1124,42 @@ namespace CandyGallery.Interface
             }
         }
 
-        public void GetUnseenFolders()
+        public void GenerateUnseenItems(DirectoryInfo rootDir)
         {
+            FileInfo[] files = null;
+            DirectoryInfo[] subDirs = null;
+
+            // First, process all the files directly under this folder
+            try
+            {
+                files = rootDir.GetFiles("*.*");
+            }
+            // This is thrown if even one of the files requires permissions greater
+            // than the application provides.
+            catch (Exception e)
+            {
+            }
+
+            if (files != null)
+            {
+                foreach (FileInfo fi in files)
+                {
+                    // In this example, we only access the existing FileInfo object. If we
+                    // want to open, delete or modify the file, then
+                    // a try-catch block is required here to handle the case
+                    // where the file has been deleted since the call to TraverseTree().
+                    UserSettings.UnseenItems.Add(fi.FullName);
+                }
+
+                // Now find all the subdirectories under this directory.
+                subDirs = rootDir.GetDirectories();
+
+                foreach (DirectoryInfo dirInfo in subDirs)
+                {
+                    // Resursive call for each subdirectory.
+                    GenerateUnseenItems(dirInfo);
+                }
+            }
         }
 
         private void UncheckResultsFilters()
@@ -1063,6 +1180,11 @@ namespace CandyGallery.Interface
 
         public void LoadItemIntoViewer(string itemPath)
         {
+            if (UserSettings.UnseenItems != null && UserSettings.UnseenItems.Count > 0)
+            {
+                UserSettings.UnseenItems.Remove(itemPath);
+            }
+
             if (CandyGalleryHelpers.IsVideoTypeMedia(itemPath) || CandyGalleryHelpers.IsShortcutTypeMedia(itemPath))
             {
                 var videoPlayer = new CandyVideoWindow();
@@ -1222,6 +1344,7 @@ namespace CandyGallery.Interface
 
         public void ResetImageIntoView()
         {
+            picBxCandyGallery.BackColor = UserSettings.PerSessionSettings.BackgroundColor;
             picBxCandyGallery.Size = new Size(panelPictureBox.Width, panelPictureBox.Height);
             picBxCandyGallery.Location = new Point(0, 0);
         }
@@ -1353,14 +1476,15 @@ namespace CandyGallery.Interface
 
         private void PictureBox_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            if ((picBxCandyGallery.Image.Height <= 425 && picBxCandyGallery.Image.Width <= 625
-                 || picBxCandyGallery.Image.Height <= 625 && picBxCandyGallery.Image.Width <= 425)
-                && CandyGalleryHelpers.IsImageTypeMedia(picBxCandyGallery.ImageLocation))
-            {
-                LowResolutionImageRemoval();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-            }
+            //if (File.Exists(picBxCandyGallery.ImageLocation) 
+            //    && (picBxCandyGallery.Image.Height <= 425 && picBxCandyGallery.Image.Width <= 625
+            //     || picBxCandyGallery.Image.Height <= 625 && picBxCandyGallery.Image.Width <= 425)
+            //    && CandyGalleryHelpers.IsImageTypeMedia(picBxCandyGallery.ImageLocation))
+            //{
+            //    LowResolutionImageRemoval();
+            //    GC.Collect();
+            //    GC.WaitForPendingFinalizers();
+            //}
         }
 
         // **************************************************************************************************
@@ -1373,10 +1497,9 @@ namespace CandyGallery.Interface
 
         public void SetFavoriteAtNumber(int nonZeroIndex)
         {
-            var itemLocation = "";
-            var itemToFavorite = lblCurrentMediaPath.Text;
+            var itemLocation = lblCurrentMediaPath.Text;
             UserFavorite newFavorite;
-            if ((CandyGalleryHelpers.IsImageTypeMedia(itemToFavorite) || CandyGalleryHelpers.IsGifTypeMedia(itemToFavorite))
+            if ((CandyGalleryHelpers.IsImageTypeMedia(itemLocation) || CandyGalleryHelpers.IsGifTypeMedia(itemLocation))
                 && picBxCandyGallery.ImageLocation != null)
             {
                 itemLocation = picBxCandyGallery.ImageLocation;
@@ -1405,7 +1528,7 @@ namespace CandyGallery.Interface
                 newFavorite = new UserFavorite
                 {
                     Index = nonZeroIndex,
-                    FullPath = itemToFavorite,
+                    FullPath = itemLocation,
                     MediaType = MediaFilterType.Video
                 };
             }
@@ -1422,8 +1545,9 @@ namespace CandyGallery.Interface
             }
 
             var itemName = new DirectoryInfo(lblCurrentMediaPath.Text).Name;
-            MessageBox.Show($@"Created a new favorite for ""{itemName}"" as Favorite #{nonZeroIndex}!",
-                @"Favorite Created!", MessageBoxButtons.OK);
+            picBxCandyGallery.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
+            //MessageBox.Show($@"Created a new favorite for ""{itemName}"" as Favorite #{nonZeroIndex}!",
+            //    @"Favorite Created!", MessageBoxButtons.OK);
             btnRandomize.Focus();
         }
 
@@ -1471,6 +1595,9 @@ namespace CandyGallery.Interface
                         break;
                     case ImageFilterType.Pixelate:
                         image = CandyImageFilters.Pixelate(image, amount);
+                        break;
+                    case ImageFilterType.Sobel:
+                        image = CandyImageFilters.SobelEdgeFilter(image, amount);
                         break;
                     case ImageFilterType.Grayscale:
                         CandyImageFilters.Grayscale(image, amount);
@@ -1675,6 +1802,8 @@ namespace CandyGallery.Interface
 
         private void CandyGallery_FormClosing(object sender, FormClosingEventArgs e)
         {
+            var cursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
             if (UserSettings.PreserveSessionHistory)
             {
                 AddCurrentItemToBackList();
@@ -1689,6 +1818,7 @@ namespace CandyGallery.Interface
 
             Rand.Dispose();
             SaveLoadSettingsHandler.SaveUserSettings(UserSettings);
+            Cursor.Current = cursor;
             Dispose();
             Environment.Exit(0);
         }
