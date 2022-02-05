@@ -222,6 +222,7 @@ namespace CandyGallery.Interface
             if (MessageBox.Show(@"Are you sure you want to delete this favorite?", @"Confirm Delete Favorite",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                var cursor = Cursors.Default;
                 Cursor.Current = Cursors.WaitCursor;
                 Program.CandyGalleryWindow.UserSettings.UserFavorites.RemoveAt(CurrentMainDisplayedFavoriteIndex - 1);
                 cmbBxFavoriteItemIndex.Items.RemoveAt(cmbBxFavoriteItemIndex.Items.Count - 1);
@@ -287,7 +288,7 @@ namespace CandyGallery.Interface
                 }
 
                 StylePictureBoxes();
-                Cursor.Current = Cursors.Default;
+                Cursor.Current = cursor;
             }
         }
 

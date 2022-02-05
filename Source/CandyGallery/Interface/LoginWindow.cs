@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CandyGallery.Serialization;
+using Microsoft.Win32;
 
 namespace CandyGallery.Interface
 {
@@ -31,8 +35,12 @@ namespace CandyGallery.Interface
                 txtUsername.BackColor = Color.Linen;
                 txtPassword.BackColor = Color.Linen;
 
+                var cursor = Cursor.Current;
+                Cursor.Current = Cursors.WaitCursor;
                 var userSettings = SaveLoadSettingsHandler.TryLoadUserSettings(txtUsername.Text, txtPassword.Text);
-                if (userSettings.Pass != txtPassword.Text)
+                Cursor.Current = cursor;
+
+                if (userSettings != null && userSettings.Pass != txtPassword.Text)
                 {
                     if (MessageBox.Show($"The provided password was incorrect for user \"{txtUsername.Text}\"... \nPlease try again.", "Incorrect Credentials", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand) != DialogResult.OK)
                     {
@@ -43,17 +51,74 @@ namespace CandyGallery.Interface
                     txtUsername.BackColor = Color.Linen;
                     txtPassword.Text = "";
                     txtPassword.BackColor = Color.Red;
+
+                    if (userSettings.PerSessionSettings.LoadedSettingsFileWasEncrypted)
+                    {
+                        SaveLoadSettingsHandler.EncryptSaveFileContents(userSettings.PerSessionSettings.FullPathToCurrentSettingsFile);
+                    }
                 }
 
                 else
                 {
-                    Hide();
-                    Program.CandyGalleryWindow = new CandyGalleryWindow(userSettings);
                     try
                     {
+                        Cursor.Current = Cursors.WaitCursor;
+                        if (userSettings.PerSessionSettings.StartFolderMissingOnLoad)
+                        {
+                            var result = MessageBox.Show(
+                                        @"The Start Folder for this user could not be located... Would you like to re-specify it's location?",
+                                        @"Start Folder Missing", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                            if (result == DialogResult.Yes)
+                            {
+                                var folderInit = new FolderBrowserDialog();
+                                if (folderInit.ShowDialog() == DialogResult.OK)
+                                {
+                                    var originalStartFolderPath = userSettings.StartFolderPath;
+                                    userSettings.StartFolderPath = folderInit.SelectedPath;
+
+                                    var result2 = MessageBox.Show(
+                                        @"Start Folder updated! Would you like to update saved data based on this new location for the current user?",
+                                        @"Update Saved Data?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                    if (result2 == DialogResult.Yes)
+                                    {
+                                        userSettings.UserFavorites?.ForEach(f => f.FullPath = !File.Exists(f.FullPath) ? f.FullPath.Replace(originalStartFolderPath, userSettings.StartFolderPath) : f.FullPath);
+                                        if (userSettings.PerSessionSettings?.BackList?.Count > 0)
+                                        {
+                                            userSettings.PerSessionSettings.BackList = userSettings.PerSessionSettings.BackList.Select(b => !File.Exists(b) ? b.Replace(originalStartFolderPath, userSettings.StartFolderPath) : b).ToList();
+                                        }
+                                        if (userSettings.UnseenItems?.Count > 0)
+                                        {
+                                            userSettings.UnseenItems = userSettings.UnseenItems.Select(b => !File.Exists(b) ? b.Replace(originalStartFolderPath, userSettings.StartFolderPath) : b).ToList();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (userSettings.PerSessionSettings.LoadedSettingsFileWasEncrypted)
+                                    {
+                                        SaveLoadSettingsHandler.EncryptSaveFileContents(userSettings.PerSessionSettings.FullPathToCurrentSettingsFile);
+                                    }
+                                    throw new Exception();
+                                }
+
+                                folderInit.Dispose();
+                            }
+                            else
+                            {
+                                if (userSettings.PerSessionSettings.LoadedSettingsFileWasEncrypted)
+                                {
+                                    SaveLoadSettingsHandler.EncryptSaveFileContents(userSettings.PerSessionSettings.FullPathToCurrentSettingsFile);
+                                }
+                                throw new Exception();
+                            }
+                        }
+
+                        Cursor.Current = cursor;
+                        Hide();
+                        Program.CandyGalleryWindow = new CandyGalleryWindow(userSettings);
                         Program.CandyGalleryWindow.Show();
                     }
-                    catch (Exception) { Close(); }
+                    catch (Exception) { Close(); Environment.Exit(0); }
                 }
             }
             else

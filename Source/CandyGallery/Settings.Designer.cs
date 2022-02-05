@@ -12,7 +12,7 @@ namespace CandyGallery {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -73,7 +73,7 @@ namespace CandyGallery {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SaveHistory {
+        public bool SaveSessionHistory {
             get {
                 return ((bool)(this["SaveSessionHistory"]));
             }
@@ -409,12 +409,12 @@ namespace CandyGallery {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool BlurImages {
+        public bool ApplyFilterToImages {
             get {
-                return ((bool)(this["BlurImages"]));
+                return ((bool)(this["ApplyFilterToImages"]));
             }
             set {
-                this["BlurImages"] = value;
+                this["ApplyFilterToImages"] = value;
             }
         }
         

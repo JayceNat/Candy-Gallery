@@ -726,3 +726,59 @@ C:\Users\jayce\Jayce's Documents\Candy Gallery v1.0\Source\CandyGallery\obj\Debu
 C:\Users\jayce\Jayce's Documents\Candy Gallery v1.0\Source\CandyGallery\obj\Debug\CandyGallery.csproj.CopyComplete
 C:\Users\jayce\Jayce's Documents\Candy Gallery v1.0\Source\CandyGallery\obj\Debug\CandyGallery.exe
 C:\Users\jayce\Jayce's Documents\Candy Gallery v1.0\Source\CandyGallery\obj\Debug\CandyGallery.pdb
+F:\Candy Gallery v1.1\Source\CandyGallery\bin\Debug\CandyGallery.exe.config
+F:\Candy Gallery v1.1\Source\CandyGallery\bin\Debug\CandyGallery.exe
+F:\Candy Gallery v1.1\Source\CandyGallery\bin\Debug\CandyGallery.pdb
+F:\Candy Gallery v1.1\Source\CandyGallery\bin\Debug\StackBlur.dll
+F:\Candy Gallery v1.1\Source\CandyGallery\bin\Debug\System.Drawing.Common.dll
+F:\Candy Gallery v1.1\Source\CandyGallery\bin\Debug\Interop.WMPLib.dll
+F:\Candy Gallery v1.1\Source\CandyGallery\bin\Debug\AxInterop.WMPLib.dll
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.csproj.SuggestedBindingRedirects.cache
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\Interop.IWshRuntimeLibrary.dll
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\Interop.WMPLib.dll
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\AxInterop.WMPLib.dll
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.csproj.ResolveComReference.cache
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyFavoritesWindow.resources
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyKeyboardShortcutWindow.resources
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyMultipleRandomWindow.resources
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandySettingsFileViewerWindow.resources
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandySettingsWindow.resources
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyVideoWindow.resources
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyGalleryWindow.resources
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.Interface.LoginWindow.resources
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.Properties.Resources.resources
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.csproj.GenerateResource.cache
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.csproj.CoreCompileInputs.cache
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.csproj.CopyComplete
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.exe
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.pdb
+F:\Candy Gallery v1.1\Source\CandyGallery\obj\Debug\CandyGallery.csproj.AssemblyReference.cache
+F:\Candy Gallery v1.1\Source\CandyGallery\bin\Debug\Magneto.TTF
+F:\Candy Gallery\Source\CandyGallery\bin\Debug\Magneto.TTF
+F:\Candy Gallery\Source\CandyGallery\bin\Debug\CandyGallery.exe.config
+F:\Candy Gallery\Source\CandyGallery\bin\Debug\CandyGallery.exe
+F:\Candy Gallery\Source\CandyGallery\bin\Debug\CandyGallery.pdb
+F:\Candy Gallery\Source\CandyGallery\bin\Debug\StackBlur.dll
+F:\Candy Gallery\Source\CandyGallery\bin\Debug\System.Drawing.Common.dll
+F:\Candy Gallery\Source\CandyGallery\bin\Debug\Interop.WMPLib.dll
+F:\Candy Gallery\Source\CandyGallery\bin\Debug\AxInterop.WMPLib.dll
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.csproj.SuggestedBindingRedirects.cache
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\Interop.IWshRuntimeLibrary.dll
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\Interop.WMPLib.dll
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\AxInterop.WMPLib.dll
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.csproj.ResolveComReference.cache
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyFavoritesWindow.resources
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyKeyboardShortcutWindow.resources
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyMultipleRandomWindow.resources
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandySettingsFileViewerWindow.resources
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandySettingsWindow.resources
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyVideoWindow.resources
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.Interface.CandyGalleryWindow.resources
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.Interface.LoginWindow.resources
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.Properties.Resources.resources
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.csproj.GenerateResource.cache
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.csproj.CoreCompileInputs.cache
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.csproj.CopyComplete
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.exe
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.pdb
+F:\Candy Gallery\Source\CandyGallery\obj\Debug\CandyGallery.csproj.AssemblyReference.cache

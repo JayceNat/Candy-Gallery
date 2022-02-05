@@ -20,9 +20,11 @@ namespace CandyGallery.Models
         public List<string> BackList { get; set; } = new List<string>();
         public bool UserHasVideosFolder { get; set; } = false;
         public bool UserHasGifsFolder { get; set; } = false;
+        public bool UserHasOtherFolder { get; set; } = false;
         public List<string> NewestMediaList { get; set; } = new List<string>();
         public List<string> OldestMediaList { get; set; } = new List<string>();
-        public List<string> UnseenMediaList { get; set; } = new List<string>();
+        public bool LoadedSettingsFileWasEncrypted { get; set; } = true;
+        public bool StartFolderMissingOnLoad { get; set; } = false;
         public bool ResetCandyGallery { get; set; } = false;
     }
 }

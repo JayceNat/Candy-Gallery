@@ -30,7 +30,7 @@ namespace CandyGallery.Interface
             {
                 var xmlDocument = new XmlDocument {PreserveWhitespace = true};
                 xmlDocument.LoadXml(File.ReadAllText(file));
-                var decryptedContents = SaveLoadSettingsHandler.DecryptUserSettingsDirectFromContent(xmlDocument);
+                var decryptedContents = SaveLoadSettingsHandler.DecryptUserSettingsDirectFromContent(xmlDocument, Program.CandyGalleryWindow.UserSettings.PerSessionSettings.LoadedSettingsFileWasEncrypted);
                 richTextBox.Text = decryptedContents;
             }
             else
@@ -72,7 +72,7 @@ namespace CandyGallery.Interface
             {
                 var xmlDocument = new XmlDocument();
                 xmlDocument.LoadXml(richTextBox.Text);
-                SaveLoadSettingsHandler.EncryptAndSaveUserSettingsDirectToFile(xmlDocument);
+                SaveLoadSettingsHandler.EncryptAndSaveUserSettingsDirectToFile(xmlDocument, Program.CandyGalleryWindow.UserSettings.EncryptSettingsFile);
                 Close();
             }
         }

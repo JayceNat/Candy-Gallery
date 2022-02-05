@@ -35,6 +35,7 @@ namespace CandyGallery.Interface
             this.tblLPMainForm = new System.Windows.Forms.TableLayoutPanel();
             this.tblLPRightSideControlContainer = new System.Windows.Forms.TableLayoutPanel();
             this.tblLPRightSideControlContainerInnerLower = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOtherType = new System.Windows.Forms.Button();
             this.btnVideosType = new System.Windows.Forms.Button();
             this.btnGifType = new System.Windows.Forms.Button();
             this.btnAllType = new System.Windows.Forms.Button();
@@ -153,6 +154,7 @@ namespace CandyGallery.Interface
             // 
             this.tblLPRightSideControlContainerInnerLower.ColumnCount = 1;
             this.tblLPRightSideControlContainerInnerLower.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblLPRightSideControlContainerInnerLower.Controls.Add(this.btnOtherType, 0, 10);
             this.tblLPRightSideControlContainerInnerLower.Controls.Add(this.btnVideosType, 0, 9);
             this.tblLPRightSideControlContainerInnerLower.Controls.Add(this.btnGifType, 0, 8);
             this.tblLPRightSideControlContainerInnerLower.Controls.Add(this.btnAllType, 0, 7);
@@ -182,12 +184,29 @@ namespace CandyGallery.Interface
             this.tblLPRightSideControlContainerInnerLower.Size = new System.Drawing.Size(120, 323);
             this.tblLPRightSideControlContainerInnerLower.TabIndex = 0;
             // 
+            // btnOtherType
+            // 
+            this.btnOtherType.BackColor = System.Drawing.Color.Black;
+            this.btnOtherType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOtherType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOtherType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
+            this.btnOtherType.ForeColor = System.Drawing.Color.Brown;
+            this.btnOtherType.Location = new System.Drawing.Point(2, 274);
+            this.btnOtherType.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOtherType.Name = "btnOtherType";
+            this.btnOtherType.Size = new System.Drawing.Size(116, 24);
+            this.btnOtherType.TabIndex = 20;
+            this.btnOtherType.Text = "Other";
+            this.toolTip.SetToolTip(this.btnOtherType, "Show \'Other\' Folder items");
+            this.btnOtherType.UseVisualStyleBackColor = false;
+            this.btnOtherType.Click += new System.EventHandler(this.OtherType_Click);
+            // 
             // btnVideosType
             // 
             this.btnVideosType.BackColor = System.Drawing.Color.Black;
             this.btnVideosType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnVideosType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVideosType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVideosType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
             this.btnVideosType.ForeColor = System.Drawing.Color.Brown;
             this.btnVideosType.Location = new System.Drawing.Point(2, 246);
             this.btnVideosType.Margin = new System.Windows.Forms.Padding(2);
@@ -204,7 +223,7 @@ namespace CandyGallery.Interface
             this.btnGifType.BackColor = System.Drawing.Color.Black;
             this.btnGifType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnGifType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGifType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGifType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
             this.btnGifType.ForeColor = System.Drawing.Color.Brown;
             this.btnGifType.Location = new System.Drawing.Point(2, 218);
             this.btnGifType.Margin = new System.Windows.Forms.Padding(2);
@@ -221,7 +240,7 @@ namespace CandyGallery.Interface
             this.btnAllType.BackColor = System.Drawing.Color.Brown;
             this.btnAllType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAllType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAllType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAllType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
             this.btnAllType.ForeColor = System.Drawing.Color.Black;
             this.btnAllType.Location = new System.Drawing.Point(2, 190);
             this.btnAllType.Margin = new System.Windows.Forms.Padding(2);
@@ -360,7 +379,6 @@ namespace CandyGallery.Interface
             this.chkFilterByUnseen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip.SetToolTip(this.chkFilterByUnseen, "Filter media by unseen");
             this.chkFilterByUnseen.UseVisualStyleBackColor = false;
-            this.chkFilterByUnseen.Visible = false;
             this.chkFilterByUnseen.CheckedChanged += new System.EventHandler(this.UnseenItems_CheckedChanged);
             // 
             // chkFilterByOldest
@@ -406,12 +424,12 @@ namespace CandyGallery.Interface
             this.txtFilterResultsByCount.BackColor = System.Drawing.Color.DimGray;
             this.txtFilterResultsByCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFilterResultsByCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtFilterResultsByCount.Font = new System.Drawing.Font("Magneto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilterResultsByCount.Font = new System.Drawing.Font("Magneto", 7F, System.Drawing.FontStyle.Bold);
             this.txtFilterResultsByCount.Location = new System.Drawing.Point(94, 24);
             this.txtFilterResultsByCount.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.txtFilterResultsByCount.MaxLength = 2;
             this.txtFilterResultsByCount.Name = "txtFilterResultsByCount";
-            this.txtFilterResultsByCount.Size = new System.Drawing.Size(26, 21);
+            this.txtFilterResultsByCount.Size = new System.Drawing.Size(26, 19);
             this.txtFilterResultsByCount.TabIndex = 8;
             this.txtFilterResultsByCount.Text = "30";
             this.txtFilterResultsByCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -444,7 +462,7 @@ namespace CandyGallery.Interface
             this.btnFilterStrengthDown.BackColor = System.Drawing.Color.Brown;
             this.btnFilterStrengthDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFilterStrengthDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilterStrengthDown.Font = new System.Drawing.Font("Magneto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilterStrengthDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFilterStrengthDown.Location = new System.Drawing.Point(2, 26);
             this.btnFilterStrengthDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilterStrengthDown.Name = "btnFilterStrengthDown";
@@ -460,7 +478,7 @@ namespace CandyGallery.Interface
             this.lblCurrentFilterStrength.AutoSize = true;
             this.lblCurrentFilterStrength.BackColor = System.Drawing.Color.Black;
             this.lblCurrentFilterStrength.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCurrentFilterStrength.Font = new System.Drawing.Font("Magneto", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentFilterStrength.Font = new System.Drawing.Font("Magneto", 7F, System.Drawing.FontStyle.Bold);
             this.lblCurrentFilterStrength.ForeColor = System.Drawing.Color.IndianRed;
             this.lblCurrentFilterStrength.Location = new System.Drawing.Point(39, 24);
             this.lblCurrentFilterStrength.Margin = new System.Windows.Forms.Padding(0);
@@ -476,7 +494,7 @@ namespace CandyGallery.Interface
             this.btnFilterStrengthUp.BackColor = System.Drawing.Color.Brown;
             this.btnFilterStrengthUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFilterStrengthUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilterStrengthUp.Font = new System.Drawing.Font("Magneto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilterStrengthUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFilterStrengthUp.Location = new System.Drawing.Point(81, 26);
             this.btnFilterStrengthUp.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilterStrengthUp.Name = "btnFilterStrengthUp";
@@ -547,7 +565,7 @@ namespace CandyGallery.Interface
             this.btnMultiRandomizer.BackColor = System.Drawing.Color.Black;
             this.btnMultiRandomizer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMultiRandomizer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMultiRandomizer.Font = new System.Drawing.Font("Magneto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiRandomizer.Font = new System.Drawing.Font("Magneto", 10F, System.Drawing.FontStyle.Bold);
             this.btnMultiRandomizer.ForeColor = System.Drawing.Color.Brown;
             this.btnMultiRandomizer.Location = new System.Drawing.Point(25, 122);
             this.btnMultiRandomizer.Margin = new System.Windows.Forms.Padding(2);
@@ -581,7 +599,7 @@ namespace CandyGallery.Interface
             this.btnViewFavorites.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnViewFavorites.FlatAppearance.BorderSize = 0;
             this.btnViewFavorites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewFavorites.Font = new System.Drawing.Font("Magneto", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnViewFavorites.Font = new System.Drawing.Font("Magneto", 8.2F, System.Drawing.FontStyle.Bold);
             this.btnViewFavorites.Location = new System.Drawing.Point(25, 152);
             this.btnViewFavorites.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewFavorites.Name = "btnViewFavorites";
@@ -637,7 +655,7 @@ namespace CandyGallery.Interface
             this.btnSlideSpeedDown.BackColor = System.Drawing.Color.Brown;
             this.btnSlideSpeedDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSlideSpeedDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSlideSpeedDown.Font = new System.Drawing.Font("Magneto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSlideSpeedDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSlideSpeedDown.Location = new System.Drawing.Point(2, 2);
             this.btnSlideSpeedDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnSlideSpeedDown.Name = "btnSlideSpeedDown";
@@ -654,7 +672,7 @@ namespace CandyGallery.Interface
             this.lblCurrentSlideSpeed.AutoSize = true;
             this.lblCurrentSlideSpeed.BackColor = System.Drawing.Color.Black;
             this.lblCurrentSlideSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCurrentSlideSpeed.Font = new System.Drawing.Font("Magneto", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentSlideSpeed.Font = new System.Drawing.Font("Magneto", 7F, System.Drawing.FontStyle.Bold);
             this.lblCurrentSlideSpeed.ForeColor = System.Drawing.Color.IndianRed;
             this.lblCurrentSlideSpeed.Location = new System.Drawing.Point(40, 0);
             this.lblCurrentSlideSpeed.Margin = new System.Windows.Forms.Padding(0);
@@ -671,7 +689,7 @@ namespace CandyGallery.Interface
             this.btnSlideSpeedUp.BackColor = System.Drawing.Color.Brown;
             this.btnSlideSpeedUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSlideSpeedUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSlideSpeedUp.Font = new System.Drawing.Font("Magneto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSlideSpeedUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSlideSpeedUp.Location = new System.Drawing.Point(82, 2);
             this.btnSlideSpeedUp.Margin = new System.Windows.Forms.Padding(2);
             this.btnSlideSpeedUp.Name = "btnSlideSpeedUp";
@@ -688,7 +706,7 @@ namespace CandyGallery.Interface
             this.btnSettings.BackColor = System.Drawing.Color.Black;
             this.btnSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Magneto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.Font = new System.Drawing.Font("Magneto", 8.2F, System.Drawing.FontStyle.Bold);
             this.btnSettings.ForeColor = System.Drawing.Color.Brown;
             this.btnSettings.Location = new System.Drawing.Point(25, 182);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(2);
@@ -775,7 +793,7 @@ namespace CandyGallery.Interface
             this.btnGoBack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnGoBack.FlatAppearance.BorderSize = 0;
             this.btnGoBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGoBack.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
+            this.btnGoBack.Font = new System.Drawing.Font("Magneto", 8F, System.Drawing.FontStyle.Bold);
             this.btnGoBack.Location = new System.Drawing.Point(2, 2);
             this.btnGoBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnGoBack.Name = "btnGoBack";
@@ -792,7 +810,7 @@ namespace CandyGallery.Interface
             this.btnGoForward.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnGoForward.FlatAppearance.BorderSize = 0;
             this.btnGoForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGoForward.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
+            this.btnGoForward.Font = new System.Drawing.Font("Magneto", 8F, System.Drawing.FontStyle.Bold);
             this.btnGoForward.Location = new System.Drawing.Point(634, 2);
             this.btnGoForward.Margin = new System.Windows.Forms.Padding(2);
             this.btnGoForward.Name = "btnGoForward";
@@ -865,7 +883,7 @@ namespace CandyGallery.Interface
             this.btnMaximize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMaximize.FlatAppearance.BorderSize = 0;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
+            this.btnMaximize.Font = new System.Drawing.Font("Magneto", 8F, System.Drawing.FontStyle.Bold);
             this.btnMaximize.Location = new System.Drawing.Point(2, 2);
             this.btnMaximize.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaximize.Name = "btnMaximize";
@@ -882,7 +900,7 @@ namespace CandyGallery.Interface
             this.btnRandomize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRandomize.FlatAppearance.BorderSize = 0;
             this.btnRandomize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRandomize.Font = new System.Drawing.Font("Magneto", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnRandomize.Font = new System.Drawing.Font("Magneto", 8F, System.Drawing.FontStyle.Bold);
             this.btnRandomize.Location = new System.Drawing.Point(988, 2);
             this.btnRandomize.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnRandomize.Name = "btnRandomize";
@@ -1092,7 +1110,7 @@ namespace CandyGallery.Interface
             this.lblCandyTitle.AutoSize = true;
             this.lblCandyTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblCandyTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCandyTitle.Font = new System.Drawing.Font("Magneto", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCandyTitle.Font = new System.Drawing.Font("Magneto", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lblCandyTitle.ForeColor = System.Drawing.Color.Brown;
             this.lblCandyTitle.Location = new System.Drawing.Point(99, 0);
             this.lblCandyTitle.Margin = new System.Windows.Forms.Padding(0);
@@ -1267,6 +1285,7 @@ namespace CandyGallery.Interface
         private Button btnFilterByCountIncrease;
         public ImageList imageListAvatars;
         private Button btnMultiRandomizer;
+        private Button btnOtherType;
     }
 }
 

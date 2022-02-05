@@ -26,8 +26,10 @@ namespace CandyGallery.Interface
             picBxUserAvatar.Image = Program.CandyGalleryWindow.picBxUserAvatar.Image;
             cmbBxImageFilterToApply.Text = Program.CandyGalleryWindow.UserSettings.ImageFilterType;
             cmbBxColorTheme.Text = Program.CandyGalleryWindow.UserSettings.UserInterfaceColorName;
+            chkApplyFilterToSubWindows.Checked = Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows;
             chkApplyColorToRandomButton.Checked = Program.CandyGalleryWindow.UserSettings.ApplyColorToRandomizeButton;
             chkPreserveHistory.Checked = Program.CandyGalleryWindow.UserSettings.PreserveSessionHistory;
+            chkEncryptSettingsFile.Checked = Program.CandyGalleryWindow.UserSettings.EncryptSettingsFile;
             chkOpenVideosFullscreen.Checked = Program.CandyGalleryWindow.UserSettings.FullscreenVideosOnOpen;
         }
 
@@ -61,6 +63,10 @@ namespace CandyGallery.Interface
             LoadColorOntoSettingsPage(newUIColor);
         }
 
+        private void ApplyFilterToSubWindows_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows = chkApplyFilterToSubWindows.Checked;
+        }
         private void ApplyColorToRandomButton_CheckedChanged(object sender, EventArgs e)
         {
             Program.CandyGalleryWindow.UserSettings.ApplyColorToRandomizeButton = chkApplyColorToRandomButton.Checked;
@@ -77,6 +83,11 @@ namespace CandyGallery.Interface
         private void PreserveHistory_CheckedChanged(object sender, EventArgs e)
         {
             Program.CandyGalleryWindow.UserSettings.PreserveSessionHistory = chkPreserveHistory.Checked;
+        }
+
+        private void EncryptSettingsFile_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.CandyGalleryWindow.UserSettings.EncryptSettingsFile = chkEncryptSettingsFile.Checked;
         }
 
         private void OpenVideosFullscreen_CheckedChanged(object sender, EventArgs e)
@@ -143,7 +154,7 @@ namespace CandyGallery.Interface
                 $"{Application.StartupPath}\\CandyGalleryUserSettings\\{Program.CandyGalleryWindow.UserSettings.UserName.ToLower()}_CandyGalleryUserSettings.xml";
             if (File.Exists(file))
             {
-                if (MessageBox.Show(@"WARNING: Altering the settings file incorrectly in any way may corrupt the whole file!",
+                if (MessageBox.Show($@"WARNING: Altering the settings file incorrectly in any way may corrupt the whole file!" + "\n\n" + "Note: this file does not contain app changes after the most recent login.",
                     @"User Settings Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     var settingsViewer = new CandySettingsFileViewerWindow();
@@ -269,9 +280,11 @@ namespace CandyGallery.Interface
             lblColorTheme.ForeColor = newUiColor;
             lblNewUsername.ForeColor = newUiColor;
             lblNewPassword.ForeColor = newUiColor;
+            chkApplyFilterToSubWindows.ForeColor = newUiColor;
             chkApplyColorToRandomButton.ForeColor = newUiColor;
             chkPreserveHistory.ForeColor = newUiColor;
             chkOpenVideosFullscreen.ForeColor = newUiColor;
+            chkEncryptSettingsFile.ForeColor = newUiColor;
             Update();
         }
 

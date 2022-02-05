@@ -27,7 +27,13 @@ namespace CandyGallery.Models
         [XmlArrayItem("HistoryItem")]
         public List<string> SessionHistory { get; set; }
 
+        [XmlArray(nameof(UnseenItems))]
+        [XmlArrayItem("UnseenItem")]
+        public List<string> UnseenItems { get; set; } = new List<string>();
+
         public bool PreserveSessionHistory { get; set; } = true;
+        
+        public bool EncryptSettingsFile { get; set; } = true;
 
         public bool FullscreenVideosOnOpen { get; set; } = false;
 
@@ -48,6 +54,8 @@ namespace CandyGallery.Models
         public string ImageFilterType { get; set; } = Models.ImageFilterType.Blur;
 
         public int ImageFilterAmount { get; set; } = 20;
+
+        public bool ApplyFilterToSubWindows { get; set; } = false;
 
         public bool ApplyImageFilter { get; set; } = false;
 

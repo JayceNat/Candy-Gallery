@@ -1,0 +1,601 @@
+﻿++Solution 'CandyGallery' ‎(1 of 1 project)
+i:{00000000-0000-0000-0000-000000000000}:CandyGallery.sln
+++CandyGallery
+i:{00000000-0000-0000-0000-000000000000}:CandyGallery
+++Connected Services
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\connected services\
+++Properties
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\properties\
+++AssemblyInfo.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\properties\assemblyinfo.cs
+++Resources.resx
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\properties\resources.resx
+++Resources.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\properties\resources.designer.cs
+++Settings.settings
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\properties\settings.settings
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\settings.settings
+++References
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++AxWMPLib
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++IWshRuntimeLibrary
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++Microsoft.CSharp
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++StackBlur
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Core
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Data
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Data.DataSetExtensions
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Deployment
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Drawing
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Drawing.Common
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Net.Http
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Windows.Forms
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Xml
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++System.Xml.Linq
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++WMPLib
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:
+++bin
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\
+++Helpers
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\helpers\
+++CandyGalleryHelpers.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\helpers\candygalleryhelpers.cs
+++CandyImageFilters.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\helpers\candyimagefilters.cs
+++Interface
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\
+++CandyFavoritesWindow.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candyfavoriteswindow.cs
+++CandyGalleryWindow.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candygallerywindow.cs
+++CandyGalleryWindow.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candygallerywindow.designer.cs
+++CandyGalleryWindow.resx
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candygallerywindow.resx
+++CandyKeyboardShortcutWindow.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candykeyboardshortcutwindow.cs
+++CandyMultipleRandomWindow.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candymultiplerandomwindow.cs
+++CandyMultipleRandomWindow.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candymultiplerandomwindow.designer.cs
+++CandyMultipleRandomWindow.resx
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candymultiplerandomwindow.resx
+++CandySettingsFileViewerWindow.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candysettingsfileviewerwindow.cs
+++CandySettingsWindow.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candysettingswindow.cs
+++CandyVideoWindow.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candyvideowindow.cs
+++LoginWindow.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\loginwindow.cs
+++LoginWindow.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\loginwindow.designer.cs
+++LoginWindow.resx
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\loginwindow.resx
+++Models
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\models\
+++CandyInterfaceColors.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\models\candyinterfacecolors.cs
+++ImageFilterType.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\models\imagefiltertype.cs
+++MediaFilterType.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\models\mediafiltertype.cs
+++PerSessionSettings.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\models\persessionsettings.cs
+++UserFavorite.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\models\userfavorite.cs
+++UserSettings.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\models\usersettings.cs
+++obj
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\
+++Resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\resources\
+++Serialization
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\serialization\
+++SaveLoadSettingsHandler.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\serialization\saveloadsettingshandler.cs
+++App.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\app.config
+++Magneto Bold.TTF
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\magneto bold.ttf
+++packages.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\packages.config
+++Program.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\program.cs
+++Settings.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\settings.designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\properties\settings.designer.cs
+++Debug
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\
+++Release
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\
+++CandyFavoritesWindow.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candyfavoriteswindow.designer.cs
+++CandyFavoritesWindow.resx
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candyfavoriteswindow.resx
+++CandyKeyboardShortcutWindow.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candykeyboardshortcutwindow.designer.cs
+++CandyKeyboardShortcutWindow.resx
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candykeyboardshortcutwindow.resx
+++CandySettingsFileViewerWindow.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candysettingsfileviewerwindow.designer.cs
+++CandySettingsFileViewerWindow.resx
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candysettingsfileviewerwindow.resx
+++CandySettingsWindow.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candysettingswindow.designer.cs
+++CandySettingsWindow.resx
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candysettingswindow.resx
+++CandyVideoWindow.Designer.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candyvideowindow.designer.cs
+++CandyVideoWindow.resx
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\interface\candyvideowindow.resx
+++CandyGalleryUserSettings
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\candygalleryusersettings\
+++AxInterop.WMPLib.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\axinterop.wmplib.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\axinterop.wmplib.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\axinterop.wmplib.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\axinterop.wmplib.dll
+++CandyGallery.exe
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\candygallery.exe
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\candygallery.exe
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.exe
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.exe
+++CandyGallery.exe.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\candygallery.exe.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\candygallery.exe.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.exe.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.exe.config
+++CandyGallery.pdb
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\candygallery.pdb
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\candygallery.pdb
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.pdb
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.pdb
+++ImgBlast.exe
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\imgblast.exe
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\imgblast.exe
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.exe
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.exe
+++ImgBlast.exe.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\imgblast.exe.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\imgblast.exe.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.exe.config
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.exe.config
+++ImgBlast.pdb
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\imgblast.pdb
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\imgblast.pdb
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.pdb
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.pdb
+++Interop.WMPLib.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\interop.wmplib.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\interop.wmplib.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\interop.wmplib.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\interop.wmplib.dll
+++Microsoft.Win32.Primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\microsoft.win32.primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\microsoft.win32.primitives.dll
+++netstandard.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\netstandard.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\netstandard.dll
+++StackBlur.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\stackblur.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\stackblur.dll
+++System.AppContext.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.appcontext.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.appcontext.dll
+++System.Collections.Concurrent.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.collections.concurrent.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.collections.concurrent.dll
+++System.Collections.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.collections.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.collections.dll
+++System.Collections.NonGeneric.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.collections.nongeneric.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.collections.nongeneric.dll
+++System.Collections.Specialized.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.collections.specialized.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.collections.specialized.dll
+++System.ComponentModel.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.componentmodel.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.componentmodel.dll
+++System.ComponentModel.EventBasedAsync.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.componentmodel.eventbasedasync.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.componentmodel.eventbasedasync.dll
+++System.ComponentModel.Primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.componentmodel.primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.componentmodel.primitives.dll
+++System.ComponentModel.TypeConverter.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.componentmodel.typeconverter.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.componentmodel.typeconverter.dll
+++System.Console.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.console.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.console.dll
+++System.Data.Common.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.data.common.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.data.common.dll
+++System.Diagnostics.Contracts.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.diagnostics.contracts.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.diagnostics.contracts.dll
+++System.Diagnostics.Debug.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.diagnostics.debug.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.diagnostics.debug.dll
+++System.Diagnostics.FileVersionInfo.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.diagnostics.fileversioninfo.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.diagnostics.fileversioninfo.dll
+++System.Diagnostics.Process.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.diagnostics.process.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.diagnostics.process.dll
+++System.Diagnostics.StackTrace.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.diagnostics.stacktrace.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.diagnostics.stacktrace.dll
+++System.Diagnostics.TextWriterTraceListener.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.diagnostics.textwritertracelistener.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.diagnostics.textwritertracelistener.dll
+++System.Diagnostics.Tools.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.diagnostics.tools.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.diagnostics.tools.dll
+++System.Diagnostics.TraceSource.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.diagnostics.tracesource.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.diagnostics.tracesource.dll
+++System.Diagnostics.Tracing.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.diagnostics.tracing.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.diagnostics.tracing.dll
+++System.Drawing.Common.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.drawing.common.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.drawing.common.dll
+++System.Drawing.Primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.drawing.primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.drawing.primitives.dll
+++System.Dynamic.Runtime.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.dynamic.runtime.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.dynamic.runtime.dll
+++System.Globalization.Calendars.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.globalization.calendars.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.globalization.calendars.dll
+++System.Globalization.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.globalization.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.globalization.dll
+++System.Globalization.Extensions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.globalization.extensions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.globalization.extensions.dll
+++System.IO.Compression.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.compression.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.compression.dll
+++System.IO.Compression.ZipFile.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.compression.zipfile.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.compression.zipfile.dll
+++System.IO.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.dll
+++System.IO.FileSystem.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.filesystem.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.filesystem.dll
+++System.IO.FileSystem.DriveInfo.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.filesystem.driveinfo.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.filesystem.driveinfo.dll
+++System.IO.FileSystem.Primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.filesystem.primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.filesystem.primitives.dll
+++System.IO.FileSystem.Watcher.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.filesystem.watcher.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.filesystem.watcher.dll
+++System.IO.IsolatedStorage.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.isolatedstorage.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.isolatedstorage.dll
+++System.IO.MemoryMappedFiles.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.memorymappedfiles.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.memorymappedfiles.dll
+++System.IO.Pipes.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.pipes.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.pipes.dll
+++System.IO.UnmanagedMemoryStream.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.io.unmanagedmemorystream.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.io.unmanagedmemorystream.dll
+++System.Linq.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.linq.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.linq.dll
+++System.Linq.Expressions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.linq.expressions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.linq.expressions.dll
+++System.Linq.Parallel.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.linq.parallel.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.linq.parallel.dll
+++System.Linq.Queryable.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.linq.queryable.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.linq.queryable.dll
+++System.Net.Http.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.http.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.http.dll
+++System.Net.NameResolution.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.nameresolution.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.nameresolution.dll
+++System.Net.NetworkInformation.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.networkinformation.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.networkinformation.dll
+++System.Net.Ping.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.ping.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.ping.dll
+++System.Net.Primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.primitives.dll
+++System.Net.Requests.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.requests.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.requests.dll
+++System.Net.Security.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.security.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.security.dll
+++System.Net.Sockets.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.sockets.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.sockets.dll
+++System.Net.WebHeaderCollection.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.webheadercollection.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.webheadercollection.dll
+++System.Net.WebSockets.Client.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.websockets.client.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.websockets.client.dll
+++System.Net.WebSockets.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.net.websockets.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.net.websockets.dll
+++System.ObjectModel.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.objectmodel.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.objectmodel.dll
+++System.Reflection.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.reflection.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.reflection.dll
+++System.Reflection.Extensions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.reflection.extensions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.reflection.extensions.dll
+++System.Reflection.Primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.reflection.primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.reflection.primitives.dll
+++System.Resources.Reader.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.resources.reader.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.resources.reader.dll
+++System.Resources.ResourceManager.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.resources.resourcemanager.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.resources.resourcemanager.dll
+++System.Resources.Writer.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.resources.writer.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.resources.writer.dll
+++System.Runtime.CompilerServices.VisualC.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.compilerservices.visualc.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.compilerservices.visualc.dll
+++System.Runtime.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.dll
+++System.Runtime.Extensions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.extensions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.extensions.dll
+++System.Runtime.Handles.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.handles.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.handles.dll
+++System.Runtime.InteropServices.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.interopservices.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.interopservices.dll
+++System.Runtime.InteropServices.RuntimeInformation.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.interopservices.runtimeinformation.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.interopservices.runtimeinformation.dll
+++System.Runtime.Numerics.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.numerics.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.numerics.dll
+++System.Runtime.Serialization.Formatters.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.serialization.formatters.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.serialization.formatters.dll
+++System.Runtime.Serialization.Json.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.serialization.json.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.serialization.json.dll
+++System.Runtime.Serialization.Primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.serialization.primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.serialization.primitives.dll
+++System.Runtime.Serialization.Xml.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.runtime.serialization.xml.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.runtime.serialization.xml.dll
+++System.Security.Claims.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.security.claims.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.security.claims.dll
+++System.Security.Cryptography.Algorithms.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.security.cryptography.algorithms.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.security.cryptography.algorithms.dll
+++System.Security.Cryptography.Csp.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.security.cryptography.csp.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.security.cryptography.csp.dll
+++System.Security.Cryptography.Encoding.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.security.cryptography.encoding.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.security.cryptography.encoding.dll
+++System.Security.Cryptography.Primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.security.cryptography.primitives.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.security.cryptography.primitives.dll
+++System.Security.Cryptography.X509Certificates.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.security.cryptography.x509certificates.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.security.cryptography.x509certificates.dll
+++System.Security.Principal.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.security.principal.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.security.principal.dll
+++System.Security.SecureString.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.security.securestring.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.security.securestring.dll
+++System.Text.Encoding.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.text.encoding.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.text.encoding.dll
+++System.Text.Encoding.Extensions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.text.encoding.extensions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.text.encoding.extensions.dll
+++System.Text.RegularExpressions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.text.regularexpressions.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.text.regularexpressions.dll
+++System.Threading.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.threading.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.threading.dll
+++System.Threading.Overlapped.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.threading.overlapped.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.threading.overlapped.dll
+++System.Threading.Tasks.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.threading.tasks.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.threading.tasks.dll
+++System.Threading.Tasks.Parallel.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.threading.tasks.parallel.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.threading.tasks.parallel.dll
+++System.Threading.Thread.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.threading.thread.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.threading.thread.dll
+++System.Threading.ThreadPool.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.threading.threadpool.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.threading.threadpool.dll
+++System.Threading.Timer.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.threading.timer.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.threading.timer.dll
+++System.ValueTuple.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.valuetuple.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.valuetuple.dll
+++System.Xml.ReaderWriter.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.xml.readerwriter.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.xml.readerwriter.dll
+++System.Xml.XDocument.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.xml.xdocument.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.xml.xdocument.dll
+++System.Xml.XmlDocument.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.xml.xmldocument.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.xml.xmldocument.dll
+++System.Xml.XmlSerializer.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.xml.xmlserializer.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.xml.xmlserializer.dll
+++System.Xml.XPath.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.xml.xpath.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.xml.xpath.dll
+++System.Xml.XPath.XDocument.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\system.xml.xpath.xdocument.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\release\system.xml.xpath.xdocument.dll
+++TempPE
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\temppe\
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\temppe\
+++.NETFramework,Version=v4.8.AssemblyAttributes.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\.netframework,version=v4.8.assemblyattributes.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\.netframework,version=v4.8.assemblyattributes.cs
+++CandyGallery.csproj.AssemblyReference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.csproj.assemblyreference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.csproj.assemblyreference.cache
+++CandyGallery.csproj.CopyComplete
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.csproj.copycomplete
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.csproj.copycomplete
+++CandyGallery.csproj.CoreCompileInputs.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.csproj.corecompileinputs.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.csproj.corecompileinputs.cache
+++CandyGallery.csproj.FileListAbsolute.txt
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.csproj.filelistabsolute.txt
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.csproj.filelistabsolute.txt
+++CandyGallery.csproj.GenerateResource.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.csproj.generateresource.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.csproj.generateresource.cache
+++CandyGallery.csproj.ResolveComReference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.csproj.resolvecomreference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.csproj.resolvecomreference.cache
+++CandyGallery.csproj.SuggestedBindingRedirects.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.csproj.suggestedbindingredirects.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.csproj.suggestedbindingredirects.cache
+++CandyGallery.csprojAssemblyReference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.csprojassemblyreference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.csprojassemblyreference.cache
+++CandyGallery.Interface.CandyFavoritesWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.interface.candyfavoriteswindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.interface.candyfavoriteswindow.resources
+++CandyGallery.Interface.CandyGalleryWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.interface.candygallerywindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.interface.candygallerywindow.resources
+++CandyGallery.Interface.CandyKeyboardShortcutWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.interface.candykeyboardshortcutwindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.interface.candykeyboardshortcutwindow.resources
+++CandyGallery.Interface.CandyMultipleRandomWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.interface.candymultiplerandomwindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.interface.candymultiplerandomwindow.resources
+++CandyGallery.Interface.CandySettingsFileViewerWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.interface.candysettingsfileviewerwindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.interface.candysettingsfileviewerwindow.resources
+++CandyGallery.Interface.CandySettingsWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.interface.candysettingswindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.interface.candysettingswindow.resources
+++CandyGallery.Interface.CandyVideoWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.interface.candyvideowindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.interface.candyvideowindow.resources
+++CandyGallery.Interface.LoginWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.interface.loginwindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.interface.loginwindow.resources
+++CandyGallery.Properties.Resources.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\candygallery.properties.resources.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\candygallery.properties.resources.resources
+++CoreCompileInputs.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\corecompileinputs.cache
+++DesignTimeResolveAssemblyReferences.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\designtimeresolveassemblyreferences.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\designtimeresolveassemblyreferences.cache
+++DesignTimeResolveAssemblyReferencesInput.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\designtimeresolveassemblyreferencesinput.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\designtimeresolveassemblyreferencesinput.cache
+++ImgBlast.CandyGalleryWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.candygallerywindow.resources
+++ImgBlast.csproj.CopyComplete
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.csproj.copycomplete
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.csproj.copycomplete
+++ImgBlast.csproj.CoreCompileInputs.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.csproj.corecompileinputs.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.csproj.corecompileinputs.cache
+++ImgBlast.csproj.FileListAbsolute.txt
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.csproj.filelistabsolute.txt
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.csproj.filelistabsolute.txt
+++ImgBlast.csproj.GenerateResource.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.csproj.generateresource.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.csproj.generateresource.cache
+++ImgBlast.csproj.ResolveComReference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.csproj.resolvecomreference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.csproj.resolvecomreference.cache
+++ImgBlast.csprojAssemblyReference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.csprojassemblyreference.cache
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.csprojassemblyreference.cache
+++ImgBlast.FavoritesViewer.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.favoritesviewer.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.favoritesviewer.resources
+++ImgBlast.ImageViewer.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.imageviewer.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.imageviewer.resources
+++ImgBlast.Login.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.login.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.login.resources
+++ImgBlast.LoginWindow.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.loginwindow.resources
+++ImgBlast.Properties.Resources.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\imgblast.properties.resources.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.properties.resources.resources
+++Interop.IWshRuntimeLibrary.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\interop.iwshruntimelibrary.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\interop.iwshruntimelibrary.dll
+++TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\temporarygeneratedfile_036c0b5b-1481-4323-8d20-8f5adcb23d92.cs
+++TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\temporarygeneratedfile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+++TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\temporarygeneratedfile_e7a71f73-0f8d-4b9b-b56e-8e70b10bc5d3.cs
+++ImgBlast.VideoViewer.resources
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\imgblast.videoviewer.resources
+++admin_CandyGalleryUserSettings.xml
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\bin\debug\candygalleryusersettings\admin_candygalleryusersettings.xml
+++Properties.Resources.Designer.cs.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\debug\temppe\properties.resources.designer.cs.dll
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\obj\release\temppe\properties.resources.designer.cs.dll
+++app.manifest
+i:{247be0b5-bde6-4302-aaf9-6820b3c5fe86}:f:\candy gallery v1.1\source\candygallery\app.manifest
