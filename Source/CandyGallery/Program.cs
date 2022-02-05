@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing.Text;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -24,7 +23,8 @@ namespace CandyGallery
         [STAThread]
         private static void Main()
         {
-            CheckFontInstall("Magneto.ttf");
+            // Requires being run as admin
+            //CheckFontInstall("Magneto.ttf");
             Application.Run(new LoginWindow());
         }
 
