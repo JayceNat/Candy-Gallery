@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.IO;
 
 namespace CandyGallery.Helpers
 {
@@ -42,14 +43,19 @@ namespace CandyGallery.Helpers
             return mediaItem.ToLower().EndsWith(".lnk");
         }
 
-        public static Cursor LoadCustomCursor(string path)
+        public static Cursor LoadCustomCursor()
         {
-            IntPtr hCurs = LoadCursorFromFile(path);
-            if (hCurs == IntPtr.Zero) throw new Win32Exception();
-            var curs = new Cursor(hCurs);
-            // Note: force the cursor to own the handle so it gets released properly
-            var fi = typeof(Cursor).GetField("ownHandle", BindingFlags.NonPublic | BindingFlags.Instance);
-            fi.SetValue(curs, true);
+            var curs = Cursors.Default;
+            var cursorLocation = Path.Combine(Directory.GetCurrentDirectory(), @"Cursor.ani");
+            if (File.Exists(cursorLocation))
+            {
+                IntPtr hCurs = LoadCursorFromFile(cursorLocation);
+                if (hCurs == IntPtr.Zero) throw new Win32Exception();
+                curs = new Cursor(hCurs);
+                // Note: force the cursor to own the handle so it gets released properly
+                var fi = typeof(Cursor).GetField("ownHandle", BindingFlags.NonPublic | BindingFlags.Instance);
+                fi.SetValue(curs, true);
+            }
             return curs;
         }
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]

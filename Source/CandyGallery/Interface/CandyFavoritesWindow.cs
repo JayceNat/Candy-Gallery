@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CandyGallery.Helpers;
 using CandyGallery.Models;
 
 namespace CandyGallery.Interface
@@ -23,6 +24,8 @@ namespace CandyGallery.Interface
 
         public CandyFavoritesWindow()
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor();
             InitializeComponent();
             SetFormColors();
             NullAllPictureBoxImages();

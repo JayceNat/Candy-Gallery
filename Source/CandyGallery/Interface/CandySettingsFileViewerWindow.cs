@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml;
+using CandyGallery.Helpers;
 using CandyGallery.Models;
 using CandyGallery.Serialization;
 
@@ -22,6 +23,8 @@ namespace CandyGallery.Interface
 
         public CandySettingsFileViewerWindow()
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor();
             InitializeComponent();
 
             var file =

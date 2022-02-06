@@ -44,6 +44,8 @@ namespace CandyGallery.Interface
 
         public CandyMultipleRandomWindow()
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor();
             InitializeComponent();
             SetFormColors();
             SetPictureBoxContextStrips();

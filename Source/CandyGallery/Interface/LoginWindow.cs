@@ -26,7 +26,7 @@ namespace CandyGallery.Interface
         public LoginWindow()
         {
             Cursor.Current = null;
-            Cursor = CandyGalleryHelpers.LoadCustomCursor(@"F:\Candy Gallery\Source\CandyGallery\Crystal.ani");
+            Cursor = CandyGalleryHelpers.LoadCustomCursor();
             Cursor.Current = Cursor;
             InitializeComponent();
             txtUsername.Select();

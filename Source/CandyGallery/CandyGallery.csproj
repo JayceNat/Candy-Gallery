@@ -152,7 +152,7 @@
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Crystal.ani">
+    <None Include="Cursor.ani">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Magneto.TTF">

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CandyGallery.Helpers;
 using CandyGallery.Models;
 
 namespace CandyGallery.Interface
@@ -21,6 +22,8 @@ namespace CandyGallery.Interface
 
         public CandySettingsWindow()
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor();
             InitializeComponent();
 
             picBxUserAvatar.Image = Program.CandyGalleryWindow.picBxUserAvatar.Image;

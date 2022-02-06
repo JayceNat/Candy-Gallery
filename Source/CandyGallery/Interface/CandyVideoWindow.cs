@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CandyGallery.Helpers;
 using CandyGallery.Models;
 
 namespace CandyGallery.Interface
@@ -20,6 +21,8 @@ namespace CandyGallery.Interface
         
         public CandyVideoWindow()
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor();
             InitializeComponent();
             videoPlayer.settings.autoStart = true;
             videoPlayer.settings.volume = 100;
