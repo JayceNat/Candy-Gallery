@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CandyGallery.Helpers;
 using CandyGallery.Serialization;
 using Microsoft.Win32;
 
@@ -24,6 +25,9 @@ namespace CandyGallery.Interface
 
         public LoginWindow()
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor(@"F:\Candy Gallery\Source\CandyGallery\Crystal.ani");
+            Cursor.Current = Cursor;
             InitializeComponent();
             txtUsername.Select();
         }

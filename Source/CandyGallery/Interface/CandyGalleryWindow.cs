@@ -57,6 +57,9 @@ namespace CandyGallery.Interface
 
         public CandyGalleryWindow(UserSettings temporaryUserSettings)
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor(@"F:\Candy Gallery\Source\CandyGallery\Crystal.ani");
+            Cursor.Current = Cursor;
             UserSettings = temporaryUserSettings;
             InitializeComponent();
 
