@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CandyGallery.Helpers;
 using CandyGallery.Models;
 
 namespace CandyGallery.Interface
@@ -19,6 +20,8 @@ namespace CandyGallery.Interface
 
         public CandyKeyboardShortcutWindow()
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor();
             InitializeComponent();
 
             lblCandyKeyboardShortcutTitle.ForeColor =

@@ -30,9 +30,9 @@ namespace CandyGallery
 
         [DllImport("gdi32", EntryPoint = "AddFontResource")]
         public static extern int AddFontResourceA(string lpFileName);
-        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        [DllImport("gdi32.dll")]
         private static extern int AddFontResource(string lpszFilename);
-        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        [DllImport("gdi32.dll")]
         private static extern int CreateScalableFontResource(uint fdwHidden, string
             lpszFontRes, string lpszFontFile, string lpszCurrentPath);
 
@@ -45,12 +45,12 @@ namespace CandyGallery
         private static void CheckFontInstall(string contentFontName)
         {
             // Creates the full path where your font will be installed
-            var fontDestination = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Fonts), contentFontName);
+            var fontDestination = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), contentFontName);
 
             if (!File.Exists(fontDestination))
             {
                 // Copies font to destination
-                System.IO.File.Copy(Path.Combine(System.IO.Directory.GetCurrentDirectory(), contentFontName), fontDestination);
+                File.Copy(Path.Combine(Directory.GetCurrentDirectory(), contentFontName), fontDestination);
 
                 // Retrieves font name
                 // Makes sure you reference System.Drawing

@@ -180,9 +180,16 @@ namespace CandyGallery.Serialization
             if (userSettings.PerSessionSettings.OriginalUsername != null && userSettings.UserName != userSettings.PerSessionSettings.OriginalUsername)
             {
                 var file = $"{appPath}\\CandyGalleryUserSettings\\{userSettings.PerSessionSettings.OriginalUsername.ToLower()}_CandyGalleryUserSettings.xml";
+                var newAvatar = $"{appPath}\\CandyGalleryUserSettings\\{userSettings.UserName.ToLower()}_CustomAvatar";
+                var oldUserAvatar = $"{appPath}\\CandyGalleryUserSettings\\{userSettings.PerSessionSettings.OriginalUsername.ToLower()}_CustomAvatar";
                 if (File.Exists(file))
                 {
                     File.Delete(file);
+                }
+                if (File.Exists(oldUserAvatar) && !File.Exists(newAvatar))
+                {
+                    File.Copy(oldUserAvatar, newAvatar);
+                    File.Delete(oldUserAvatar);
                 }
             }
         }

@@ -26,7 +26,7 @@ namespace CandyGallery.Interface
         public const int CS_DBLCLKS = 0x8;
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int WS_MINIMIZEBOX = 0x20000;
-        public static string CandyGalleryFolderName = @"\CandyGallery\";
+        public static string CandyGalleryFolderName = @"\CandyGallery";
         public static string GifsFolderName = CandyGalleryFolderName + @"\CandyGalleryGifs\";
         public static string VideosFolderName = CandyGalleryFolderName + @"\CandyGalleryVideos\";
         public static string OtherFolderName = CandyGalleryFolderName + @"\CandyGalleryOther\";
@@ -57,8 +57,12 @@ namespace CandyGallery.Interface
 
         public CandyGalleryWindow(UserSettings temporaryUserSettings)
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor();
+            Cursor.Current = Cursor;
             UserSettings = temporaryUserSettings;
             InitializeComponent();
+            picBxUserAvatar.Cursor = Cursors.Hand;
 
             if (string.IsNullOrWhiteSpace(UserSettings.StartFolderPath) || !Directory.Exists(UserSettings.StartFolderPath))
             {
@@ -164,19 +168,37 @@ namespace CandyGallery.Interface
             }
 
             lblUsername.Text = styledUsername;
-            if (UserSettings.UserAvatarKey <= imageListAvatars.Images.Count)
+            var customAvatarLocation = Path.Combine(Directory.GetCurrentDirectory() + "\\CandyGalleryUserSettings\\", UserSettings.UserName + @"_CustomAvatar");
+            if (UserSettings.UsingCustomAvatar && File.Exists(customAvatarLocation))
             {
-                picBxUserAvatar.Image = imageListAvatars.Images[UserSettings.UserAvatarKey - 1];
+                picBxUserAvatar.ImageLocation = customAvatarLocation;
             }
             else
             {
-                UserSettings.UserAvatarKey = 1;
-                picBxUserAvatar.Image = imageListAvatars.Images[0];
+                UserSettings.UsingCustomAvatar = false;
+                if (UserSettings.UserAvatarKey <= imageListAvatars.Images.Count)
+                {
+                    picBxUserAvatar.Image = imageListAvatars.Images[UserSettings.UserAvatarKey - 1];
+                }
+                else
+                {
+                    UserSettings.UserAvatarKey = 1;
+                    picBxUserAvatar.Image = imageListAvatars.Images[0];
+                }
             }
 
             if (UserSettings.SidePanelCollapsed)
             {
                 CollapseSidePanel(true);
+            }
+
+            if (UserSettings.UnseenItems == null || UserSettings.UnseenItems.Count == 0)
+            {
+                var cursor = Cursor.Current;
+                Cursor.Current = Cursors.WaitCursor;
+                UserSettings.UnseenItems = new List<string>();
+                GenerateUnseenItems(new DirectoryInfo(UserSettings.StartFolderPath));
+                Cursor.Current = cursor;
             }
 
             btnRandomize.Focus();
@@ -296,18 +318,12 @@ namespace CandyGallery.Interface
 
         private void Settings_Click(object sender, EventArgs e)
         {
-            using (var settings = new CandySettingsWindow())
-            {
-                settings.ShowDialog();
-                if (UserSettings.PerSessionSettings.ResetCandyGallery)
-                {
-                    Close();
-                }
-                UserSettings.UserName = Program.CandyGalleryWindow.UserSettings.UserName;
-                UserSettings.Pass = Program.CandyGalleryWindow.UserSettings.Pass;
-            }
+            OpenSettings();
+        }
 
-            btnRandomize.Focus();
+        private void UserAvatar_Click(object sender, EventArgs e)
+        {
+            OpenSettings();
         }
 
         private void MultiRandomizer_Click(object sender, EventArgs e)
@@ -899,10 +915,23 @@ namespace CandyGallery.Interface
                     validItemList = validItemList.FindAll(i => i.StartsWith(UserSettings.PerSessionSettings.CurrentWorkingDirectory));
                     if (!validItemList.Any())
                     {
-                        MessageBox.Show(
-                            @"Every item in the currently selected working directory has been seen: '" + UserSettings.PerSessionSettings.CurrentWorkingDirectory + "'",
-                            @"No Unseen Items", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        chkFilterByUnseen.Checked = false;
+                        var result = MessageBox.Show(
+                            @"Every item in the currently selected working directory has been seen. Do you want to reset the unseen list for all items in this foler: '" + UserSettings.PerSessionSettings.CurrentWorkingDirectory + "'",
+                            @"No Unseen Items", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            var cursor = Cursor.Current;
+                            Cursor.Current = Cursors.WaitCursor;
+                            GenerateUnseenItems(new DirectoryInfo(UserSettings.PerSessionSettings.CurrentWorkingDirectory));
+                            validItemList = UserSettings.UnseenItems.FindAll(i => i.StartsWith(UserSettings.PerSessionSettings.CurrentWorkingDirectory));
+                        }
+                        else
+                        {
+                            chkFilterByUnseen.Checked = false;
+                            var subDirectoriesOnCurrentPath = Directory.GetDirectories(UserSettings.PerSessionSettings.CurrentWorkingDirectory).ToList();
+                            var filesOnCurrentPath = Directory.GetFiles(UserSettings.PerSessionSettings.CurrentWorkingDirectory).ToList();
+                            validItemList = subDirectoriesOnCurrentPath.Any() ? subDirectoriesOnCurrentPath : filesOnCurrentPath;
+                        }
                     }
                 }
                 item = GetRandomFileFromListRecursive(validItemList);
@@ -1060,6 +1089,22 @@ namespace CandyGallery.Interface
             }
 
             Update();
+        }
+
+        public void OpenSettings()
+        {
+            using (var settings = new CandySettingsWindow())
+            {
+                settings.ShowDialog();
+                if (UserSettings.PerSessionSettings.ResetCandyGallery)
+                {
+                    Close();
+                }
+                UserSettings.UserName = Program.CandyGalleryWindow.UserSettings.UserName;
+                UserSettings.Pass = Program.CandyGalleryWindow.UserSettings.Pass;
+            }
+
+            btnRandomize.Focus();
         }
 
         #region Current Media Handling
@@ -1499,8 +1544,7 @@ namespace CandyGallery.Interface
         {
             var itemLocation = lblCurrentMediaPath.Text;
             UserFavorite newFavorite;
-            if ((CandyGalleryHelpers.IsImageTypeMedia(itemLocation) || CandyGalleryHelpers.IsGifTypeMedia(itemLocation))
-                && picBxCandyGallery.ImageLocation != null)
+            if (!File.Exists(itemLocation) && picBxCandyGallery.ImageLocation != null)
             {
                 itemLocation = picBxCandyGallery.ImageLocation;
             }

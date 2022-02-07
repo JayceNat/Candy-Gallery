@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CandyGallery.Helpers;
 using CandyGallery.Models;
 
 namespace CandyGallery.Interface
@@ -21,8 +22,11 @@ namespace CandyGallery.Interface
 
         public CandySettingsWindow()
         {
+            Cursor.Current = null;
+            Cursor = CandyGalleryHelpers.LoadCustomCursor();
             InitializeComponent();
 
+            picBxUserAvatar.Cursor = Cursors.Hand;
             picBxUserAvatar.Image = Program.CandyGalleryWindow.picBxUserAvatar.Image;
             cmbBxImageFilterToApply.Text = Program.CandyGalleryWindow.UserSettings.ImageFilterType;
             cmbBxColorTheme.Text = Program.CandyGalleryWindow.UserSettings.UserInterfaceColorName;
@@ -128,13 +132,36 @@ namespace CandyGallery.Interface
 
         private void UserAvatar_Click(object sender, EventArgs e)
         {
-            LoadNextAvatar();
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                dialog.Title = "Upload Avatar Image";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    Program.CandyGalleryWindow.UserSettings.UsingCustomAvatar = true;
+                    var user = Program.CandyGalleryWindow.UserSettings.UserName;
+                    var settingsFolder = "\\CandyGalleryUserSettings\\";
+                    File.Copy(dialog.FileName, Path.Combine(Directory.GetCurrentDirectory() + settingsFolder, user + @"_CustomAvatar"), true);
+                    picBxUserAvatar.ImageLocation = dialog.FileName;
+                    Program.CandyGalleryWindow.picBxUserAvatar.ImageLocation = dialog.FileName;
+                    //var box = new Form();
+                    //box.TopLevel = box.ControlBox = false;
+                    //box.Visible = true;
+                    //box.BackgroundImage = new Bitmap(dialog.FileName);
+                    //Controls.Add(box);
+                    //box.Size = box.BackgroundImage.Size;
+                }
+            }
         }
 
         private void LastAvatarImage_Click(object sender, EventArgs e)
         {
             if (Program.CandyGalleryWindow.UserSettings.UserAvatarKey > 1)
             {
+                if (Program.CandyGalleryWindow.UserSettings.UsingCustomAvatar)
+                {
+                    Program.CandyGalleryWindow.UserSettings.UsingCustomAvatar = false;
+                }
                 Program.CandyGalleryWindow.UserSettings.UserAvatarKey -= 1;
                 picBxUserAvatar.Image = 
                     Program.CandyGalleryWindow.imageListAvatars.Images[Program.CandyGalleryWindow.UserSettings.UserAvatarKey - 1];
@@ -151,7 +178,7 @@ namespace CandyGallery.Interface
         private void ExportUserSettings_Click(object sender, EventArgs e)
         {
             var file =
-                $"{Application.StartupPath}\\CandyGalleryUserSettings\\{Program.CandyGalleryWindow.UserSettings.UserName.ToLower()}_CandyGalleryUserSettings.xml";
+                $"{Application.StartupPath}\\CandyGalleryUserSettings\\{Program.CandyGalleryWindow.UserSettings.UserName.ToLower()}\\{Program.CandyGalleryWindow.UserSettings.UserName.ToLower()}_CandyGalleryUserSettings.xml";
             if (File.Exists(file))
             {
                 if (MessageBox.Show($@"WARNING: Altering the settings file incorrectly in any way may corrupt the whole file!" + "\n\n" + "Note: this file does not contain app changes after the most recent login.",
