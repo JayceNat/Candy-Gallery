@@ -86,6 +86,7 @@ namespace CandyGallery.Interface
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolStripContextMenuPicturebox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemOpenMediaLocation = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAsUserAvatarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tblLPFormBorder = new System.Windows.Forms.TableLayoutPanel();
             this.tblLPFormTopControls = new System.Windows.Forms.TableLayoutPanel();
             this.tblLPTitleContainer = new System.Windows.Forms.TableLayoutPanel();
@@ -1036,9 +1037,10 @@ namespace CandyGallery.Interface
             this.toolStripContextMenuPicturebox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.toolStripContextMenuPicturebox.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStripContextMenuPicturebox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemOpenMediaLocation});
+            this.toolStripMenuItemOpenMediaLocation,
+            this.setAsUserAvatarToolStripMenuItem});
             this.toolStripContextMenuPicturebox.Name = "contextMenuStripViewer";
-            this.toolStripContextMenuPicturebox.Size = new System.Drawing.Size(186, 26);
+            this.toolStripContextMenuPicturebox.Size = new System.Drawing.Size(186, 70);
             // 
             // toolStripMenuItemOpenMediaLocation
             // 
@@ -1047,6 +1049,14 @@ namespace CandyGallery.Interface
             this.toolStripMenuItemOpenMediaLocation.Size = new System.Drawing.Size(185, 22);
             this.toolStripMenuItemOpenMediaLocation.Text = "Open item location...";
             this.toolStripMenuItemOpenMediaLocation.Click += new System.EventHandler(this.OpenItemLocationToolStripMenuItem_Click);
+            // 
+            // setAsUserAvatarToolStripMenuItem
+            // 
+            this.setAsUserAvatarToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.setAsUserAvatarToolStripMenuItem.Name = "setAsUserAvatarToolStripMenuItem";
+            this.setAsUserAvatarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.setAsUserAvatarToolStripMenuItem.Text = "Set as User Avatar...";
+            this.setAsUserAvatarToolStripMenuItem.Click += new System.EventHandler(this.SetAsUserAvatarToolStripMenuItem_Click);
             // 
             // tblLPFormBorder
             // 
@@ -1287,6 +1297,7 @@ namespace CandyGallery.Interface
         public ImageList imageListAvatars;
         private Button btnMultiRandomizer;
         private Button btnOtherType;
+        private ToolStripMenuItem setAsUserAvatarToolStripMenuItem;
     }
 }
 

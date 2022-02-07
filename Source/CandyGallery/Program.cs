@@ -50,7 +50,7 @@ namespace CandyGallery
             if (!File.Exists(fontDestination))
             {
                 // Copies font to destination
-                File.Copy(Path.Combine(Directory.GetCurrentDirectory(), contentFontName), fontDestination);
+                File.Copy(Path.Combine(Application.StartupPath, contentFontName), fontDestination);
 
                 // Retrieves font name
                 // Makes sure you reference System.Drawing
