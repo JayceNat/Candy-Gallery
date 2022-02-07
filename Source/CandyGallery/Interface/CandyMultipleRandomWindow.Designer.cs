@@ -59,6 +59,7 @@ namespace CandyGallery.Interface
             this.picBx9 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToMainViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAsUserAvatarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelFormBorder.SuspendLayout();
             this.tblLPFormContainer.SuspendLayout();
             this.tblLPFormTopControls.SuspendLayout();
@@ -140,7 +141,7 @@ namespace CandyGallery.Interface
             this.tblLPFormContainer.SetColumnSpan(this.tblLPFormTopControls, 5);
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tblLPFormTopControls.Controls.Add(this.btnMaximizeMultiRandom, 0, 0);
             this.tblLPFormTopControls.Controls.Add(this.btnExitMultiRandom, 2, 0);
             this.tblLPFormTopControls.Controls.Add(this.tblLPTitleContainer, 0, 0);
@@ -161,7 +162,7 @@ namespace CandyGallery.Interface
             this.btnMaximizeMultiRandom.FlatAppearance.BorderSize = 0;
             this.btnMaximizeMultiRandom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximizeMultiRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaximizeMultiRandom.Location = new System.Drawing.Point(1211, 1);
+            this.btnMaximizeMultiRandom.Location = new System.Drawing.Point(1210, 1);
             this.btnMaximizeMultiRandom.Margin = new System.Windows.Forms.Padding(0);
             this.btnMaximizeMultiRandom.Name = "btnMaximizeMultiRandom";
             this.btnMaximizeMultiRandom.Size = new System.Drawing.Size(33, 18);
@@ -177,10 +178,10 @@ namespace CandyGallery.Interface
             this.btnExitMultiRandom.FlatAppearance.BorderSize = 0;
             this.btnExitMultiRandom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExitMultiRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitMultiRandom.Location = new System.Drawing.Point(1245, 1);
+            this.btnExitMultiRandom.Location = new System.Drawing.Point(1244, 1);
             this.btnExitMultiRandom.Margin = new System.Windows.Forms.Padding(0);
             this.btnExitMultiRandom.Name = "btnExitMultiRandom";
-            this.btnExitMultiRandom.Size = new System.Drawing.Size(36, 18);
+            this.btnExitMultiRandom.Size = new System.Drawing.Size(37, 18);
             this.btnExitMultiRandom.TabIndex = 7;
             this.btnExitMultiRandom.Text = "X";
             this.btnExitMultiRandom.UseVisualStyleBackColor = false;
@@ -199,7 +200,7 @@ namespace CandyGallery.Interface
             this.tblLPTitleContainer.Name = "tblLPTitleContainer";
             this.tblLPTitleContainer.RowCount = 1;
             this.tblLPTitleContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPTitleContainer.Size = new System.Drawing.Size(1209, 18);
+            this.tblLPTitleContainer.Size = new System.Drawing.Size(1208, 18);
             this.tblLPTitleContainer.TabIndex = 10;
             this.tblLPTitleContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CandyMultiRandomWindow_MouseDown);
             // 
@@ -213,7 +214,7 @@ namespace CandyGallery.Interface
             this.lblCandyMultiRandomTitle.Location = new System.Drawing.Point(66, 0);
             this.lblCandyMultiRandomTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lblCandyMultiRandomTitle.Name = "lblCandyMultiRandomTitle";
-            this.lblCandyMultiRandomTitle.Size = new System.Drawing.Size(1143, 18);
+            this.lblCandyMultiRandomTitle.Size = new System.Drawing.Size(1142, 18);
             this.lblCandyMultiRandomTitle.TabIndex = 10;
             this.lblCandyMultiRandomTitle.Text = "Candy Multi-Random";
             this.lblCandyMultiRandomTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -499,9 +500,10 @@ namespace CandyGallery.Interface
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToMainViewerToolStripMenuItem});
+            this.addToMainViewerToolStripMenuItem,
+            this.setAsUserAvatarToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStripFave";
-            this.contextMenuStrip.Size = new System.Drawing.Size(188, 26);
+            this.contextMenuStrip.Size = new System.Drawing.Size(188, 70);
             // 
             // addToMainViewerToolStripMenuItem
             // 
@@ -509,6 +511,13 @@ namespace CandyGallery.Interface
             this.addToMainViewerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.addToMainViewerToolStripMenuItem.Text = "Add to Main Viewer...";
             this.addToMainViewerToolStripMenuItem.Click += new System.EventHandler(this.AddToMainViewerToolStripMenuItem_Click);
+            // 
+            // setAsUserAvatarToolStripMenuItem
+            // 
+            this.setAsUserAvatarToolStripMenuItem.Name = "setAsUserAvatarToolStripMenuItem";
+            this.setAsUserAvatarToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.setAsUserAvatarToolStripMenuItem.Text = "Set as User Avatar...";
+            this.setAsUserAvatarToolStripMenuItem.Click += new System.EventHandler(this.SetAsUserAvatarToolStripMenuItem_Click);
             // 
             // CandyMultipleRandomWindow
             // 
@@ -577,5 +586,6 @@ namespace CandyGallery.Interface
         private System.Windows.Forms.ToolStripMenuItem addToMainViewerToolStripMenuItem;
         private TableLayoutPanel tblLPFormContainer;
         public Button btnRandomBlast;
+        private ToolStripMenuItem setAsUserAvatarToolStripMenuItem;
     }
 }

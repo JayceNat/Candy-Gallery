@@ -43,10 +43,23 @@ namespace CandyGallery.Helpers
             return mediaItem.ToLower().EndsWith(".lnk");
         }
 
+        public static void SetUserAvatarByPath(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                Program.CandyGalleryWindow.UserSettings.UsingCustomAvatar = true;
+                var appPath = Application.StartupPath;
+                var settingsFolder = "\\CandyGalleryUserSettings\\";
+                Directory.CreateDirectory(appPath + settingsFolder);
+                File.Copy(filePath, Path.Combine(appPath + settingsFolder, Program.CandyGalleryWindow.UserSettings.UserName + @"_CustomAvatar"), true);
+                Program.CandyGalleryWindow.picBxUserAvatar.ImageLocation = filePath;
+            }
+        }
+
         public static Cursor LoadCustomCursor()
         {
             var curs = Cursors.Default;
-            var cursorLocation = Path.Combine(Directory.GetCurrentDirectory(), @"Cursor.ani");
+            var cursorLocation = Path.Combine(Application.StartupPath, @"Cursor.ani");
             if (File.Exists(cursorLocation))
             {
                 IntPtr hCurs = LoadCursorFromFile(cursorLocation);

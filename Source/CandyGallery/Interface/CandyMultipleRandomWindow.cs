@@ -197,6 +197,21 @@ namespace CandyGallery.Interface
             }
         }
 
+        private void SetAsUserAvatarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!(sender is ToolStripMenuItem menuItem)) return;
+            if (!(menuItem.GetCurrentParent() is ContextMenuStrip contextMenu)) return;
+            if (contextMenu.SourceControl is PictureBox pictureBox)
+            {
+                var id = pictureBox.Name.Remove(0, nameLength);
+                var matchingLocation = GetMatchingImgLocation(id);
+                if (!string.IsNullOrEmpty(matchingLocation) && File.Exists(matchingLocation))
+                {
+                    CandyGalleryHelpers.SetUserAvatarByPath(matchingLocation);
+                }
+            }
+        }
+
         #region PictureBox Click Handling
 
         private void PicBx1_Click(object sender, EventArgs e)

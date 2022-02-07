@@ -1347,6 +1347,16 @@ namespace CandyGallery.Interface
             btnRandomize.Focus();
         }
 
+        private void SetAsUserAvatarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(lblCurrentMediaPath.Text))
+            {
+                CandyGalleryHelpers.SetUserAvatarByPath(lblCurrentMediaPath.Text);
+            }
+
+            btnRandomize.Focus();
+        }
+
         // **************************************************************************************************
 
         #endregion
