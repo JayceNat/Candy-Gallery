@@ -62,6 +62,7 @@ namespace CandyGallery.Interface
             Cursor.Current = Cursor;
             UserSettings = temporaryUserSettings;
             InitializeComponent();
+            picBxUserAvatar.Cursor = Cursors.Hand;
 
             if (string.IsNullOrWhiteSpace(UserSettings.StartFolderPath) || !Directory.Exists(UserSettings.StartFolderPath))
             {
@@ -167,14 +168,23 @@ namespace CandyGallery.Interface
             }
 
             lblUsername.Text = styledUsername;
-            if (UserSettings.UserAvatarKey <= imageListAvatars.Images.Count)
+            var customAvatarLocation = Path.Combine(Directory.GetCurrentDirectory() + "\\CandyGalleryUserSettings\\", UserSettings.UserName + @"_CustomAvatar");
+            if (UserSettings.UsingCustomAvatar && File.Exists(customAvatarLocation))
             {
-                picBxUserAvatar.Image = imageListAvatars.Images[UserSettings.UserAvatarKey - 1];
+                picBxUserAvatar.ImageLocation = customAvatarLocation;
             }
             else
             {
-                UserSettings.UserAvatarKey = 1;
-                picBxUserAvatar.Image = imageListAvatars.Images[0];
+                UserSettings.UsingCustomAvatar = false;
+                if (UserSettings.UserAvatarKey <= imageListAvatars.Images.Count)
+                {
+                    picBxUserAvatar.Image = imageListAvatars.Images[UserSettings.UserAvatarKey - 1];
+                }
+                else
+                {
+                    UserSettings.UserAvatarKey = 1;
+                    picBxUserAvatar.Image = imageListAvatars.Images[0];
+                }
             }
 
             if (UserSettings.SidePanelCollapsed)
@@ -308,18 +318,12 @@ namespace CandyGallery.Interface
 
         private void Settings_Click(object sender, EventArgs e)
         {
-            using (var settings = new CandySettingsWindow())
-            {
-                settings.ShowDialog();
-                if (UserSettings.PerSessionSettings.ResetCandyGallery)
-                {
-                    Close();
-                }
-                UserSettings.UserName = Program.CandyGalleryWindow.UserSettings.UserName;
-                UserSettings.Pass = Program.CandyGalleryWindow.UserSettings.Pass;
-            }
+            OpenSettings();
+        }
 
-            btnRandomize.Focus();
+        private void UserAvatar_Click(object sender, EventArgs e)
+        {
+            OpenSettings();
         }
 
         private void MultiRandomizer_Click(object sender, EventArgs e)
@@ -1085,6 +1089,22 @@ namespace CandyGallery.Interface
             }
 
             Update();
+        }
+
+        public void OpenSettings()
+        {
+            using (var settings = new CandySettingsWindow())
+            {
+                settings.ShowDialog();
+                if (UserSettings.PerSessionSettings.ResetCandyGallery)
+                {
+                    Close();
+                }
+                UserSettings.UserName = Program.CandyGalleryWindow.UserSettings.UserName;
+                UserSettings.Pass = Program.CandyGalleryWindow.UserSettings.Pass;
+            }
+
+            btnRandomize.Focus();
         }
 
         #region Current Media Handling

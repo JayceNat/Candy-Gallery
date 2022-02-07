@@ -731,6 +731,7 @@ namespace CandyGallery.Interface
             this.picBxUserAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBxUserAvatar.TabIndex = 18;
             this.picBxUserAvatar.TabStop = false;
+            this.picBxUserAvatar.Click += new System.EventHandler(this.UserAvatar_Click);
             // 
             // tblLPBottomControlStripLower
             // 

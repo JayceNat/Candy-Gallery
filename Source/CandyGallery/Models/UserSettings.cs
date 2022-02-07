@@ -19,6 +19,8 @@ namespace CandyGallery.Models
 
         public int UserAvatarKey { get; set; } = 1;
 
+        public bool UsingCustomAvatar { get; set; } = false;
+
         [XmlArray(nameof(UserFavorites))]
         [XmlArrayItem(nameof(UserFavorite))]
         public List<UserFavorite> UserFavorites { get; set; } = new List<UserFavorite>();
