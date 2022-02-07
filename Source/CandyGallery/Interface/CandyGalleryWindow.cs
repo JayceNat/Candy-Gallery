@@ -168,7 +168,7 @@ namespace CandyGallery.Interface
             }
 
             lblUsername.Text = styledUsername;
-            var customAvatarLocation = Path.Combine(Directory.GetCurrentDirectory() + "\\CandyGalleryUserSettings\\", UserSettings.UserName + @"_CustomAvatar");
+            var customAvatarLocation = Path.Combine(Application.StartupPath + "\\CandyGalleryUserSettings\\", UserSettings.UserName + @"_CustomAvatar");
             if (UserSettings.UsingCustomAvatar && File.Exists(customAvatarLocation))
             {
                 picBxUserAvatar.ImageLocation = customAvatarLocation;

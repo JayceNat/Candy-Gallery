@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CandyGallery.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="StackBlur, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StackBlur.1.1.0\lib\netstandard2.0\StackBlur.dll</HintPath>
@@ -151,7 +154,6 @@
     <EmbeddedResource Include="Interface\LoginWindow.resx">
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="Cursor.ani">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -140,8 +140,10 @@ namespace CandyGallery.Interface
                 {
                     Program.CandyGalleryWindow.UserSettings.UsingCustomAvatar = true;
                     var user = Program.CandyGalleryWindow.UserSettings.UserName;
+                    var appPath = Application.StartupPath;
                     var settingsFolder = "\\CandyGalleryUserSettings\\";
-                    File.Copy(dialog.FileName, Path.Combine(Directory.GetCurrentDirectory() + settingsFolder, user + @"_CustomAvatar"), true);
+                    Directory.CreateDirectory(appPath + settingsFolder);
+                    File.Copy(dialog.FileName, Path.Combine(appPath + settingsFolder, user + @"_CustomAvatar"), true);
                     picBxUserAvatar.ImageLocation = dialog.FileName;
                     Program.CandyGalleryWindow.picBxUserAvatar.ImageLocation = dialog.FileName;
                     //var box = new Form();
@@ -178,7 +180,7 @@ namespace CandyGallery.Interface
         private void ExportUserSettings_Click(object sender, EventArgs e)
         {
             var file =
-                $"{Application.StartupPath}\\CandyGalleryUserSettings\\{Program.CandyGalleryWindow.UserSettings.UserName.ToLower()}\\{Program.CandyGalleryWindow.UserSettings.UserName.ToLower()}_CandyGalleryUserSettings.xml";
+                $"{Application.StartupPath}\\CandyGalleryUserSettings\\{Program.CandyGalleryWindow.UserSettings.UserName.ToLower()}_CandyGalleryUserSettings.xml";
             if (File.Exists(file))
             {
                 if (MessageBox.Show($@"WARNING: Altering the settings file incorrectly in any way may corrupt the whole file!" + "\n\n" + "Note: this file does not contain app changes after the most recent login.",
@@ -285,6 +287,10 @@ namespace CandyGallery.Interface
             if (Program.CandyGalleryWindow.UserSettings.UserAvatarKey
                 < Program.CandyGalleryWindow.imageListAvatars.Images.Count)
             {
+                if (Program.CandyGalleryWindow.UserSettings.UsingCustomAvatar)
+                {
+                    Program.CandyGalleryWindow.UserSettings.UsingCustomAvatar = false;
+                }
                 Program.CandyGalleryWindow.UserSettings.UserAvatarKey += 1;
                 picBxUserAvatar.Image =
                     Program.CandyGalleryWindow.imageListAvatars
