@@ -129,7 +129,7 @@ namespace CandyGallery.Interface
             this.tblLPMainForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblLPMainForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tblLPMainForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tblLPMainForm.Size = new System.Drawing.Size(1282, 751);
+            this.tblLPMainForm.Size = new System.Drawing.Size(1282, 717);
             this.tblLPMainForm.TabIndex = 1;
             // 
             // tblLPRightSideControlContainer
@@ -148,7 +148,7 @@ namespace CandyGallery.Interface
             this.tblLPMainForm.SetRowSpan(this.tblLPRightSideControlContainer, 3);
             this.tblLPRightSideControlContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.70241F));
             this.tblLPRightSideControlContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.29759F));
-            this.tblLPRightSideControlContainer.Size = new System.Drawing.Size(122, 747);
+            this.tblLPRightSideControlContainer.Size = new System.Drawing.Size(122, 713);
             this.tblLPRightSideControlContainer.TabIndex = 2;
             // 
             // tblLPRightSideControlContainerInnerLower
@@ -165,7 +165,7 @@ namespace CandyGallery.Interface
             this.tblLPRightSideControlContainerInnerLower.Controls.Add(this.tblLPFilterByContainer, 0, 2);
             this.tblLPRightSideControlContainerInnerLower.Controls.Add(this.tblLPApplyFilterContainer, 0, 1);
             this.tblLPRightSideControlContainerInnerLower.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblLPRightSideControlContainerInnerLower.Location = new System.Drawing.Point(1, 423);
+            this.tblLPRightSideControlContainerInnerLower.Location = new System.Drawing.Point(1, 404);
             this.tblLPRightSideControlContainerInnerLower.Margin = new System.Windows.Forms.Padding(0);
             this.tblLPRightSideControlContainerInnerLower.Name = "tblLPRightSideControlContainerInnerLower";
             this.tblLPRightSideControlContainerInnerLower.RowCount = 12;
@@ -182,7 +182,7 @@ namespace CandyGallery.Interface
             this.tblLPRightSideControlContainerInnerLower.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tblLPRightSideControlContainerInnerLower.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tblLPRightSideControlContainerInnerLower.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblLPRightSideControlContainerInnerLower.Size = new System.Drawing.Size(120, 323);
+            this.tblLPRightSideControlContainerInnerLower.Size = new System.Drawing.Size(120, 308);
             this.tblLPRightSideControlContainerInnerLower.TabIndex = 0;
             // 
             // btnOtherType
@@ -192,7 +192,7 @@ namespace CandyGallery.Interface
             this.btnOtherType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOtherType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
             this.btnOtherType.ForeColor = System.Drawing.Color.Brown;
-            this.btnOtherType.Location = new System.Drawing.Point(2, 274);
+            this.btnOtherType.Location = new System.Drawing.Point(2, 259);
             this.btnOtherType.Margin = new System.Windows.Forms.Padding(2);
             this.btnOtherType.Name = "btnOtherType";
             this.btnOtherType.Size = new System.Drawing.Size(116, 24);
@@ -209,7 +209,7 @@ namespace CandyGallery.Interface
             this.btnVideosType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVideosType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
             this.btnVideosType.ForeColor = System.Drawing.Color.Brown;
-            this.btnVideosType.Location = new System.Drawing.Point(2, 246);
+            this.btnVideosType.Location = new System.Drawing.Point(2, 231);
             this.btnVideosType.Margin = new System.Windows.Forms.Padding(2);
             this.btnVideosType.Name = "btnVideosType";
             this.btnVideosType.Size = new System.Drawing.Size(116, 24);
@@ -226,7 +226,7 @@ namespace CandyGallery.Interface
             this.btnGifType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGifType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
             this.btnGifType.ForeColor = System.Drawing.Color.Brown;
-            this.btnGifType.Location = new System.Drawing.Point(2, 218);
+            this.btnGifType.Location = new System.Drawing.Point(2, 203);
             this.btnGifType.Margin = new System.Windows.Forms.Padding(2);
             this.btnGifType.Name = "btnGifType";
             this.btnGifType.Size = new System.Drawing.Size(116, 24);
@@ -243,7 +243,7 @@ namespace CandyGallery.Interface
             this.btnAllType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAllType.Font = new System.Drawing.Font("Magneto", 9F, System.Drawing.FontStyle.Bold);
             this.btnAllType.ForeColor = System.Drawing.Color.Black;
-            this.btnAllType.Location = new System.Drawing.Point(2, 190);
+            this.btnAllType.Location = new System.Drawing.Point(2, 175);
             this.btnAllType.Margin = new System.Windows.Forms.Padding(2);
             this.btnAllType.Name = "btnAllType";
             this.btnAllType.Size = new System.Drawing.Size(116, 24);
@@ -275,7 +275,7 @@ namespace CandyGallery.Interface
             this.lblTypeSelectionSection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTypeSelectionSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTypeSelectionSection.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblTypeSelectionSection.Location = new System.Drawing.Point(2, 167);
+            this.lblTypeSelectionSection.Location = new System.Drawing.Point(2, 152);
             this.lblTypeSelectionSection.Margin = new System.Windows.Forms.Padding(2);
             this.lblTypeSelectionSection.Name = "lblTypeSelectionSection";
             this.lblTypeSelectionSection.Size = new System.Drawing.Size(116, 19);
@@ -293,7 +293,7 @@ namespace CandyGallery.Interface
             this.chkEnableShortcutType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEnableShortcutType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEnableShortcutType.ForeColor = System.Drawing.Color.Brown;
-            this.chkEnableShortcutType.Location = new System.Drawing.Point(2, 302);
+            this.chkEnableShortcutType.Location = new System.Drawing.Point(2, 287);
             this.chkEnableShortcutType.Margin = new System.Windows.Forms.Padding(2);
             this.chkEnableShortcutType.Name = "chkEnableShortcutType";
             this.chkEnableShortcutType.Size = new System.Drawing.Size(116, 19);
@@ -558,7 +558,7 @@ namespace CandyGallery.Interface
             this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblLPRightSideControlContainerInnerUpper.Size = new System.Drawing.Size(120, 421);
+            this.tblLPRightSideControlContainerInnerUpper.Size = new System.Drawing.Size(120, 402);
             this.tblLPRightSideControlContainerInnerUpper.TabIndex = 1;
             // 
             // btnMultiRandomizer
@@ -749,7 +749,7 @@ namespace CandyGallery.Interface
             this.tblLPBottomControlStripLower.Controls.Add(this.btnGoForward, 4, 0);
             this.tblLPBottomControlStripLower.Controls.Add(this.btnSetPathToParentOfCurrentMedia, 1, 0);
             this.tblLPBottomControlStripLower.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblLPBottomControlStripLower.Location = new System.Drawing.Point(2, 725);
+            this.tblLPBottomControlStripLower.Location = new System.Drawing.Point(2, 691);
             this.tblLPBottomControlStripLower.Margin = new System.Windows.Forms.Padding(2);
             this.tblLPBottomControlStripLower.Name = "tblLPBottomControlStripLower";
             this.tblLPBottomControlStripLower.RowCount = 1;
@@ -769,7 +769,7 @@ namespace CandyGallery.Interface
             this.btnSetPathToFolderOfCurrentMedia.Size = new System.Drawing.Size(42, 20);
             this.btnSetPathToFolderOfCurrentMedia.TabIndex = 4;
             this.btnSetPathToFolderOfCurrentMedia.Text = "@";
-            this.toolTip.SetToolTip(this.btnSetPathToFolderOfCurrentMedia, "Set randomizer path to the path of current media");
+            this.toolTip.SetToolTip(this.btnSetPathToFolderOfCurrentMedia, "Set randomizer path to the folder of current media");
             this.btnSetPathToFolderOfCurrentMedia.UseVisualStyleBackColor = true;
             this.btnSetPathToFolderOfCurrentMedia.Click += new System.EventHandler(this.SetPathToFolderOfCurrentMedia_Click);
             // 
@@ -836,9 +836,9 @@ namespace CandyGallery.Interface
             this.btnSetPathToParentOfCurrentMedia.TabIndex = 2;
             this.btnSetPathToParentOfCurrentMedia.Text = "↑";
             this.btnSetPathToParentOfCurrentMedia.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.toolTip.SetToolTip(this.btnSetPathToParentOfCurrentMedia, "Set the randomizer to the parent folder of the current media");
+            this.toolTip.SetToolTip(this.btnSetPathToParentOfCurrentMedia, "Set the randomizer to the parent folder of the current working directory");
             this.btnSetPathToParentOfCurrentMedia.UseVisualStyleBackColor = true;
-            this.btnSetPathToParentOfCurrentMedia.Click += new System.EventHandler(this.SetPathToParentOfCurrentMedia_Click);
+            this.btnSetPathToParentOfCurrentMedia.Click += new System.EventHandler(this.SetPathToParentFolderOfCurrentPath_Click);
             // 
             // tblLPBottomControlStripUpper
             // 
@@ -854,7 +854,7 @@ namespace CandyGallery.Interface
             this.tblLPBottomControlStripUpper.Controls.Add(this.lblCurrentMediaPath, 2, 0);
             this.tblLPBottomControlStripUpper.Controls.Add(this.btnAddNewFavorite, 1, 0);
             this.tblLPBottomControlStripUpper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblLPBottomControlStripUpper.Location = new System.Drawing.Point(2, 695);
+            this.tblLPBottomControlStripUpper.Location = new System.Drawing.Point(2, 661);
             this.tblLPBottomControlStripUpper.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tblLPBottomControlStripUpper.Name = "tblLPBottomControlStripUpper";
             this.tblLPBottomControlStripUpper.RowCount = 1;
@@ -955,7 +955,7 @@ namespace CandyGallery.Interface
             this.panelPictureBox.Location = new System.Drawing.Point(2, 2);
             this.panelPictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.panelPictureBox.Name = "panelPictureBox";
-            this.panelPictureBox.Size = new System.Drawing.Size(1152, 691);
+            this.panelPictureBox.Size = new System.Drawing.Size(1152, 657);
             this.panelPictureBox.TabIndex = 4;
             // 
             // picBxCandyGallery
@@ -971,7 +971,7 @@ namespace CandyGallery.Interface
             this.picBxCandyGallery.Location = new System.Drawing.Point(0, 0);
             this.picBxCandyGallery.Margin = new System.Windows.Forms.Padding(0);
             this.picBxCandyGallery.Name = "picBxCandyGallery";
-            this.picBxCandyGallery.Size = new System.Drawing.Size(1156, 693);
+            this.picBxCandyGallery.Size = new System.Drawing.Size(1156, 659);
             this.picBxCandyGallery.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBxCandyGallery.TabIndex = 0;
             this.picBxCandyGallery.TabStop = false;
@@ -1040,7 +1040,7 @@ namespace CandyGallery.Interface
             this.toolStripMenuItemOpenMediaLocation,
             this.setAsUserAvatarToolStripMenuItem});
             this.toolStripContextMenuPicturebox.Name = "contextMenuStripViewer";
-            this.toolStripContextMenuPicturebox.Size = new System.Drawing.Size(186, 70);
+            this.toolStripContextMenuPicturebox.Size = new System.Drawing.Size(186, 48);
             // 
             // toolStripMenuItemOpenMediaLocation
             // 
@@ -1073,7 +1073,7 @@ namespace CandyGallery.Interface
             this.tblLPFormBorder.RowCount = 2;
             this.tblLPFormBorder.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblLPFormBorder.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPFormBorder.Size = new System.Drawing.Size(1284, 774);
+            this.tblLPFormBorder.Size = new System.Drawing.Size(1284, 740);
             this.tblLPFormBorder.TabIndex = 2;
             // 
             // tblLPFormTopControls
@@ -1201,7 +1201,7 @@ namespace CandyGallery.Interface
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1284, 774);
+            this.ClientSize = new System.Drawing.Size(1284, 740);
             this.Controls.Add(this.tblLPFormBorder);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

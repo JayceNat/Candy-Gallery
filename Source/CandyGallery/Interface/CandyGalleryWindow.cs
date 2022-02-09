@@ -576,9 +576,7 @@ namespace CandyGallery.Interface
             var currentMedia = lblCurrentMediaPath.Text;
             if (!string.IsNullOrWhiteSpace(currentMedia))
             {
-                chkFilterByUnseen.Checked = false;
-                chkFilterByNewest.Checked = false;
-                chkFilterByOldest.Checked = false;
+                UncheckResultsFilters();
                 ResetFolderTypeButtonsColor();
                 btnAllType.ForeColor = Color.Black;
                 btnAllType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
@@ -600,20 +598,29 @@ namespace CandyGallery.Interface
             btnRandomize.Focus();
         }
 
-        private void SetPathToParentOfCurrentMedia_Click(object sender, EventArgs e)
+        private void SetPathToParentFolderOfCurrentPath_Click(object sender, EventArgs e)
         {
-            var currentMedia = lblCurrentMediaPath.Text;
-            if (!string.IsNullOrWhiteSpace(currentMedia))
+            var currentMediaFolder = UserSettings.PerSessionSettings.CurrentWorkingDirectory;
+            if (!string.IsNullOrWhiteSpace(currentMediaFolder)
+                && Directory.Exists(currentMediaFolder))
             {
-                chkFilterByUnseen.Checked = false;
-                chkFilterByNewest.Checked = false;
-                chkFilterByOldest.Checked = false;
+                var parentFolderPath = Directory.GetParent(currentMediaFolder).FullName;
+                var isSubDirOfStartFolder = parentFolderPath.StartsWith(UserSettings.StartFolderPath);
+
+                UncheckResultsFilters();
                 ResetFolderTypeButtonsColor();
                 btnAllType.ForeColor = Color.Black;
                 btnAllType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
 
-                UserSettings.PerSessionSettings.CurrentWorkingDirectory =
-                    Directory.GetParent(Path.GetDirectoryName(currentMedia)).FullName;
+                if (isSubDirOfStartFolder)
+                {
+                    UserSettings.PerSessionSettings.CurrentWorkingDirectory = parentFolderPath;
+                }
+                else
+                {
+                    UserSettings.PerSessionSettings.CurrentWorkingDirectory = UserSettings.StartFolderPath;
+                }
+
                 UserSettings.PerSessionSettings.NewestMediaList = null;
                 UserSettings.PerSessionSettings.OldestMediaList = null;
             }
