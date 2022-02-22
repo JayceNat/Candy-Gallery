@@ -330,6 +330,11 @@ namespace CandyGallery.Interface
         {
             using (var multiRandom = new CandyMultipleRandomWindow())
             {
+                if (UserSettings.PerSessionSettings.GalleryMaximized)
+                {
+                    multiRandom.WindowState = FormWindowState.Maximized;
+                    multiRandom.FormMaximized = true;
+                }
                 multiRandom.ShowDialog();
             }
 
@@ -993,7 +998,7 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    if (winningItem == picBxCandyGallery.ImageLocation && UserSettings.LimitCurrentMediaCount > 1)
+                    if (listOfItems.Count > 1 && winningItem == picBxCandyGallery.ImageLocation && UserSettings.LimitCurrentMediaCount > 1)
                     {
                         winningItem = GetRandomFileFromListRecursive(listOfItems);
                     }

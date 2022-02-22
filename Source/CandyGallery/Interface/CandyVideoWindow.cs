@@ -42,7 +42,7 @@ namespace CandyGallery.Interface
 
         private void VideoPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
-            if (Program.CandyGalleryWindow.UserSettings.FullscreenVideosOnOpen)
+            if (Program.CandyGalleryWindow.UserSettings.FullscreenVideosOnOpen || Program.CandyGalleryWindow.UserSettings.PerSessionSettings.GalleryMaximized)
             {
                 videoPlayer.fullScreen = true;
             }

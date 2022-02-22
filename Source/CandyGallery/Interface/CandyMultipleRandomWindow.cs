@@ -525,7 +525,7 @@ namespace CandyGallery.Interface
                         DeselectMediaSelection();
                         return true;
                     }
-                    if (FormMaximized)
+                    if (FormMaximized && !Program.CandyGalleryWindow.UserSettings.PerSessionSettings.GalleryMaximized)
                     {
                         MinimizeForm();
                         return true;
