@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml;
@@ -91,9 +92,11 @@ namespace CandyGallery.Interface
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            switch (keyData)
+            var matchedShortcut = Program.CandyGalleryWindow.UserSettings.KeyboardShortcuts.FirstOrDefault(x => x.Key == keyData.ToString());
+            if (matchedShortcut == null) return base.ProcessCmdKey(ref msg, keyData);
+            switch (matchedShortcut.Action)
             {
-                case Keys.Escape:
+                case ShortcutActionType.Escape:
                     Close();
                     return true;
             }

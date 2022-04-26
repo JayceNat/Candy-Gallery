@@ -86,6 +86,7 @@ namespace CandyGallery.Interface
 
         private void ExitVideo_Click(object sender, EventArgs e)
         {
+            Program.CandyGalleryWindow.UserSettings.PerSessionSettings.ChildWindowOpen = false;
             Dispose();
             Close();
         }

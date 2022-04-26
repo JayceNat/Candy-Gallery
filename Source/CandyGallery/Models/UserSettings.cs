@@ -63,6 +63,10 @@ namespace CandyGallery.Models
 
         public int SlideShowSpeed { get; set; } = 5;
 
+        [XmlArray(nameof(KeyboardShortcuts))]
+        [XmlArrayItem(nameof(KeyboardShortcut))]
+        public List<KeyboardShortcut> KeyboardShortcuts { get; set; } = new List<KeyboardShortcut>();
+
         [XmlIgnore]
         public PerSessionSettings PerSessionSettings { get; set; } = new PerSessionSettings();
     }

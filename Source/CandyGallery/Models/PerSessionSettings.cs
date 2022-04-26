@@ -25,6 +25,7 @@ namespace CandyGallery.Models
         public List<string> OldestMediaList { get; set; } = new List<string>();
         public bool LoadedSettingsFileWasEncrypted { get; set; } = true;
         public bool StartFolderMissingOnLoad { get; set; } = false;
+        public bool ChildWindowOpen { get; set; } = false;
         public bool ResetCandyGallery { get; set; } = false;
     }
 }

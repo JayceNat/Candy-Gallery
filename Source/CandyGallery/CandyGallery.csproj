@@ -68,6 +68,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\CandyGalleryHelpers.cs" />
@@ -122,8 +123,10 @@
     </Compile>
     <Compile Include="Models\CandyInterfaceColors.cs" />
     <Compile Include="Models\ImageFilterType.cs" />
+    <Compile Include="Models\ShortcutActionType.cs" />
     <Compile Include="Models\MediaFilterType.cs" />
     <Compile Include="Models\PerSessionSettings.cs" />
+    <Compile Include="Models\KeyboardShortcut.cs" />
     <Compile Include="Models\UserFavorite.cs" />
     <Compile Include="Models\UserSettings.cs" />
     <Compile Include="Program.cs" />

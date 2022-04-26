@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -117,6 +118,7 @@ namespace CandyGallery.Interface
                             }
                         }
 
+                        userSettings = SetKeyboardShortcuts(userSettings);
                         Cursor.Current = cursor;
                         Hide();
                         Program.CandyGalleryWindow = new CandyGalleryWindow(userSettings);
@@ -184,6 +186,251 @@ namespace CandyGallery.Interface
                     return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public Models.UserSettings SetKeyboardShortcuts(Models.UserSettings userSettings)
+        {
+            if (userSettings?.KeyboardShortcuts != null && userSettings.KeyboardShortcuts.Any())
+            {
+                return userSettings;
+            }
+
+            // Setting as Default since no defined Shortcuts
+            userSettings.KeyboardShortcuts = new List<Models.KeyboardShortcut>
+            {
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Escape.ToString(),
+                    Action = Models.ShortcutActionType.Escape
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Enter.ToString(),
+                    Action = Models.ShortcutActionType.Enter
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Space.ToString(),
+                    Action = Models.ShortcutActionType.Randomize
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.A.ToString(),
+                    Action = Models.ShortcutActionType.PreviousImage
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Left.ToString(),
+                    Action = Models.ShortcutActionType.PreviousImage
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D.ToString(),
+                    Action = Models.ShortcutActionType.NextImage
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Right.ToString(),
+                    Action = Models.ShortcutActionType.NextImage
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.W.ToString(),
+                    Action = Models.ShortcutActionType.SetPathToParentOfCurrentMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Up.ToString(),
+                    Action = Models.ShortcutActionType.SetPathToParentOfCurrentMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.S.ToString(),
+                    Action = Models.ShortcutActionType.SetPathToFolderOfCurrentMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Down.ToString(),
+                    Action = Models.ShortcutActionType.SetPathToFolderOfCurrentMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Oem3.ToString(),
+                    Action = Models.ShortcutActionType.ResetPathToDefault
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Back.ToString(),
+                    Action = Models.ShortcutActionType.ResetPathToDefault
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.F12.ToString(),
+                    Action = Models.ShortcutActionType.FullscreenMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.F11.ToString(),
+                    Action = Models.ShortcutActionType.MaximizeWindow
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.F10.ToString(),
+                    Action = Models.ShortcutActionType.MinimizeWindow
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Z.ToString(),
+                    Action = Models.ShortcutActionType.CandyAllMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.V.ToString(),
+                    Action = Models.ShortcutActionType.CandyVideoFolder
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.C.ToString(),
+                    Action = Models.ShortcutActionType.CandyGifFolder
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.X.ToString(),
+                    Action = Models.ShortcutActionType.CandyOtherFolder
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.F.ToString(),
+                    Action = Models.ShortcutActionType.NewFavoriteFromMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.OemQuestion.ToString(),
+                    Action = Models.ShortcutActionType.ApplyFilter
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.OemPeriod.ToString(),
+                    Action = Models.ShortcutActionType.IncreaseFilterStrength
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Oemcomma.ToString(),
+                    Action = Models.ShortcutActionType.DecreaseFilterStrength
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.U.ToString(),
+                    Action = Models.ShortcutActionType.ViewUnseenMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.I.ToString(),
+                    Action = Models.ShortcutActionType.ViewNewestMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.O.ToString(),
+                    Action = Models.ShortcutActionType.ViewOldestMedia
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.P.ToString(),
+                    Action = Models.ShortcutActionType.Slideshow
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.OemCloseBrackets.ToString(),
+                    Action = Models.ShortcutActionType.IncreaseSlideshowSpeed
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.OemOpenBrackets.ToString(),
+                    Action = Models.ShortcutActionType.DecreaseSlideshowSpeed
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.F1.ToString(),
+                    Action = Models.ShortcutActionType.OpenBlastWindow
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.F2.ToString(),
+                    Action = Models.ShortcutActionType.OpenFavoritesWindow
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.F3.ToString(),
+                    Action = Models.ShortcutActionType.OpenSettingsWindow
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.F4.ToString(),
+                    Action = Models.ShortcutActionType.ToggleSidebar
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D1.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite1
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D2.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite2
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D3.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite3
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D4.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite4
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D5.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite5
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D6.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite6
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D7.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite7
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D8.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite8
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D9.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite9
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.D0.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite10
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.OemMinus.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite11
+                },
+                new Models.KeyboardShortcut
+                {
+                    Key = Keys.Oemplus.ToString(),
+                    Action = Models.ShortcutActionType.LoadFavorite12
+                },
+            };
+
+            return userSettings;
         }
     }
 }
