@@ -521,7 +521,12 @@ namespace CandyGallery.Interface
             {
                 case ShortcutActionType.Enter:
                 case ShortcutActionType.Randomize:
+                case ShortcutActionType.NextImage:
                     btnRandomBlast.PerformClick();
+                    return true;
+                case ShortcutActionType.MaximizeWindow:
+                case ShortcutActionType.FullscreenMedia:
+                    btnMaximizeMultiRandom.PerformClick();
                     return true;
                 case ShortcutActionType.Escape:
                     if (!string.IsNullOrWhiteSpace(CurrentMediaSelection))

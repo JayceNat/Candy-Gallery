@@ -51,10 +51,10 @@ namespace CandyGallery.Interface
 
         private void ExitSettings_Click(object sender, EventArgs e)
         {
-            CloseSettings();
+            CloseWindow();
         }
 
-        private void CloseSettings()
+        private void CloseWindow()
         {
             Program.CandyGalleryWindow.UserSettings.PerSessionSettings.ChildWindowOpen = false;
             Close();
@@ -264,8 +264,7 @@ namespace CandyGallery.Interface
                 };
 
                 Program.CandyGalleryWindow.UserSettings = newUserSettings;
-                Program.CandyGalleryWindow.UserSettings.PerSessionSettings.ResetCandyGallery = true;
-                CloseSettings();
+                CloseWindow();
             }
         }
 
@@ -280,7 +279,7 @@ namespace CandyGallery.Interface
             switch (matchedShortcut.Action)
             {
                 case ShortcutActionType.Escape:
-                    CloseSettings();
+                    CloseWindow();
                     return true;
             }
 
