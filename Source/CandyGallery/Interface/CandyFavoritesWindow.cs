@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CandyGallery.Helpers;
@@ -411,6 +412,7 @@ namespace CandyGallery.Interface
 
         private void ExitFavorites_Click(object sender, EventArgs e)
         {
+            Program.CandyGalleryWindow.UserSettings.PerSessionSettings.ChildWindowOpen = false;
             NullAllPictureBoxImages();
             Dispose();
             Close();
@@ -549,17 +551,21 @@ namespace CandyGallery.Interface
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            switch (keyData)
+            var matchedShortcut = Program.CandyGalleryWindow.UserSettings.KeyboardShortcuts.FirstOrDefault(x => x.Key == keyData.ToString());
+            if (matchedShortcut == null) return base.ProcessCmdKey(ref msg, keyData);
+            switch (matchedShortcut.Action)
             {
-                case Keys.Right:
-                case Keys.D:
+                case ShortcutActionType.Enter:
+                case ShortcutActionType.Randomize:
+                    btnViewFavorite.PerformClick();
+                    return true;
+                case ShortcutActionType.NextImage:
                     btnNextFavorite.PerformClick();
                     return true;
-                case Keys.Left:
-                case Keys.A:
+                case ShortcutActionType.PreviousImage:
                     btnLastFavorite.PerformClick();
                     return true;
-                case Keys.Escape:
+                case ShortcutActionType.Escape:
                     btnExitFavorites.PerformClick();
                     return true;
             }

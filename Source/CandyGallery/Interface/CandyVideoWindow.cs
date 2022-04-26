@@ -71,8 +71,7 @@ namespace CandyGallery.Interface
 
                 if (keyCode == Keys.Escape && !videoPlayer.fullScreen)
                 {
-                    Dispose();
-                    Close();
+                    CloseWindow();
                     return true;
                 }
             }
@@ -85,6 +84,11 @@ namespace CandyGallery.Interface
         }
 
         private void ExitVideo_Click(object sender, EventArgs e)
+        {
+            CloseWindow();
+        }
+
+        private void CloseWindow()
         {
             Program.CandyGalleryWindow.UserSettings.PerSessionSettings.ChildWindowOpen = false;
             Dispose();
