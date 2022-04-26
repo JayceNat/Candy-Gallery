@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.Windows.Input;
 using CandyGallery.Helpers;
 using CandyGallery.Models;
 using CandyGallery.Serialization;
@@ -31,6 +32,7 @@ namespace CandyGallery.Interface
         public static string VideosFolderName = CandyGalleryFolderName + @"\CandyGalleryVideos\";
         public static string OtherFolderName = CandyGalleryFolderName + @"\CandyGalleryOther\";
         public readonly RNGCryptoServiceProvider Rand = new RNGCryptoServiceProvider();
+        public KeyConverter keyConverter = new KeyConverter();
         [DllImport("user32.dll")] public static extern bool ReleaseCapture();
         [DllImport("user32.dll")] public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
@@ -335,6 +337,7 @@ namespace CandyGallery.Interface
                     multiRandom.WindowState = FormWindowState.Maximized;
                     multiRandom.FormMaximized = true;
                 }
+                UserSettings.PerSessionSettings.ChildWindowOpen = true;
                 multiRandom.ShowDialog();
             }
 
@@ -345,6 +348,7 @@ namespace CandyGallery.Interface
         {
             using (var favoritesWindow = new CandyFavoritesWindow())
             {
+                UserSettings.PerSessionSettings.ChildWindowOpen = true;
                 favoritesWindow.ShowDialog();
             }
 
@@ -1107,6 +1111,7 @@ namespace CandyGallery.Interface
         {
             using (var settings = new CandySettingsWindow())
             {
+                UserSettings.PerSessionSettings.ChildWindowOpen = true;
                 settings.ShowDialog();
                 if (UserSettings.PerSessionSettings.ResetCandyGallery)
                 {
@@ -1245,6 +1250,7 @@ namespace CandyGallery.Interface
             if (CandyGalleryHelpers.IsVideoTypeMedia(itemPath) || CandyGalleryHelpers.IsShortcutTypeMedia(itemPath))
             {
                 var videoPlayer = new CandyVideoWindow();
+                UserSettings.PerSessionSettings.ChildWindowOpen = true;
                 if (CandyGalleryHelpers.IsVideoTypeMedia(itemPath))
                 {
                     videoPlayer.videoPlayer.URL = itemPath;
@@ -1698,9 +1704,12 @@ namespace CandyGallery.Interface
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (!UserSettings.PerSessionSettings.EnableHotKeys) return base.ProcessCmdKey(ref msg, keyData);
-            switch (keyData)
+            if (UserSettings.PerSessionSettings.ChildWindowOpen) return base.ProcessCmdKey(ref msg, keyData);
+            var matchedShortcut = UserSettings.KeyboardShortcuts.FirstOrDefault(x => x.Key == keyData.ToString());
+            if (matchedShortcut == null) return base.ProcessCmdKey(ref msg, keyData);
+            switch (matchedShortcut.Action)
             {
-                case Keys.Escape:
+                case ShortcutActionType.Escape:
                     if (UserSettings.PerSessionSettings.PictureBoxMaximized)
                     {
                         CloseMaxWindow();
@@ -1713,29 +1722,25 @@ namespace CandyGallery.Interface
                     }
                     Close();
                     return true;
-                case Keys.Left:
-                case Keys.A:
-                    btnGoBack.PerformClick();
+                case ShortcutActionType.Randomize:
+                    btnRandomize.PerformClick();
                     return true;
-                case Keys.Right:
-                case Keys.D:
+                case ShortcutActionType.NextImage:
                     btnGoForward.PerformClick();
                     return true;
-                case Keys.Up:
-                case Keys.W:
+                case ShortcutActionType.PreviousImage:
+                    btnGoBack.PerformClick();
+                    return true;
+                case ShortcutActionType.SetPathToParentOfCurrentMedia:
                     btnSetPathToParentOfCurrentMedia.PerformClick();
                     return true;
-                case Keys.Down:
-                case Keys.S:
+                case ShortcutActionType.SetPathToFolderOfCurrentMedia:
                     btnSetPathToFolderOfCurrentMedia.PerformClick();
                     return true;
-                case Keys.Back:
-                case Keys.R:
-                case Keys.NumPad1:
+                case ShortcutActionType.ResetPathToDefault:
                     btnResetPathToDefault.PerformClick();
                     return true;
-                case Keys.NumPad0:
-                case Keys.F:
+                case ShortcutActionType.FullscreenMedia:
                     if (UserSettings.PerSessionSettings.PictureBoxMaximized)
                     {
                         btnRandomize.PerformClick();
@@ -1743,116 +1748,147 @@ namespace CandyGallery.Interface
                     }
                     btnMaximize.PerformClick();
                     return true;
-                case Keys.NumPad3:
-                case Keys.V:
+                case ShortcutActionType.MaximizeWindow:
+                    btnMaximizeGallery.PerformClick();
+                    return true;
+                case ShortcutActionType.MinimizeWindow:
+                    btnMinimizeGallery.PerformClick();
+                    return true;
+                case ShortcutActionType.CandyAllMedia:
+                    btnAllType.PerformClick();
+                    return true;
+                case ShortcutActionType.CandyVideoFolder:
                     if (!UserSettings.PerSessionSettings.UserHasVideosFolder) return true;
                     btnVideosType.PerformClick();
-                    btnRandomize.PerformClick();
                     return true;
-                case Keys.P:
-                    chkEnableShortcutType.Checked = !chkEnableShortcutType.Checked;
-                    return true;
-                case Keys.B:
-                    chkApplyImageFilter.Checked = !chkApplyImageFilter.Checked;
-                    return true;
-                case Keys.H:
-                    chkSlideShow.Checked = !(chkSlideShow.Checked);
-                    return true;
-                case Keys.Q:
-                case Keys.Subtract:
-                    btnSlideSpeedDown.PerformClick();
-                    return true;
-                case Keys.E:
-                case Keys.Add:
-                    btnSlideSpeedUp.PerformClick();
-                    return true;
-                case Keys.X:
-                    chkApplyImageFilter.Checked = !(chkApplyImageFilter.Checked);
-                    return true;
-                case Keys.M:
-                    btnViewFavorites.PerformClick();
-                    return true;
-                case Keys.G:
+                case ShortcutActionType.CandyGifFolder:
                     if (!UserSettings.PerSessionSettings.UserHasGifsFolder) return true;
                     btnGifType.PerformClick();
-                    btnRandomize.PerformClick();
                     return true;
-                case Keys.L:
-                    chkFilterByNewest.Checked = !(chkFilterByNewest.Checked);
-                    btnRandomize.PerformClick();
+                case ShortcutActionType.CandyOtherFolder:
+                    if (!UserSettings.PerSessionSettings.UserHasOtherFolder) return true;
+                    btnOtherType.PerformClick();
                     return true;
-                case Keys.D1:
+                case ShortcutActionType.NewFavoriteFromMedia:
+                    btnAddNewFavorite.PerformClick();
+                    return true;
+                case ShortcutActionType.SetMediaAsAvatar:
+                    setAsUserAvatarToolStripMenuItem.PerformClick();
+                    return true;
+                case ShortcutActionType.ApplyFilter:
+                    chkApplyImageFilter.Checked = !chkApplyImageFilter.Checked;
+                    return true;
+                case ShortcutActionType.IncreaseFilterStrength:
+                    btnFilterStrengthUp.PerformClick();
+                    return true;
+                case ShortcutActionType.DecreaseFilterStrength:
+                    btnFilterStrengthDown.PerformClick();
+                    return true;
+                case ShortcutActionType.ViewUnseenMedia:
+                    chkFilterByUnseen.Checked = !chkFilterByUnseen.Checked;
+                    return true;
+                case ShortcutActionType.ViewNewestMedia:
+                    chkFilterByNewest.Checked = !chkFilterByNewest.Checked;
+                    return true;
+                case ShortcutActionType.ViewOldestMedia:
+                    chkFilterByOldest.Checked = !chkFilterByOldest.Checked;
+                    return true;
+                case ShortcutActionType.ViewShortcutTypeMedia:
+                    chkEnableShortcutType.Checked = !chkEnableShortcutType.Checked;
+                    return true;
+                case ShortcutActionType.Slideshow:
+                    chkSlideShow.Checked = !(chkSlideShow.Checked);
+                    return true;
+                case ShortcutActionType.IncreaseSlideshowSpeed:
+                    btnSlideSpeedUp.PerformClick();
+                    return true;
+                case ShortcutActionType.DecreaseSlideshowSpeed:
+                    btnSlideSpeedDown.PerformClick();
+                    return true;
+                case ShortcutActionType.OpenBlastWindow:
+                    btnMultiRandomizer.PerformClick();
+                    return true;
+                case ShortcutActionType.OpenFavoritesWindow:
+                    btnViewFavorites.PerformClick();
+                    return true;
+                case ShortcutActionType.OpenSettingsWindow:
+                    btnSettings.PerformClick();
+                    return true;
+                case ShortcutActionType.ToggleSidebar:
+                    btnShowCollapseSideBar.PerformClick();
+                    return true;
+                case ShortcutActionType.LoadFavorite1:
                     DisplayFavoriteByIndex(1);
                     return true;
-                case Keys.D2:
+                case ShortcutActionType.LoadFavorite2:
                     DisplayFavoriteByIndex(2);
                     return true;
-                case Keys.D3:
+                case ShortcutActionType.LoadFavorite3:
                     DisplayFavoriteByIndex(3);
                     return true;
-                case Keys.D4:
+                case ShortcutActionType.LoadFavorite4:
                     DisplayFavoriteByIndex(4);
                     return true;
-                case Keys.D5:
+                case ShortcutActionType.LoadFavorite5:
                     DisplayFavoriteByIndex(5);
                     return true;
-                case Keys.D6:
+                case ShortcutActionType.LoadFavorite6:
                     DisplayFavoriteByIndex(6);
                     return true;
-                case Keys.D7:
+                case ShortcutActionType.LoadFavorite7:
                     DisplayFavoriteByIndex(7);
                     return true;
-                case Keys.D8:
+                case ShortcutActionType.LoadFavorite8:
                     DisplayFavoriteByIndex(8);
                     return true;
-                case Keys.D9:
+                case ShortcutActionType.LoadFavorite9:
                     DisplayFavoriteByIndex(9);
                     return true;
-                case Keys.D0:
+                case ShortcutActionType.LoadFavorite10:
                     DisplayFavoriteByIndex(10);
                     return true;
-                case Keys.OemMinus:
+                case ShortcutActionType.LoadFavorite11:
                     DisplayFavoriteByIndex(11);
                     return true;
-                case Keys.Oemplus:
+                case ShortcutActionType.LoadFavorite12:
                     DisplayFavoriteByIndex(12);
                     return true;
-                case Keys.F1:
+                case ShortcutActionType.OverwriteFavorite1:
                     SetFavoriteAtNumber(1);
-                    break;
-                case Keys.F2:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite2:
                     SetFavoriteAtNumber(2);
-                    break;
-                case Keys.F3:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite3:
                     SetFavoriteAtNumber(3);
-                    break;
-                case Keys.F4:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite4:
                     SetFavoriteAtNumber(4);
-                    break;
-                case Keys.F5:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite5:
                     SetFavoriteAtNumber(5);
-                    break;
-                case Keys.F6:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite6:
                     SetFavoriteAtNumber(6);
-                    break;
-                case Keys.F7:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite7:
                     SetFavoriteAtNumber(7);
-                    break;
-                case Keys.F8:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite8:
                     SetFavoriteAtNumber(8);
-                    break;
-                case Keys.F9:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite9:
                     SetFavoriteAtNumber(9);
-                    break;
-                case Keys.F10:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite10:
                     SetFavoriteAtNumber(10);
-                    break;
-                case Keys.F11:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite11:
                     SetFavoriteAtNumber(11);
-                    break;
-                case Keys.F12:
+                    return true;
+                case ShortcutActionType.OverwriteFavorite12:
                     SetFavoriteAtNumber(12);
-                    break;
+                    return true;
             }
 
             return base.ProcessCmdKey(ref msg, keyData);

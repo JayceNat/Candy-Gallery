@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -161,6 +162,7 @@ namespace CandyGallery.Interface
 
         private void ExitMultiRandom_Click(object sender, EventArgs e)
         {
+            Program.CandyGalleryWindow.UserSettings.PerSessionSettings.ChildWindowOpen = false;
             Dispose();
             Close();
         }
@@ -513,13 +515,15 @@ namespace CandyGallery.Interface
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            switch (keyData)
+            var matchedShortcut = Program.CandyGalleryWindow.UserSettings.KeyboardShortcuts.FirstOrDefault(x => x.Key == keyData.ToString());
+            if (matchedShortcut == null) return base.ProcessCmdKey(ref msg, keyData);
+            switch (matchedShortcut.Action)
             {
-                case Keys.Enter:
-                case Keys.Space:
+                case ShortcutActionType.Enter:
+                case ShortcutActionType.Randomize:
                     btnRandomBlast.PerformClick();
                     return true;
-                case Keys.Escape:
+                case ShortcutActionType.Escape:
                     if (!string.IsNullOrWhiteSpace(CurrentMediaSelection))
                     {
                         DeselectMediaSelection();

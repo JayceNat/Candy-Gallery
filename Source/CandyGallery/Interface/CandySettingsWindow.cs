@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CandyGallery.Helpers;
@@ -50,6 +51,12 @@ namespace CandyGallery.Interface
 
         private void ExitSettings_Click(object sender, EventArgs e)
         {
+            CloseSettings();
+        }
+
+        private void CloseSettings()
+        {
+            Program.CandyGalleryWindow.UserSettings.PerSessionSettings.ChildWindowOpen = false;
             Close();
         }
 
@@ -258,7 +265,7 @@ namespace CandyGallery.Interface
 
                 Program.CandyGalleryWindow.UserSettings = newUserSettings;
                 Program.CandyGalleryWindow.UserSettings.PerSessionSettings.ResetCandyGallery = true;
-                Close();
+                CloseSettings();
             }
         }
 
@@ -268,10 +275,12 @@ namespace CandyGallery.Interface
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            switch (keyData)
+            var matchedShortcut = Program.CandyGalleryWindow.UserSettings.KeyboardShortcuts.FirstOrDefault(x => x.Key == keyData.ToString());
+            if (matchedShortcut == null) return base.ProcessCmdKey(ref msg, keyData);
+            switch (matchedShortcut.Action)
             {
-                case Keys.Escape:
-                    Close();
+                case ShortcutActionType.Escape:
+                    CloseSettings();
                     return true;
             }
 
