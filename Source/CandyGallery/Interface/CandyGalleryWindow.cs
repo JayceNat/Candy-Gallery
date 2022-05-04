@@ -149,14 +149,7 @@ namespace CandyGallery.Interface
             {
                 lblCurrentMediaPath.Text = UserSettings.PerSessionSettings.BackList[0];
                 UserSettings.PerSessionSettings.BackList.RemoveAt(0);
-                if (CandyGalleryHelpers.IsVideoTypeMedia(lblCurrentMediaPath.Text) || CandyGalleryHelpers.IsShortcutTypeMedia(lblCurrentMediaPath.Text))
-                {
-                    picBxCandyGallery.Image = picBxCandyGallery.InitialImage;
-                }
-                else
-                {
-                    LoadItemIntoViewer(lblCurrentMediaPath.Text);
-                }
+                LoadItemIntoViewer(lblCurrentMediaPath.Text, true);
             }
             else
             {
@@ -589,19 +582,9 @@ namespace CandyGallery.Interface
                 ResetFolderTypeButtonsColor();
                 btnAllType.ForeColor = Color.Black;
                 btnAllType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
-
-                if (CandyGalleryHelpers.IsVideoTypeMedia(currentMedia))
-                {
-                    MessageBox.Show(
-                        @"Error: Cannot set path to current item of video type!",
-                        @"Current Item Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    UserSettings.PerSessionSettings.CurrentWorkingDirectory = Path.GetDirectoryName(currentMedia);
-                    UserSettings.PerSessionSettings.NewestMediaList = null;
-                    UserSettings.PerSessionSettings.OldestMediaList = null;
-                }
+                UserSettings.PerSessionSettings.CurrentWorkingDirectory = Path.GetDirectoryName(currentMedia);
+                UserSettings.PerSessionSettings.NewestMediaList = null;
+                UserSettings.PerSessionSettings.OldestMediaList = null;
             }
 
             btnRandomize.Focus();
@@ -1240,7 +1223,7 @@ namespace CandyGallery.Interface
             UserSettings.PerSessionSettings.OldestMediaList = null;
         }
 
-        public void LoadItemIntoViewer(string itemPath)
+        public void LoadItemIntoViewer(string itemPath, bool initialLoad = false)
         {
             if (UserSettings.UnseenItems != null && UserSettings.UnseenItems.Count > 0)
             {
@@ -1249,26 +1232,27 @@ namespace CandyGallery.Interface
 
             if (CandyGalleryHelpers.IsVideoTypeMedia(itemPath) || CandyGalleryHelpers.IsShortcutTypeMedia(itemPath))
             {
-                var videoPlayer = new CandyVideoWindow();
-                UserSettings.PerSessionSettings.ChildWindowOpen = true;
+                //var videoPlayer = new CandyVideoWindow();
+                //UserSettings.PerSessionSettings.ChildWindowOpen = true;
                 if (CandyGalleryHelpers.IsVideoTypeMedia(itemPath))
                 {
-                    videoPlayer.videoPlayer.URL = itemPath;
-                    picBxCandyGallery.Image = picBxCandyGallery.InitialImage;
-                    videoPlayer.ShowDialog();
+                    //picBxCandyGallery.Image = picBxCandyGallery.InitialImage;
+                    //videoPlayer.ShowDialog();
+                    LoadVideoPlayer(itemPath, initialLoad);
                 }
                 if (CandyGalleryHelpers.IsShortcutTypeMedia(itemPath) && UserSettings.IncludeShortcutMediaType)
                 {
+                    //picBxCandyGallery.Image = picBxCandyGallery.InitialImage;
+                    //videoPlayer.ShowDialog();
                     var shell = new WshShell();
                     var link = (IWshShortcut)shell.CreateShortcut(itemPath);
-                    videoPlayer.videoPlayer.URL = link.TargetPath;
-                    picBxCandyGallery.Image = picBxCandyGallery.InitialImage;
-                    videoPlayer.ShowDialog();
+                    LoadVideoPlayer(link.TargetPath, initialLoad);
                 }
             }
 
             else
             {
+                UnloadVideoPlayer();
                 if (UserSettings.ApplyImageFilter)
                 {
                     var filteredImage = ApplyFilterToImage(itemPath);
@@ -1279,6 +1263,35 @@ namespace CandyGallery.Interface
                     picBxCandyGallery.ImageLocation = itemPath;
                 }
             }
+        }
+
+        public void LoadVideoPlayer(string itemUrl, bool loadPaused = false)
+        {
+            videoPlayer.URL = itemUrl;
+            if (!panelPictureBox.Controls.Contains(videoPlayer))
+            {
+                panelPictureBox.Controls.Remove(picBxCandyGallery);
+                videoPlayer.Show();
+                videoPlayer.Dock = DockStyle.Fill;
+                panelPictureBox.Controls.Add(videoPlayer);
+            }
+            if (loadPaused)
+            {
+                videoPlayer.Ctlcontrols.stop();
+            }
+            btnRandomize.Focus();
+        }
+
+        public void UnloadVideoPlayer()
+        {
+            videoPlayer.Ctlcontrols.pause();
+            if (!panelPictureBox.Controls.Contains(picBxCandyGallery))
+            {
+                panelPictureBox.Controls.Remove(videoPlayer);
+                panelPictureBox.Controls.Add(picBxCandyGallery);
+                videoPlayer.Hide();
+            }
+            btnRandomize.Focus();
         }
 
         public void AddCurrentItemToBackList()
@@ -1399,18 +1412,20 @@ namespace CandyGallery.Interface
             lblCurrentMediaPath.Text = itemPath;
             if (CandyGalleryHelpers.IsVideoTypeMedia(itemPath))
             {
-                videoPlayer.videoPlayer.URL = itemPath;
+                //videoPlayer.videoPlayer.URL = itemPath;
+                LoadVideoPlayer(itemPath);
             }
 
             if (CandyGalleryHelpers.IsShortcutTypeMedia(itemPath))
             {
                 var shell = new WshShell();
                 var link = (IWshShortcut)shell.CreateShortcut(itemPath);
-                videoPlayer.videoPlayer.URL = link.TargetPath;
+                //videoPlayer.videoPlayer.URL = link.TargetPath;
+                LoadVideoPlayer(link.TargetPath);
             }
 
-            picBxCandyGallery.Image = picBxCandyGallery.InitialImage;
-            videoPlayer.ShowDialog();
+            //picBxCandyGallery.Image = picBxCandyGallery.InitialImage;
+            //videoPlayer.ShowDialog();
 
             btnRandomize.Focus();
         }
@@ -1445,7 +1460,6 @@ namespace CandyGallery.Interface
             WindowState = FormWindowState.Maximized;
             picBxCandyGallery.Height = Screen.PrimaryScreen.Bounds.Height;
             picBxCandyGallery.Width = Screen.PrimaryScreen.Bounds.Width;
-            Cursor.Hide();
         }
 
         public void CloseMaxWindow()
@@ -1701,6 +1715,15 @@ namespace CandyGallery.Interface
 
         // **************************************************************************************************
 
+        public void ProcessVideoPlayerCmdKey(object sender, AxWMPLib._WMPOCXEvents_KeyDownEvent e)
+        {
+            if (e.nKeyCode == 27)
+            {
+                videoPlayer.fullScreen = false;
+                CloseMaxWindow();
+            }
+        }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (!UserSettings.PerSessionSettings.EnableHotKeys) return base.ProcessCmdKey(ref msg, keyData);
@@ -1906,6 +1929,7 @@ namespace CandyGallery.Interface
         {
             var cursor = Cursor.Current;
             Cursor.Current = Cursors.WaitCursor;
+            UnloadVideoPlayer();
             if (UserSettings.PreserveSessionHistory)
             {
                 AddCurrentItemToBackList();

@@ -298,7 +298,7 @@ namespace CandyGallery.Interface
             this.lblCandySettings.Location = new System.Drawing.Point(30, 0);
             this.lblCandySettings.Margin = new System.Windows.Forms.Padding(0);
             this.lblCandySettings.Name = "lblCandySettings";
-            this.lblCandySettings.Size = new System.Drawing.Size(294, 18);
+            this.lblCandySettings.Size = new System.Drawing.Size(293, 18);
             this.lblCandySettings.TabIndex = 32;
             this.lblCandySettings.Text = "Candy Settings";
             this.lblCandySettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -311,10 +311,10 @@ namespace CandyGallery.Interface
             this.btnExitSettings.FlatAppearance.BorderSize = 0;
             this.btnExitSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExitSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitSettings.Location = new System.Drawing.Point(326, 1);
+            this.btnExitSettings.Location = new System.Drawing.Point(325, 1);
             this.btnExitSettings.Margin = new System.Windows.Forms.Padding(0);
             this.btnExitSettings.Name = "btnExitSettings";
-            this.btnExitSettings.Size = new System.Drawing.Size(46, 18);
+            this.btnExitSettings.Size = new System.Drawing.Size(47, 18);
             this.btnExitSettings.TabIndex = 33;
             this.btnExitSettings.Text = "X";
             this.btnExitSettings.UseVisualStyleBackColor = false;
@@ -326,7 +326,7 @@ namespace CandyGallery.Interface
             this.tblLPFormTopControls.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tblLPFormTopControls.ColumnCount = 2;
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblLPFormTopControls.Controls.Add(this.tblLPTitleContainer, 0, 0);
@@ -353,7 +353,7 @@ namespace CandyGallery.Interface
             this.tblLPTitleContainer.Name = "tblLPTitleContainer";
             this.tblLPTitleContainer.RowCount = 1;
             this.tblLPTitleContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPTitleContainer.Size = new System.Drawing.Size(324, 18);
+            this.tblLPTitleContainer.Size = new System.Drawing.Size(323, 18);
             this.tblLPTitleContainer.TabIndex = 10;
             this.tblLPTitleContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CandySettingsWindow_MouseDown);
             // 
@@ -422,6 +422,7 @@ namespace CandyGallery.Interface
             this.chkOpenVideosFullscreen.Text = "Open Videos Fullscreen";
             this.chkOpenVideosFullscreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkOpenVideosFullscreen.UseVisualStyleBackColor = false;
+            this.chkOpenVideosFullscreen.Visible = false;
             this.chkOpenVideosFullscreen.CheckedChanged += new System.EventHandler(this.OpenVideosFullscreen_CheckedChanged);
             // 
             // btnClearHistory
