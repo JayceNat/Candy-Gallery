@@ -55,6 +55,7 @@ namespace CandyGallery.Interface
             this.btnFilterStrengthUp = new System.Windows.Forms.Button();
             this.chkApplyImageFilter = new System.Windows.Forms.CheckBox();
             this.tblLPRightSideControlContainerInnerUpper = new System.Windows.Forms.TableLayoutPanel();
+            this.videoPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnMultiRandomizer = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
             this.btnViewFavorites = new System.Windows.Forms.Button();
@@ -98,6 +99,7 @@ namespace CandyGallery.Interface
             this.tblLPFilterByContainer.SuspendLayout();
             this.tblLPApplyFilterContainer.SuspendLayout();
             this.tblLPRightSideControlContainerInnerUpper.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.videoPlayer)).BeginInit();
             this.tblLPSlideShowSpeedContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBxUserAvatar)).BeginInit();
             this.tblLPBottomControlStripLower.SuspendLayout();
@@ -534,6 +536,7 @@ namespace CandyGallery.Interface
             this.tblLPRightSideControlContainerInnerUpper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.6319F));
             this.tblLPRightSideControlContainerInnerUpper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.80368F));
             this.tblLPRightSideControlContainerInnerUpper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.56442F));
+            this.tblLPRightSideControlContainerInnerUpper.Controls.Add(this.videoPlayer, 1, 10);
             this.tblLPRightSideControlContainerInnerUpper.Controls.Add(this.btnMultiRandomizer, 1, 2);
             this.tblLPRightSideControlContainerInnerUpper.Controls.Add(this.lblUsername, 0, 0);
             this.tblLPRightSideControlContainerInnerUpper.Controls.Add(this.btnViewFavorites, 1, 3);
@@ -560,6 +563,18 @@ namespace CandyGallery.Interface
             this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblLPRightSideControlContainerInnerUpper.Size = new System.Drawing.Size(120, 402);
             this.tblLPRightSideControlContainerInnerUpper.TabIndex = 1;
+            // 
+            // videoPlayer
+            // 
+            this.videoPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoPlayer.Enabled = true;
+            this.videoPlayer.Location = new System.Drawing.Point(26, 329);
+            this.videoPlayer.Name = "videoPlayer";
+            this.videoPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoPlayer.OcxState")));
+            this.videoPlayer.Size = new System.Drawing.Size(70, 87);
+            this.videoPlayer.TabIndex = 39;
+            this.videoPlayer.Visible = false;
+            this.videoPlayer.KeyDownEvent += new AxWMPLib._WMPOCXEvents_KeyDownEventHandler(this.ProcessVideoPlayerCmdKey);
             // 
             // btnMultiRandomizer
             // 
@@ -1220,6 +1235,7 @@ namespace CandyGallery.Interface
             this.tblLPApplyFilterContainer.PerformLayout();
             this.tblLPRightSideControlContainerInnerUpper.ResumeLayout(false);
             this.tblLPRightSideControlContainerInnerUpper.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.videoPlayer)).EndInit();
             this.tblLPSlideShowSpeedContainer.ResumeLayout(false);
             this.tblLPSlideShowSpeedContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBxUserAvatar)).EndInit();
@@ -1298,6 +1314,7 @@ namespace CandyGallery.Interface
         private Button btnMultiRandomizer;
         private Button btnOtherType;
         private ToolStripMenuItem setAsUserAvatarToolStripMenuItem;
+        public AxWMPLib.AxWindowsMediaPlayer videoPlayer;
     }
 }
 
