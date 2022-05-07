@@ -1745,6 +1745,7 @@ namespace CandyGallery.Interface
                     }
                     Close();
                     return true;
+                case ShortcutActionType.Enter:
                 case ShortcutActionType.Randomize:
                     btnRandomize.PerformClick();
                     return true;
