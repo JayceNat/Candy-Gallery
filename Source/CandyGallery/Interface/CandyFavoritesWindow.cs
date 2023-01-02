@@ -526,7 +526,7 @@ namespace CandyGallery.Interface
             {
                 if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
                 {
-                    pictureBox.Image = Program.CandyGalleryWindow.ApplyFilterToImage(favorite.FullPath) ?? errorImg;
+                    pictureBox.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(favorite.FullPath) ?? errorImg;
                 }
                 else
                 {

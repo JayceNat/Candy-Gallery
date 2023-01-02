@@ -55,6 +55,7 @@ namespace CandyGallery.Interface
             this.btnFilterStrengthUp = new System.Windows.Forms.Button();
             this.chkApplyImageFilter = new System.Windows.Forms.CheckBox();
             this.tblLPRightSideControlContainerInnerUpper = new System.Windows.Forms.TableLayoutPanel();
+            this.btnBrowse = new System.Windows.Forms.Button();
             this.videoPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnMultiRandomizer = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
@@ -88,6 +89,7 @@ namespace CandyGallery.Interface
             this.toolStripContextMenuPicturebox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemOpenMediaLocation = new System.Windows.Forms.ToolStripMenuItem();
             this.setAsUserAvatarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tblLPFormBorder = new System.Windows.Forms.TableLayoutPanel();
             this.tblLPFormTopControls = new System.Windows.Forms.TableLayoutPanel();
             this.tblLPTitleContainer = new System.Windows.Forms.TableLayoutPanel();
@@ -536,6 +538,7 @@ namespace CandyGallery.Interface
             this.tblLPRightSideControlContainerInnerUpper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.6319F));
             this.tblLPRightSideControlContainerInnerUpper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.80368F));
             this.tblLPRightSideControlContainerInnerUpper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.56442F));
+            this.tblLPRightSideControlContainerInnerUpper.Controls.Add(this.btnBrowse, 1, 9);
             this.tblLPRightSideControlContainerInnerUpper.Controls.Add(this.videoPlayer, 1, 10);
             this.tblLPRightSideControlContainerInnerUpper.Controls.Add(this.btnMultiRandomizer, 1, 2);
             this.tblLPRightSideControlContainerInnerUpper.Controls.Add(this.lblUsername, 0, 0);
@@ -558,20 +561,37 @@ namespace CandyGallery.Interface
             this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tblLPRightSideControlContainerInnerUpper.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblLPRightSideControlContainerInnerUpper.Size = new System.Drawing.Size(120, 402);
             this.tblLPRightSideControlContainerInnerUpper.TabIndex = 1;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.BackColor = System.Drawing.Color.Black;
+            this.btnBrowse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowse.Font = new System.Drawing.Font("Magneto", 8.2F, System.Drawing.FontStyle.Bold);
+            this.btnBrowse.ForeColor = System.Drawing.Color.Brown;
+            this.btnBrowse.Location = new System.Drawing.Point(25, 304);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(72, 26);
+            this.btnBrowse.TabIndex = 40;
+            this.btnBrowse.Text = "Browse";
+            this.toolTip.SetToolTip(this.btnBrowse, "Open the folder browser window");
+            this.btnBrowse.UseVisualStyleBackColor = false;
+            this.btnBrowse.Click += new System.EventHandler(this.Browse_Click);
             // 
             // videoPlayer
             // 
             this.videoPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.videoPlayer.Enabled = true;
-            this.videoPlayer.Location = new System.Drawing.Point(26, 329);
+            this.videoPlayer.Location = new System.Drawing.Point(26, 335);
             this.videoPlayer.Name = "videoPlayer";
             this.videoPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoPlayer.OcxState")));
-            this.videoPlayer.Size = new System.Drawing.Size(70, 87);
+            this.videoPlayer.Size = new System.Drawing.Size(70, 81);
             this.videoPlayer.TabIndex = 39;
             this.videoPlayer.Visible = false;
             this.videoPlayer.KeyDownEvent += new AxWMPLib._WMPOCXEvents_KeyDownEventHandler(this.ProcessVideoPlayerCmdKey);
@@ -1053,9 +1073,10 @@ namespace CandyGallery.Interface
             this.toolStripContextMenuPicturebox.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStripContextMenuPicturebox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemOpenMediaLocation,
-            this.setAsUserAvatarToolStripMenuItem});
+            this.setAsUserAvatarToolStripMenuItem,
+            this.openBrowserToolStripMenuItem});
             this.toolStripContextMenuPicturebox.Name = "contextMenuStripViewer";
-            this.toolStripContextMenuPicturebox.Size = new System.Drawing.Size(186, 48);
+            this.toolStripContextMenuPicturebox.Size = new System.Drawing.Size(186, 70);
             // 
             // toolStripMenuItemOpenMediaLocation
             // 
@@ -1072,6 +1093,14 @@ namespace CandyGallery.Interface
             this.setAsUserAvatarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.setAsUserAvatarToolStripMenuItem.Text = "Set as User Avatar...";
             this.setAsUserAvatarToolStripMenuItem.Click += new System.EventHandler(this.SetAsUserAvatarToolStripMenuItem_Click);
+            // 
+            // openBrowserToolStripMenuItem
+            // 
+            this.openBrowserToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.openBrowserToolStripMenuItem.Name = "openBrowserToolStripMenuItem";
+            this.openBrowserToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.openBrowserToolStripMenuItem.Text = "Open Browser Here...";
+            this.openBrowserToolStripMenuItem.Click += new System.EventHandler(this.OpenBrowserToolStripMenuItem_Click);
             // 
             // tblLPFormBorder
             // 
@@ -1315,6 +1344,8 @@ namespace CandyGallery.Interface
         private Button btnOtherType;
         private ToolStripMenuItem setAsUserAvatarToolStripMenuItem;
         public AxWMPLib.AxWindowsMediaPlayer videoPlayer;
+        private ToolStripMenuItem openBrowserToolStripMenuItem;
+        private Button btnBrowse;
     }
 }
 
