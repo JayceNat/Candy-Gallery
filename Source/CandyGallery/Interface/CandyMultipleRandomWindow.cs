@@ -93,21 +93,21 @@ namespace CandyGallery.Interface
 
             if (Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter)
             {
-                picBx1.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath1) ?? errorImg;
-                picBx2.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath2) ?? errorImg;
-                picBx3.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath3) ?? errorImg;
-                picBx4.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath4) ?? errorImg;
-                picBx5.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath5) ?? errorImg;
-                picBx6.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath6) ?? errorImg;
-                picBx7.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath7) ?? errorImg;
-                picBx8.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath8) ?? errorImg;
-                picBx9.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath9) ?? errorImg;
-                picBx10.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath10) ?? errorImg;
-                picBx11.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath11) ?? errorImg;
-                picBx12.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath12) ?? errorImg;
-                picBx13.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath13) ?? errorImg;
-                picBx14.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath14) ?? errorImg;
-                picBx15.Image = Program.CandyGalleryWindow.ApplyFilterToImage(itemFullPath15) ?? errorImg;
+                picBx1.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath1) ?? errorImg;
+                picBx2.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath2) ?? errorImg;
+                picBx3.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath3) ?? errorImg;
+                picBx4.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath4) ?? errorImg;
+                picBx5.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath5) ?? errorImg;
+                picBx6.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath6) ?? errorImg;
+                picBx7.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath7) ?? errorImg;
+                picBx8.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath8) ?? errorImg;
+                picBx9.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath9) ?? errorImg;
+                picBx10.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath10) ?? errorImg;
+                picBx11.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath11) ?? errorImg;
+                picBx12.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath12) ?? errorImg;
+                picBx13.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath13) ?? errorImg;
+                picBx14.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath14) ?? errorImg;
+                picBx15.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(itemFullPath15) ?? errorImg;
             }
             else
             {

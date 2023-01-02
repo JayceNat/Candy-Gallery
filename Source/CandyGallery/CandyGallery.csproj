@@ -85,6 +85,12 @@
     <Compile Include="Interface\CandyKeyboardShortcutWindow.Designer.cs">
       <DependentUpon>CandyKeyboardShortcutWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface\CandyFolderBrowserWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\CandyFolderBrowserWindow.Designer.cs">
+      <DependentUpon>CandyFolderBrowserWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface\CandyMultipleRandomWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interface\CandyKeyboardShortcutWindow.resx">
       <DependentUpon>CandyKeyboardShortcutWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\CandyFolderBrowserWindow.resx">
+      <DependentUpon>CandyFolderBrowserWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interface\CandyMultipleRandomWindow.resx">
       <DependentUpon>CandyMultipleRandomWindow.cs</DependentUpon>

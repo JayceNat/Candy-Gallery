@@ -316,6 +316,23 @@ namespace CandyGallery.Interface
             OpenSettings();
         }
 
+        private void Browse_Click(object sender, EventArgs e)
+        {
+            using (var folderBrowser = new CandyFolderBrowserWindow())
+            {
+                folderBrowser.FolderPathToLoad = Program.CandyGalleryWindow.UserSettings.StartFolderPath;
+                if (UserSettings.PerSessionSettings.GalleryMaximized)
+                {
+                    folderBrowser.WindowState = FormWindowState.Maximized;
+                    folderBrowser.FormMaximized = true;
+                }
+                UserSettings.PerSessionSettings.ChildWindowOpen = true;
+                folderBrowser.ShowDialog();
+            }
+
+            btnRandomize.Focus();
+        }
+
         private void UserAvatar_Click(object sender, EventArgs e)
         {
             OpenSettings();
@@ -425,7 +442,7 @@ namespace CandyGallery.Interface
                     lblCurrentFilterStrength.Text = UserSettings.ImageFilterAmount.ToString();
                 }
 
-                var filteredImage = ApplyFilterToImage(lblCurrentMediaPath.Text);
+                var filteredImage = ApplyFilterToImageFromPath(lblCurrentMediaPath.Text);
                 picBxCandyGallery.Image = filteredImage ?? picBxCandyGallery.ErrorImage;
             }
 
@@ -450,7 +467,7 @@ namespace CandyGallery.Interface
                     lblCurrentFilterStrength.Text = UserSettings.ImageFilterAmount.ToString();
                 }
 
-                var filteredImage = ApplyFilterToImage(lblCurrentMediaPath.Text);
+                var filteredImage = ApplyFilterToImageFromPath(lblCurrentMediaPath.Text);
                 picBxCandyGallery.Image = filteredImage ?? picBxCandyGallery.ErrorImage;
             }
 
@@ -683,7 +700,7 @@ namespace CandyGallery.Interface
                 btnFilterStrengthUp.Show();
                 btnFilterStrengthDown.Show();
                 lblCurrentFilterStrength.Show();
-                picBxCandyGallery.Image = ApplyFilterToImage(lblCurrentMediaPath.Text);
+                picBxCandyGallery.Image = ApplyFilterToImageFromPath(lblCurrentMediaPath.Text);
             }
             else if (!string.IsNullOrWhiteSpace(lblCurrentMediaPath.Text))
             {
@@ -1075,6 +1092,7 @@ namespace CandyGallery.Interface
             btnSetPathToParentOfCurrentMedia.ForeColor = newUiColor;
             btnMultiRandomizer.ForeColor = newUiColor;
             btnSettings.ForeColor = newUiColor;
+            btnBrowse.ForeColor = newUiColor;
             chkSlideShow.ForeColor = newUiColor;
             chkApplyImageFilter.ForeColor = newUiColor;
             chkFilterByUnseen.ForeColor = newUiColor;
@@ -1255,7 +1273,7 @@ namespace CandyGallery.Interface
                 UnloadVideoPlayer();
                 if (UserSettings.ApplyImageFilter)
                 {
-                    var filteredImage = ApplyFilterToImage(itemPath);
+                    var filteredImage = ApplyFilterToImageFromPath(itemPath);
                     picBxCandyGallery.Image = filteredImage ?? picBxCandyGallery.ErrorImage;
                 }
                 else
@@ -1383,6 +1401,27 @@ namespace CandyGallery.Interface
             if (File.Exists(lblCurrentMediaPath.Text))
             {
                 CandyGalleryHelpers.SetUserAvatarByPath(lblCurrentMediaPath.Text);
+            }
+
+            btnRandomize.Focus();
+        }
+
+        private void OpenBrowserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lblCurrentMediaPath.Text?.Any() == true)
+            {
+                using (var folderBrowser = new CandyFolderBrowserWindow())
+                {
+                    folderBrowser.FolderPathToLoad = Directory.GetParent(lblCurrentMediaPath.Text).FullName;
+                    if (UserSettings.PerSessionSettings.GalleryMaximized)
+                    {
+                        folderBrowser.WindowState = FormWindowState.Maximized;
+                        folderBrowser.FormMaximized = true;
+                    }
+                    UserSettings.PerSessionSettings.ChildWindowOpen = true;
+                    folderBrowser.ShowDialog();
+                }
+
             }
 
             btnRandomize.Focus();
@@ -1667,7 +1706,7 @@ namespace CandyGallery.Interface
 
         // **************************************************************************************************
 
-        public Bitmap ApplyFilterToImage(string path)
+        public Bitmap ApplyFilterToImageFromPath(string path)
         {
             try
             {
@@ -1700,6 +1739,48 @@ namespace CandyGallery.Interface
                 }
 
                 return image;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public Bitmap ApplyFilterToImage(Image image, int reduceStandardAmount = 1)
+        {
+            try
+            {
+                var img = new Bitmap(image);
+                var amount = UserSettings.ImageFilterAmount > 7 ? UserSettings.ImageFilterAmount : 7;
+                //var amount = UserSettings.ImageFilterAmount / reduceStandardAmount;
+                //amount = amount > 1 ? amount : 1;
+
+                switch (UserSettings.ImageFilterType)
+                {
+                    case ImageFilterType.Blur:
+                        StackBlur.StackBlur.Process(img, amount / reduceStandardAmount);
+                        break;
+                    case ImageFilterType.Pixelate:
+                        image = CandyImageFilters.Pixelate(img, amount);
+                        break;
+                    case ImageFilterType.Sobel:
+                        image = CandyImageFilters.SobelEdgeFilter(img, amount);
+                        break;
+                    case ImageFilterType.Grayscale:
+                        CandyImageFilters.Grayscale(img, amount);
+                        break;
+                    case ImageFilterType.Sepia:
+                        CandyImageFilters.Sepia(img, amount);
+                        break;
+                    case ImageFilterType.Negative:
+                        CandyImageFilters.Negative(img);
+                        break;
+                    case ImageFilterType.Colorize:
+                        CandyImageFilters.Colorize(img, amount);
+                        break;
+                }
+
+                return img;
             }
             catch
             {
