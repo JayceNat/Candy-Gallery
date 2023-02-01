@@ -530,7 +530,9 @@ namespace CandyGallery.Interface
                 }
                 else
                 {
-                    pictureBox.Image = null;
+                    var bmpThumb = CandyGalleryHelpers.GetThumbnailFromFile(favorite.FullPath);
+
+                    pictureBox.Image = bmpThumb;
                     pictureBox.ImageLocation = favorite.FullPath;
                 }
             }

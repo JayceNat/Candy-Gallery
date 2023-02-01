@@ -136,7 +136,7 @@ namespace CandyGallery.Interface
             this.tblLPFormContainer.SetColumnSpan(this.tblLPFormTopControls, 5);
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tblLPFormTopControls.Controls.Add(this.btnMaximizeFolderBrowser, 0, 0);
             this.tblLPFormTopControls.Controls.Add(this.btnExitFolderBrowser, 2, 0);
             this.tblLPFormTopControls.Controls.Add(this.tblLPTitleContainer, 0, 0);
@@ -157,7 +157,7 @@ namespace CandyGallery.Interface
             this.btnMaximizeFolderBrowser.FlatAppearance.BorderSize = 0;
             this.btnMaximizeFolderBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximizeFolderBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaximizeFolderBrowser.Location = new System.Drawing.Point(1203, 1);
+            this.btnMaximizeFolderBrowser.Location = new System.Drawing.Point(1202, 1);
             this.btnMaximizeFolderBrowser.Margin = new System.Windows.Forms.Padding(0);
             this.btnMaximizeFolderBrowser.Name = "btnMaximizeFolderBrowser";
             this.btnMaximizeFolderBrowser.Size = new System.Drawing.Size(33, 18);
@@ -173,10 +173,10 @@ namespace CandyGallery.Interface
             this.btnExitFolderBrowser.FlatAppearance.BorderSize = 0;
             this.btnExitFolderBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExitFolderBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitFolderBrowser.Location = new System.Drawing.Point(1237, 1);
+            this.btnExitFolderBrowser.Location = new System.Drawing.Point(1236, 1);
             this.btnExitFolderBrowser.Margin = new System.Windows.Forms.Padding(0);
             this.btnExitFolderBrowser.Name = "btnExitFolderBrowser";
-            this.btnExitFolderBrowser.Size = new System.Drawing.Size(44, 18);
+            this.btnExitFolderBrowser.Size = new System.Drawing.Size(45, 18);
             this.btnExitFolderBrowser.TabIndex = 7;
             this.btnExitFolderBrowser.Text = "X";
             this.btnExitFolderBrowser.UseVisualStyleBackColor = false;
@@ -195,7 +195,7 @@ namespace CandyGallery.Interface
             this.tblLPTitleContainer.Name = "tblLPTitleContainer";
             this.tblLPTitleContainer.RowCount = 1;
             this.tblLPTitleContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPTitleContainer.Size = new System.Drawing.Size(1201, 18);
+            this.tblLPTitleContainer.Size = new System.Drawing.Size(1200, 18);
             this.tblLPTitleContainer.TabIndex = 10;
             this.tblLPTitleContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CandyMultiRandomWindow_MouseDown);
             // 
@@ -209,7 +209,7 @@ namespace CandyGallery.Interface
             this.lblCandyFolderBrowserTitle.Location = new System.Drawing.Point(66, 0);
             this.lblCandyFolderBrowserTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lblCandyFolderBrowserTitle.Name = "lblCandyFolderBrowserTitle";
-            this.lblCandyFolderBrowserTitle.Size = new System.Drawing.Size(1135, 18);
+            this.lblCandyFolderBrowserTitle.Size = new System.Drawing.Size(1134, 18);
             this.lblCandyFolderBrowserTitle.TabIndex = 10;
             this.lblCandyFolderBrowserTitle.Text = "Candy Folder Browser";
             this.lblCandyFolderBrowserTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -314,9 +314,8 @@ namespace CandyGallery.Interface
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CandyFolderBrowserWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Candy Multi-Random";
-            this.TopMost = true;
             this.panelFormBorder.ResumeLayout(false);
             this.tblLPFormContainer.ResumeLayout(false);
             this.tblLPFormTopControls.ResumeLayout(false);

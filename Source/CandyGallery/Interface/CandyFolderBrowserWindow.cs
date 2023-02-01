@@ -159,11 +159,10 @@ namespace CandyGallery.Interface
                         //listViewItem.ImageKey = counter.ToString();
                         //counter++;                        
 
-                        var bmpThumb = GetThumbnailFromFile(cardThumb, (uint)nTileSize);
-                        bmpThumb = Program.CandyGalleryWindow.UserSettings.ApplyImageFilter 
-                            ? ResizeImage(Program.CandyGalleryWindow.ApplyFilterToImage(bmpThumb, 4), nTileSize, nTileSize) 
-                            : ResizeImage(bmpThumb, nTileSize, nTileSize);
-                        
+                        var bmpThumb = CandyGalleryHelpers.GetThumbnailFromFile(cardThumb);
+                        if (Program.CandyGalleryWindow.UserSettings.ApplyImageFilter && Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows) bmpThumb = Program.CandyGalleryWindow.ApplyFilterToImage(bmpThumb, 4);
+                        bmpThumb = CandyGalleryHelpers.ResizeImage(bmpThumb, nTileSize, nTileSize);
+
                         imageList.Images.Add(bmpThumb);
 
                         listViewFolderBrowser.Items.Add(new ListViewItem
@@ -204,10 +203,9 @@ namespace CandyGallery.Interface
                         //listViewItem.ImageKey = counter.ToString();
                         //counter++;
 
-                        var bmpThumb = GetThumbnailFromFile(cardThumb, (uint)nTileSize);
-                        bmpThumb = Program.CandyGalleryWindow.UserSettings.ApplyImageFilter
-                            ? ResizeImage(Program.CandyGalleryWindow.ApplyFilterToImage(bmpThumb, 4), nTileSize, nTileSize)
-                            : ResizeImage(bmpThumb, nTileSize, nTileSize);
+                        var bmpThumb = CandyGalleryHelpers.GetThumbnailFromFile(cardThumb);
+                        if (Program.CandyGalleryWindow.UserSettings.ApplyImageFilter && Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows) bmpThumb = Program.CandyGalleryWindow.ApplyFilterToImage(bmpThumb, 4);
+                        bmpThumb = CandyGalleryHelpers.ResizeImage(bmpThumb, nTileSize, nTileSize);
 
                         imageList.Images.Add(bmpThumb);
 
@@ -420,56 +418,6 @@ namespace CandyGallery.Interface
            
         }
 
-        private Bitmap GetThumbnailFromFile(string sFile, uint nSize)
-        {
-            Bitmap bitmap = null;
-            IntPtr hThumbnail;
-            IShellItem pShellItem;
-            HRESULT hr = SHCreateItemFromParsingName(sFile, IntPtr.Zero, typeof(IShellItem).GUID, out pShellItem);
-            if (hr == HRESULT.S_OK)
-            {
-                IThumbnailProvider pThumbProvider = null;
-                IntPtr pThumbProviderPtr = IntPtr.Zero;
-                hr = pShellItem.BindToHandler(IntPtr.Zero, BHID_ThumbnailHandler, typeof(IThumbnailProvider).GUID, ref pThumbProviderPtr);
-                if (hr == HRESULT.S_OK)
-                {
-                    pThumbProvider = Marshal.GetObjectForIUnknown(pThumbProviderPtr) as IThumbnailProvider;
-                    if (pThumbProvider != null)
-                    {
-                        WTS_ALPHATYPE wtsAlpha;
-                        hr = pThumbProvider.GetThumbnail(nSize, out hThumbnail, out wtsAlpha);
-                        if (hr == HRESULT.S_OK)
-                        {
-                            bitmap = System.Drawing.Image.FromHbitmap(hThumbnail);
-                            DeleteObject(hThumbnail);
-                        }
-                        Marshal.ReleaseComObject(pThumbProvider);
-                    }
-                }
-                Marshal.ReleaseComObject(pShellItem);
-            }
-            return bitmap;
-        }
-
-        public static Bitmap ResizeImage(System.Drawing.Image image, int width, int height)
-        {
-            var destRect = new Rectangle(0, (height - image.Height) / 2, width, image.Height);
-            var destImage = new Bitmap(width, height);
-
-            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-            using (var graphics = Graphics.FromImage(destImage))
-            {
-                graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-                graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel);
-            }
-            return destImage;
-        }
-
         #endregion
 
         #region Keyboard Shortcuts
@@ -490,7 +438,7 @@ namespace CandyGallery.Interface
                     btnMaximizeFolderBrowser.PerformClick();
                     return true;
                 case ShortcutActionType.Escape:
-                    if (!string.IsNullOrWhiteSpace(listViewFolderBrowser.FocusedItem.Text))
+                    if (!string.IsNullOrWhiteSpace(listViewFolderBrowser?.FocusedItem?.Text))
                     {
                         DeselectMediaSelection();
                         return true;

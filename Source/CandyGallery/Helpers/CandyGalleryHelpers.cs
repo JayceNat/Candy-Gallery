@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.IO;
+using static CandyGallery.Interface.CandyFolderBrowserWindow;
+using System.Drawing;
 
 namespace CandyGallery.Helpers
 {
@@ -73,5 +75,55 @@ namespace CandyGallery.Helpers
         }
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern IntPtr LoadCursorFromFile(string path);
+
+        public static Bitmap GetThumbnailFromFile(string sFile, uint nSize = 256)
+        {
+            Bitmap bitmap = null;
+            IntPtr hThumbnail;
+            IShellItem pShellItem;
+            HRESULT hr = SHCreateItemFromParsingName(sFile, IntPtr.Zero, typeof(IShellItem).GUID, out pShellItem);
+            if (hr == HRESULT.S_OK)
+            {
+                IThumbnailProvider pThumbProvider = null;
+                IntPtr pThumbProviderPtr = IntPtr.Zero;
+                hr = pShellItem.BindToHandler(IntPtr.Zero, BHID_ThumbnailHandler, typeof(IThumbnailProvider).GUID, ref pThumbProviderPtr);
+                if (hr == HRESULT.S_OK)
+                {
+                    pThumbProvider = Marshal.GetObjectForIUnknown(pThumbProviderPtr) as IThumbnailProvider;
+                    if (pThumbProvider != null)
+                    {
+                        WTS_ALPHATYPE wtsAlpha;
+                        hr = pThumbProvider.GetThumbnail(nSize, out hThumbnail, out wtsAlpha);
+                        if (hr == HRESULT.S_OK)
+                        {
+                            bitmap = System.Drawing.Image.FromHbitmap(hThumbnail);
+                            DeleteObject(hThumbnail);
+                        }
+                        Marshal.ReleaseComObject(pThumbProvider);
+                    }
+                }
+                Marshal.ReleaseComObject(pShellItem);
+            }
+            return bitmap;
+        }
+
+        public static Bitmap ResizeImage(System.Drawing.Image image, int width = 256, int height = 256)
+        {
+            var destRect = new Rectangle(((width - image.Width) / 2), ((height - image.Height) / 2), image.Width, image.Height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+                //graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+                graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel);
+            }
+            return destImage;
+        }
     }
 }

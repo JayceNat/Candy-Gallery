@@ -219,7 +219,6 @@ namespace CandyGallery.Interface
             this.Name = "LoginWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Candy Login";
-            this.TopMost = true;
             this.tblLPLoginBorder.ResumeLayout(false);
             this.tblLPFormTopControls.ResumeLayout(false);
             this.tblLPTitleContainer.ResumeLayout(false);

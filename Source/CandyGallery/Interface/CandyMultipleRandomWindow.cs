@@ -7,6 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using CandyGallery.Helpers;
 using CandyGallery.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CandyGallery.Interface
 {
@@ -25,7 +26,7 @@ namespace CandyGallery.Interface
         public string CurrentMediaSelection = "";
         public bool FormMaximized = false;
         public int nameLength = "picBx".Length;
-        public Image errorImg = Program.CandyGalleryWindow.picBxCandyGallery.ErrorImage;
+        public System.Drawing.Image errorImg = Program.CandyGalleryWindow.picBxCandyGallery.ErrorImage;
 
         public string itemFullPath1 { get; set; }
         public string itemFullPath2 { get; set; }
@@ -111,21 +112,53 @@ namespace CandyGallery.Interface
             }
             else
             {
-                picBx1.ImageLocation = itemFullPath1;
-                picBx2.ImageLocation = itemFullPath2;
-                picBx3.ImageLocation = itemFullPath3;
-                picBx4.ImageLocation = itemFullPath4;
-                picBx5.ImageLocation = itemFullPath5;
-                picBx6.ImageLocation = itemFullPath6;
-                picBx7.ImageLocation = itemFullPath7;
-                picBx8.ImageLocation = itemFullPath8;
-                picBx9.ImageLocation = itemFullPath9;
-                picBx10.ImageLocation = itemFullPath10;
-                picBx11.ImageLocation = itemFullPath11;
-                picBx12.ImageLocation = itemFullPath12;
-                picBx13.ImageLocation = itemFullPath13;
-                picBx14.ImageLocation = itemFullPath14;
-                picBx15.ImageLocation = itemFullPath15;
+                var bmpThumb1 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath1);
+                var bmpThumb2 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath2);
+                var bmpThumb3 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath3);
+                var bmpThumb4 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath4);
+                var bmpThumb5 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath5);
+                var bmpThumb6 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath6);
+                var bmpThumb7 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath7);
+                var bmpThumb8 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath8);
+                var bmpThumb9 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath9);
+                var bmpThumb10 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath10);
+                var bmpThumb11 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath11);
+                var bmpThumb12 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath12);
+                var bmpThumb13 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath13);
+                var bmpThumb14 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath14);
+                var bmpThumb15 = CandyGalleryHelpers.GetThumbnailFromFile(itemFullPath15);
+
+                picBx1.Image = bmpThumb1;
+                picBx2.Image = bmpThumb2;
+                picBx3.Image = bmpThumb3;
+                picBx4.Image = bmpThumb4;
+                picBx5.Image = bmpThumb5;
+                picBx6.Image = bmpThumb6;
+                picBx7.Image = bmpThumb7;
+                picBx8.Image = bmpThumb8;
+                picBx9.Image = bmpThumb9;
+                picBx10.Image = bmpThumb10;
+                picBx11.Image = bmpThumb11;
+                picBx12.Image = bmpThumb12;
+                picBx13.Image = bmpThumb13;
+                picBx14.Image = bmpThumb14;
+                picBx15.Image = bmpThumb15;
+
+                //picBx1.ImageLocation = itemFullPath1;
+                //picBx2.ImageLocation = itemFullPath2;
+                //picBx3.ImageLocation = itemFullPath3;
+                //picBx4.ImageLocation = itemFullPath4;
+                //picBx5.ImageLocation = itemFullPath5;
+                //picBx6.ImageLocation = itemFullPath6;
+                //picBx7.ImageLocation = itemFullPath7;
+                //picBx8.ImageLocation = itemFullPath8;
+                //picBx9.ImageLocation = itemFullPath9;
+                //picBx10.ImageLocation = itemFullPath10;
+                //picBx11.ImageLocation = itemFullPath11;
+                //picBx12.ImageLocation = itemFullPath12;
+                //picBx13.ImageLocation = itemFullPath13;
+                //picBx14.ImageLocation = itemFullPath14;
+                //picBx15.ImageLocation = itemFullPath15;
             }
             
             Cursor.Current = cursor;

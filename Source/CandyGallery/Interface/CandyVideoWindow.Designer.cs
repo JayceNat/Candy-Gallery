@@ -151,9 +151,8 @@ namespace CandyGallery.Interface
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CandyVideoWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CandyVideoWindow";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CandyViewWindow_FormClosing);
             this.Load += new System.EventHandler(this.CandyViewWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.videoPlayer)).EndInit();

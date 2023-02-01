@@ -30,6 +30,7 @@ namespace CandyGallery.Interface
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CandySettingsWindow));
             this.btnViewUserSettingsFile = new System.Windows.Forms.Button();
             this.lblNewUsername = new System.Windows.Forms.Label();
@@ -59,6 +60,8 @@ namespace CandyGallery.Interface
             this.picBxUserAvatar = new System.Windows.Forms.PictureBox();
             this.chkEncryptSettingsFile = new System.Windows.Forms.CheckBox();
             this.chkApplyFilterToSubWindows = new System.Windows.Forms.CheckBox();
+            this.chkApplyFilterAsThumbnailToMainViewer = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tblLPFormTopControls.SuspendLayout();
             this.tblLPTitleContainer.SuspendLayout();
             this.tblLPSettingsBorder.SuspendLayout();
@@ -115,7 +118,7 @@ namespace CandyGallery.Interface
             "Peach",
             "Sour Blue",
             "Vanilla"});
-            this.cmbBxColorTheme.Location = new System.Drawing.Point(269, 182);
+            this.cmbBxColorTheme.Location = new System.Drawing.Point(269, 194);
             this.cmbBxColorTheme.Name = "cmbBxColorTheme";
             this.cmbBxColorTheme.Size = new System.Drawing.Size(96, 21);
             this.cmbBxColorTheme.Sorted = true;
@@ -129,7 +132,7 @@ namespace CandyGallery.Interface
             this.lblColorTheme.BackColor = System.Drawing.Color.Black;
             this.lblColorTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColorTheme.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblColorTheme.Location = new System.Drawing.Point(194, 185);
+            this.lblColorTheme.Location = new System.Drawing.Point(194, 197);
             this.lblColorTheme.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblColorTheme.Name = "lblColorTheme";
             this.lblColorTheme.Size = new System.Drawing.Size(70, 13);
@@ -244,7 +247,7 @@ namespace CandyGallery.Interface
             this.chkApplyColorToRandomButton.AutoSize = true;
             this.chkApplyColorToRandomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkApplyColorToRandomButton.ForeColor = System.Drawing.Color.IndianRed;
-            this.chkApplyColorToRandomButton.Location = new System.Drawing.Point(214, 205);
+            this.chkApplyColorToRandomButton.Location = new System.Drawing.Point(214, 217);
             this.chkApplyColorToRandomButton.Name = "chkApplyColorToRandomButton";
             this.chkApplyColorToRandomButton.Size = new System.Drawing.Size(151, 17);
             this.chkApplyColorToRandomButton.TabIndex = 28;
@@ -260,7 +263,7 @@ namespace CandyGallery.Interface
             this.lblImageFilterToApply.BackColor = System.Drawing.Color.Black;
             this.lblImageFilterToApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImageFilterToApply.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblImageFilterToApply.Location = new System.Drawing.Point(194, 136);
+            this.lblImageFilterToApply.Location = new System.Drawing.Point(194, 128);
             this.lblImageFilterToApply.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblImageFilterToApply.Name = "lblImageFilterToApply";
             this.lblImageFilterToApply.Size = new System.Drawing.Size(64, 13);
@@ -282,7 +285,7 @@ namespace CandyGallery.Interface
             "Grayscale",
             "Sepia",
             "Negative"});
-            this.cmbBxImageFilterToApply.Location = new System.Drawing.Point(269, 133);
+            this.cmbBxImageFilterToApply.Location = new System.Drawing.Point(269, 125);
             this.cmbBxImageFilterToApply.Name = "cmbBxImageFilterToApply";
             this.cmbBxImageFilterToApply.Size = new System.Drawing.Size(96, 21);
             this.cmbBxImageFilterToApply.TabIndex = 26;
@@ -298,7 +301,7 @@ namespace CandyGallery.Interface
             this.lblCandySettings.Location = new System.Drawing.Point(30, 0);
             this.lblCandySettings.Margin = new System.Windows.Forms.Padding(0);
             this.lblCandySettings.Name = "lblCandySettings";
-            this.lblCandySettings.Size = new System.Drawing.Size(292, 18);
+            this.lblCandySettings.Size = new System.Drawing.Size(290, 18);
             this.lblCandySettings.TabIndex = 32;
             this.lblCandySettings.Text = "Candy Settings";
             this.lblCandySettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -311,10 +314,10 @@ namespace CandyGallery.Interface
             this.btnExitSettings.FlatAppearance.BorderSize = 0;
             this.btnExitSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExitSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitSettings.Location = new System.Drawing.Point(324, 1);
+            this.btnExitSettings.Location = new System.Drawing.Point(322, 1);
             this.btnExitSettings.Margin = new System.Windows.Forms.Padding(0);
             this.btnExitSettings.Name = "btnExitSettings";
-            this.btnExitSettings.Size = new System.Drawing.Size(48, 18);
+            this.btnExitSettings.Size = new System.Drawing.Size(50, 18);
             this.btnExitSettings.TabIndex = 33;
             this.btnExitSettings.Text = "X";
             this.btnExitSettings.UseVisualStyleBackColor = false;
@@ -326,7 +329,7 @@ namespace CandyGallery.Interface
             this.tblLPFormTopControls.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tblLPFormTopControls.ColumnCount = 2;
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblLPFormTopControls.Controls.Add(this.tblLPTitleContainer, 0, 0);
@@ -353,7 +356,7 @@ namespace CandyGallery.Interface
             this.tblLPTitleContainer.Name = "tblLPTitleContainer";
             this.tblLPTitleContainer.RowCount = 1;
             this.tblLPTitleContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPTitleContainer.Size = new System.Drawing.Size(322, 18);
+            this.tblLPTitleContainer.Size = new System.Drawing.Size(320, 18);
             this.tblLPTitleContainer.TabIndex = 10;
             this.tblLPTitleContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CandySettingsWindow_MouseDown);
             // 
@@ -396,7 +399,7 @@ namespace CandyGallery.Interface
             this.chkPreserveHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkPreserveHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkPreserveHistory.ForeColor = System.Drawing.Color.IndianRed;
-            this.chkPreserveHistory.Location = new System.Drawing.Point(214, 237);
+            this.chkPreserveHistory.Location = new System.Drawing.Point(214, 245);
             this.chkPreserveHistory.Margin = new System.Windows.Forms.Padding(1);
             this.chkPreserveHistory.Name = "chkPreserveHistory";
             this.chkPreserveHistory.Size = new System.Drawing.Size(83, 17);
@@ -413,7 +416,7 @@ namespace CandyGallery.Interface
             this.chkOpenVideosFullscreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkOpenVideosFullscreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkOpenVideosFullscreen.ForeColor = System.Drawing.Color.IndianRed;
-            this.chkOpenVideosFullscreen.Location = new System.Drawing.Point(214, 273);
+            this.chkOpenVideosFullscreen.Location = new System.Drawing.Point(214, 281);
             this.chkOpenVideosFullscreen.Margin = new System.Windows.Forms.Padding(1);
             this.chkOpenVideosFullscreen.Name = "chkOpenVideosFullscreen";
             this.chkOpenVideosFullscreen.Size = new System.Drawing.Size(135, 17);
@@ -496,7 +499,7 @@ namespace CandyGallery.Interface
             this.chkEncryptSettingsFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEncryptSettingsFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEncryptSettingsFile.ForeColor = System.Drawing.Color.IndianRed;
-            this.chkEncryptSettingsFile.Location = new System.Drawing.Point(214, 255);
+            this.chkEncryptSettingsFile.Location = new System.Drawing.Point(214, 263);
             this.chkEncryptSettingsFile.Margin = new System.Windows.Forms.Padding(1);
             this.chkEncryptSettingsFile.Name = "chkEncryptSettingsFile";
             this.chkEncryptSettingsFile.Size = new System.Drawing.Size(119, 17);
@@ -513,7 +516,7 @@ namespace CandyGallery.Interface
             this.chkApplyFilterToSubWindows.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkApplyFilterToSubWindows.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkApplyFilterToSubWindows.ForeColor = System.Drawing.Color.IndianRed;
-            this.chkApplyFilterToSubWindows.Location = new System.Drawing.Point(214, 157);
+            this.chkApplyFilterToSubWindows.Location = new System.Drawing.Point(214, 149);
             this.chkApplyFilterToSubWindows.Name = "chkApplyFilterToSubWindows";
             this.chkApplyFilterToSubWindows.Size = new System.Drawing.Size(130, 17);
             this.chkApplyFilterToSubWindows.TabIndex = 36;
@@ -522,12 +525,31 @@ namespace CandyGallery.Interface
             this.chkApplyFilterToSubWindows.UseVisualStyleBackColor = true;
             this.chkApplyFilterToSubWindows.CheckedChanged += new System.EventHandler(this.ApplyFilterToSubWindows_CheckedChanged);
             // 
+            // chkApplyFilterAsThumbnailToMainViewer
+            // 
+            this.chkApplyFilterAsThumbnailToMainViewer.AutoSize = true;
+            this.chkApplyFilterAsThumbnailToMainViewer.Checked = true;
+            this.chkApplyFilterAsThumbnailToMainViewer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkApplyFilterAsThumbnailToMainViewer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkApplyFilterAsThumbnailToMainViewer.ForeColor = System.Drawing.Color.IndianRed;
+            this.chkApplyFilterAsThumbnailToMainViewer.Location = new System.Drawing.Point(214, 166);
+            this.chkApplyFilterAsThumbnailToMainViewer.Name = "chkApplyFilterAsThumbnailToMainViewer";
+            this.chkApplyFilterAsThumbnailToMainViewer.Size = new System.Drawing.Size(115, 17);
+            this.chkApplyFilterAsThumbnailToMainViewer.TabIndex = 37;
+            this.chkApplyFilterAsThumbnailToMainViewer.Text = "Apply as Thumbnail";
+            this.chkApplyFilterAsThumbnailToMainViewer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.chkApplyFilterAsThumbnailToMainViewer, "Improves performance speed when checked, but reduces filtered image quality in ma" +
+        "in viewer");
+            this.chkApplyFilterAsThumbnailToMainViewer.UseVisualStyleBackColor = true;
+            this.chkApplyFilterAsThumbnailToMainViewer.CheckedChanged += new System.EventHandler(this.ApplyFilterAsThumbnailToMainViewer_CheckedChanged);
+            // 
             // CandySettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(375, 340);
+            this.Controls.Add(this.chkApplyFilterAsThumbnailToMainViewer);
             this.Controls.Add(this.btnNextAvatarImage);
             this.Controls.Add(this.btnLastAvatarImage);
             this.Controls.Add(this.btnClearHistory);
@@ -555,9 +577,8 @@ namespace CandyGallery.Interface
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CandySettingsWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Candy Settings";
-            this.TopMost = true;
             this.tblLPFormTopControls.ResumeLayout(false);
             this.tblLPTitleContainer.ResumeLayout(false);
             this.tblLPTitleContainer.PerformLayout();
@@ -598,5 +619,7 @@ namespace CandyGallery.Interface
         private Button btnNextAvatarImage;
         private CheckBox chkEncryptSettingsFile;
         private CheckBox chkApplyFilterToSubWindows;
+        private CheckBox chkApplyFilterAsThumbnailToMainViewer;
+        private ToolTip toolTip1;
     }
 }

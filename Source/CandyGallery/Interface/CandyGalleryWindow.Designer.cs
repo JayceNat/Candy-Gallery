@@ -1252,7 +1252,7 @@ namespace CandyGallery.Interface
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CandyGalleryWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Candy Gallery";
             this.tblLPMainForm.ResumeLayout(false);
             this.tblLPRightSideControlContainer.ResumeLayout(false);
@@ -1291,7 +1291,7 @@ namespace CandyGallery.Interface
         private System.Windows.Forms.Button btnGoBack;
         private System.Windows.Forms.Button btnGoForward;
         private System.Windows.Forms.Button btnSetPathToParentOfCurrentMedia;
-        private System.Windows.Forms.Label lblCurrentMediaPath;
+        public System.Windows.Forms.Label lblCurrentMediaPath;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.TableLayoutPanel tblLPRightSideControlContainerInnerLower;
         private System.Windows.Forms.Label lblTypeSelectionSection;
