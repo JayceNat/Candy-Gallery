@@ -30,13 +30,32 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CandyKeyboardShortcutWindow));
             this.panelFormBorder = new System.Windows.Forms.Panel();
+            this.panelShortcutActions = new System.Windows.Forms.Panel();
+            this.labelPressedKeyInfo = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnSeparator = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblPreviousImageKey = new System.Windows.Forms.Label();
             this.cmbBxPreviousImageKeyboardShortcut = new System.Windows.Forms.ComboBox();
-            this.lblNextImageKey = new System.Windows.Forms.Label();
-            this.cmbBxNextImageKeyboardShortcut = new System.Windows.Forms.ComboBox();
             this.btnViewFavorite1 = new System.Windows.Forms.Button();
             this.btnOpenVidsFolder = new System.Windows.Forms.Button();
+            this.cmbBxNextImageKeyboardShortcut = new System.Windows.Forms.ComboBox();
             this.btnSetGifsFolder = new System.Windows.Forms.Button();
+            this.lblNextImageKey = new System.Windows.Forms.Label();
+            this.btnNextImage = new System.Windows.Forms.Button();
+            this.btnResetCurrentPath = new System.Windows.Forms.Button();
+            this.btnSetPathToCurrentMedia = new System.Windows.Forms.Button();
+            this.btnPreviousImage = new System.Windows.Forms.Button();
+            this.btnSetPathToParentOfMedia = new System.Windows.Forms.Button();
+            this.btnOpenFavorites = new System.Windows.Forms.Button();
+            this.btnCancelSettings = new System.Windows.Forms.Button();
+            this.btnSaveSettings = new System.Windows.Forms.Button();
             this.panelKeyboardButtons = new System.Windows.Forms.Panel();
             this.btnF12Key = new System.Windows.Forms.Button();
             this.btnF11Key = new System.Windows.Forms.Button();
@@ -105,34 +124,15 @@
             this.btnRightSquareBracketKey = new System.Windows.Forms.Button();
             this.btnQKey = new System.Windows.Forms.Button();
             this.btnLeftSquareBracketKey = new System.Windows.Forms.Button();
-            this.btnResetCurrentPath = new System.Windows.Forms.Button();
-            this.btnPreviousImage = new System.Windows.Forms.Button();
-            this.btnOpenFavorites = new System.Windows.Forms.Button();
-            this.btnSetPathToParentOfMedia = new System.Windows.Forms.Button();
-            this.btnSetPathToCurrentMedia = new System.Windows.Forms.Button();
-            this.btnNextImage = new System.Windows.Forms.Button();
             this.tblLPFormTopControls = new System.Windows.Forms.TableLayoutPanel();
             this.btnExitFavorites = new System.Windows.Forms.Button();
             this.tblLPTitleContainer = new System.Windows.Forms.TableLayoutPanel();
             this.lblCandyKeyboardShortcutTitle = new System.Windows.Forms.Label();
-            this.btnCancelSettings = new System.Windows.Forms.Button();
-            this.btnSaveSettings = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelShortcutActions = new System.Windows.Forms.Panel();
-            this.btnSeparator = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelPressedKeyInfo = new System.Windows.Forms.Label();
             this.panelFormBorder.SuspendLayout();
+            this.panelShortcutActions.SuspendLayout();
             this.panelKeyboardButtons.SuspendLayout();
             this.tblLPFormTopControls.SuspendLayout();
             this.tblLPTitleContainer.SuspendLayout();
-            this.panelShortcutActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelFormBorder
@@ -149,6 +149,191 @@
             this.panelFormBorder.Name = "panelFormBorder";
             this.panelFormBorder.Size = new System.Drawing.Size(975, 703);
             this.panelFormBorder.TabIndex = 0;
+            // 
+            // panelShortcutActions
+            // 
+            this.panelShortcutActions.Controls.Add(this.labelPressedKeyInfo);
+            this.panelShortcutActions.Controls.Add(this.button6);
+            this.panelShortcutActions.Controls.Add(this.label4);
+            this.panelShortcutActions.Controls.Add(this.button5);
+            this.panelShortcutActions.Controls.Add(this.label3);
+            this.panelShortcutActions.Controls.Add(this.button4);
+            this.panelShortcutActions.Controls.Add(this.label2);
+            this.panelShortcutActions.Controls.Add(this.button3);
+            this.panelShortcutActions.Controls.Add(this.btnSeparator);
+            this.panelShortcutActions.Controls.Add(this.label1);
+            this.panelShortcutActions.Controls.Add(this.lblPreviousImageKey);
+            this.panelShortcutActions.Controls.Add(this.cmbBxPreviousImageKeyboardShortcut);
+            this.panelShortcutActions.Controls.Add(this.btnViewFavorite1);
+            this.panelShortcutActions.Controls.Add(this.btnOpenVidsFolder);
+            this.panelShortcutActions.Controls.Add(this.cmbBxNextImageKeyboardShortcut);
+            this.panelShortcutActions.Controls.Add(this.btnSetGifsFolder);
+            this.panelShortcutActions.Controls.Add(this.lblNextImageKey);
+            this.panelShortcutActions.Controls.Add(this.btnNextImage);
+            this.panelShortcutActions.Controls.Add(this.btnResetCurrentPath);
+            this.panelShortcutActions.Controls.Add(this.btnSetPathToCurrentMedia);
+            this.panelShortcutActions.Controls.Add(this.btnPreviousImage);
+            this.panelShortcutActions.Controls.Add(this.btnSetPathToParentOfMedia);
+            this.panelShortcutActions.Controls.Add(this.btnOpenFavorites);
+            this.panelShortcutActions.Location = new System.Drawing.Point(110, 57);
+            this.panelShortcutActions.Margin = new System.Windows.Forms.Padding(2);
+            this.panelShortcutActions.Name = "panelShortcutActions";
+            this.panelShortcutActions.Size = new System.Drawing.Size(749, 211);
+            this.panelShortcutActions.TabIndex = 123;
+            // 
+            // labelPressedKeyInfo
+            // 
+            this.labelPressedKeyInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelPressedKeyInfo.AutoSize = true;
+            this.labelPressedKeyInfo.BackColor = System.Drawing.Color.Black;
+            this.labelPressedKeyInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPressedKeyInfo.ForeColor = System.Drawing.Color.IndianRed;
+            this.labelPressedKeyInfo.Location = new System.Drawing.Point(-3, 152);
+            this.labelPressedKeyInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPressedKeyInfo.Name = "labelPressedKeyInfo";
+            this.labelPressedKeyInfo.Size = new System.Drawing.Size(240, 13);
+            this.labelPressedKeyInfo.TabIndex = 118;
+            this.labelPressedKeyInfo.Text = "Click a colored Key to show the mapped Shortcut";
+            this.labelPressedKeyInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Brown;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button6.ForeColor = System.Drawing.Color.Black;
+            this.button6.Location = new System.Drawing.Point(164, 95);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(65, 28);
+            this.button6.TabIndex = 117;
+            this.button6.Text = "D";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Black;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.IndianRed;
+            this.label4.Location = new System.Drawing.Point(98, 103);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 13);
+            this.label4.TabIndex = 116;
+            this.label4.Text = "Next Image:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Visible = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Brown;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.Color.Black;
+            this.button5.Location = new System.Drawing.Point(164, 67);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(65, 28);
+            this.button5.TabIndex = 115;
+            this.button5.Text = "A";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.IndianRed;
+            this.label3.Location = new System.Drawing.Point(79, 75);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.TabIndex = 114;
+            this.label3.Text = "Previous Image:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Visible = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Brown;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button4.ForeColor = System.Drawing.Color.Black;
+            this.button4.Location = new System.Drawing.Point(164, 39);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(65, 28);
+            this.button4.TabIndex = 113;
+            this.button4.Text = "Space";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Black;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.IndianRed;
+            this.label2.Location = new System.Drawing.Point(99, 46);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 112;
+            this.label2.Text = "Randomize:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Black;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.Color.Brown;
+            this.button3.Location = new System.Drawing.Point(164, 11);
+            this.button3.Margin = new System.Windows.Forms.Padding(0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(65, 28);
+            this.button3.TabIndex = 111;
+            this.button3.Text = "Esc";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Visible = false;
+            // 
+            // btnSeparator
+            // 
+            this.btnSeparator.BackColor = System.Drawing.Color.Brown;
+            this.btnSeparator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSeparator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeparator.ForeColor = System.Drawing.Color.Black;
+            this.btnSeparator.Location = new System.Drawing.Point(0, 202);
+            this.btnSeparator.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSeparator.Name = "btnSeparator";
+            this.btnSeparator.Size = new System.Drawing.Size(749, 3);
+            this.btnSeparator.TabIndex = 110;
+            this.btnSeparator.Text = "_";
+            this.btnSeparator.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.IndianRed;
+            this.label1.Location = new System.Drawing.Point(2, 19);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 13);
+            this.label1.TabIndex = 109;
+            this.label1.Text = "Close/Collapse Current Window:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Visible = false;
             // 
             // lblPreviousImageKey
             // 
@@ -177,34 +362,6 @@
             this.cmbBxPreviousImageKeyboardShortcut.Size = new System.Drawing.Size(96, 21);
             this.cmbBxPreviousImageKeyboardShortcut.TabIndex = 105;
             this.cmbBxPreviousImageKeyboardShortcut.Visible = false;
-            // 
-            // lblNextImageKey
-            // 
-            this.lblNextImageKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNextImageKey.AutoSize = true;
-            this.lblNextImageKey.BackColor = System.Drawing.Color.Black;
-            this.lblNextImageKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNextImageKey.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblNextImageKey.Location = new System.Drawing.Point(508, 29);
-            this.lblNextImageKey.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNextImageKey.Name = "lblNextImageKey";
-            this.lblNextImageKey.Size = new System.Drawing.Size(64, 13);
-            this.lblNextImageKey.TabIndex = 104;
-            this.lblNextImageKey.Text = "Next Image:";
-            this.lblNextImageKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblNextImageKey.Visible = false;
-            // 
-            // cmbBxNextImageKeyboardShortcut
-            // 
-            this.cmbBxNextImageKeyboardShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbBxNextImageKeyboardShortcut.BackColor = System.Drawing.Color.LightGray;
-            this.cmbBxNextImageKeyboardShortcut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbBxNextImageKeyboardShortcut.FormattingEnabled = true;
-            this.cmbBxNextImageKeyboardShortcut.Location = new System.Drawing.Point(583, 21);
-            this.cmbBxNextImageKeyboardShortcut.Name = "cmbBxNextImageKeyboardShortcut";
-            this.cmbBxNextImageKeyboardShortcut.Size = new System.Drawing.Size(96, 21);
-            this.cmbBxNextImageKeyboardShortcut.TabIndex = 103;
-            this.cmbBxNextImageKeyboardShortcut.Visible = false;
             // 
             // btnViewFavorite1
             // 
@@ -236,6 +393,18 @@
             this.btnOpenVidsFolder.UseVisualStyleBackColor = false;
             this.btnOpenVidsFolder.Visible = false;
             // 
+            // cmbBxNextImageKeyboardShortcut
+            // 
+            this.cmbBxNextImageKeyboardShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbBxNextImageKeyboardShortcut.BackColor = System.Drawing.Color.LightGray;
+            this.cmbBxNextImageKeyboardShortcut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbBxNextImageKeyboardShortcut.FormattingEnabled = true;
+            this.cmbBxNextImageKeyboardShortcut.Location = new System.Drawing.Point(583, 21);
+            this.cmbBxNextImageKeyboardShortcut.Name = "cmbBxNextImageKeyboardShortcut";
+            this.cmbBxNextImageKeyboardShortcut.Size = new System.Drawing.Size(96, 21);
+            this.cmbBxNextImageKeyboardShortcut.TabIndex = 103;
+            this.cmbBxNextImageKeyboardShortcut.Visible = false;
+            // 
             // btnSetGifsFolder
             // 
             this.btnSetGifsFolder.BackColor = System.Drawing.Color.Black;
@@ -250,6 +419,145 @@
             this.btnSetGifsFolder.Text = "Open Gifs Folder";
             this.btnSetGifsFolder.UseVisualStyleBackColor = false;
             this.btnSetGifsFolder.Visible = false;
+            // 
+            // lblNextImageKey
+            // 
+            this.lblNextImageKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNextImageKey.AutoSize = true;
+            this.lblNextImageKey.BackColor = System.Drawing.Color.Black;
+            this.lblNextImageKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNextImageKey.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblNextImageKey.Location = new System.Drawing.Point(508, 29);
+            this.lblNextImageKey.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNextImageKey.Name = "lblNextImageKey";
+            this.lblNextImageKey.Size = new System.Drawing.Size(64, 13);
+            this.lblNextImageKey.TabIndex = 104;
+            this.lblNextImageKey.Text = "Next Image:";
+            this.lblNextImageKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNextImageKey.Visible = false;
+            // 
+            // btnNextImage
+            // 
+            this.btnNextImage.BackColor = System.Drawing.Color.Black;
+            this.btnNextImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNextImage.ForeColor = System.Drawing.Color.Brown;
+            this.btnNextImage.Location = new System.Drawing.Point(464, 171);
+            this.btnNextImage.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNextImage.Name = "btnNextImage";
+            this.btnNextImage.Size = new System.Drawing.Size(106, 28);
+            this.btnNextImage.TabIndex = 82;
+            this.btnNextImage.Text = "Next Image";
+            this.btnNextImage.UseVisualStyleBackColor = false;
+            this.btnNextImage.Visible = false;
+            // 
+            // btnResetCurrentPath
+            // 
+            this.btnResetCurrentPath.BackColor = System.Drawing.Color.Black;
+            this.btnResetCurrentPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetCurrentPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnResetCurrentPath.ForeColor = System.Drawing.Color.Brown;
+            this.btnResetCurrentPath.Location = new System.Drawing.Point(346, 137);
+            this.btnResetCurrentPath.Margin = new System.Windows.Forms.Padding(0);
+            this.btnResetCurrentPath.Name = "btnResetCurrentPath";
+            this.btnResetCurrentPath.Size = new System.Drawing.Size(106, 28);
+            this.btnResetCurrentPath.TabIndex = 98;
+            this.btnResetCurrentPath.Text = "Reset Path";
+            this.btnResetCurrentPath.UseVisualStyleBackColor = false;
+            this.btnResetCurrentPath.Visible = false;
+            // 
+            // btnSetPathToCurrentMedia
+            // 
+            this.btnSetPathToCurrentMedia.BackColor = System.Drawing.Color.Black;
+            this.btnSetPathToCurrentMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetPathToCurrentMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnSetPathToCurrentMedia.ForeColor = System.Drawing.Color.Brown;
+            this.btnSetPathToCurrentMedia.Location = new System.Drawing.Point(346, 84);
+            this.btnSetPathToCurrentMedia.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSetPathToCurrentMedia.Name = "btnSetPathToCurrentMedia";
+            this.btnSetPathToCurrentMedia.Size = new System.Drawing.Size(106, 28);
+            this.btnSetPathToCurrentMedia.TabIndex = 83;
+            this.btnSetPathToCurrentMedia.Text = "Set Path to Current Media";
+            this.btnSetPathToCurrentMedia.UseVisualStyleBackColor = false;
+            this.btnSetPathToCurrentMedia.Visible = false;
+            // 
+            // btnPreviousImage
+            // 
+            this.btnPreviousImage.BackColor = System.Drawing.Color.Black;
+            this.btnPreviousImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreviousImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnPreviousImage.ForeColor = System.Drawing.Color.Brown;
+            this.btnPreviousImage.Location = new System.Drawing.Point(464, 128);
+            this.btnPreviousImage.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPreviousImage.Name = "btnPreviousImage";
+            this.btnPreviousImage.Size = new System.Drawing.Size(106, 28);
+            this.btnPreviousImage.TabIndex = 97;
+            this.btnPreviousImage.Text = "Previous Image";
+            this.btnPreviousImage.UseVisualStyleBackColor = false;
+            this.btnPreviousImage.Visible = false;
+            // 
+            // btnSetPathToParentOfMedia
+            // 
+            this.btnSetPathToParentOfMedia.BackColor = System.Drawing.Color.Black;
+            this.btnSetPathToParentOfMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetPathToParentOfMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnSetPathToParentOfMedia.ForeColor = System.Drawing.Color.Brown;
+            this.btnSetPathToParentOfMedia.Location = new System.Drawing.Point(464, 84);
+            this.btnSetPathToParentOfMedia.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSetPathToParentOfMedia.Name = "btnSetPathToParentOfMedia";
+            this.btnSetPathToParentOfMedia.Size = new System.Drawing.Size(106, 28);
+            this.btnSetPathToParentOfMedia.TabIndex = 85;
+            this.btnSetPathToParentOfMedia.Text = "Set Path to Parent of Media";
+            this.btnSetPathToParentOfMedia.UseVisualStyleBackColor = false;
+            this.btnSetPathToParentOfMedia.Visible = false;
+            // 
+            // btnOpenFavorites
+            // 
+            this.btnOpenFavorites.BackColor = System.Drawing.Color.Black;
+            this.btnOpenFavorites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenFavorites.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnOpenFavorites.ForeColor = System.Drawing.Color.Brown;
+            this.btnOpenFavorites.Location = new System.Drawing.Point(580, 84);
+            this.btnOpenFavorites.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOpenFavorites.Name = "btnOpenFavorites";
+            this.btnOpenFavorites.Size = new System.Drawing.Size(106, 28);
+            this.btnOpenFavorites.TabIndex = 86;
+            this.btnOpenFavorites.Text = "Open Favorites";
+            this.btnOpenFavorites.UseVisualStyleBackColor = false;
+            this.btnOpenFavorites.Visible = false;
+            // 
+            // btnCancelSettings
+            // 
+            this.btnCancelSettings.BackColor = System.Drawing.Color.Black;
+            this.btnCancelSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelSettings.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelSettings.ForeColor = System.Drawing.Color.Brown;
+            this.btnCancelSettings.Location = new System.Drawing.Point(762, 669);
+            this.btnCancelSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancelSettings.Name = "btnCancelSettings";
+            this.btnCancelSettings.Size = new System.Drawing.Size(97, 24);
+            this.btnCancelSettings.TabIndex = 108;
+            this.btnCancelSettings.Text = "Cancel";
+            this.btnCancelSettings.UseVisualStyleBackColor = false;
+            this.btnCancelSettings.Visible = false;
+            this.btnCancelSettings.Click += new System.EventHandler(this.btnCancelSettings_Click);
+            // 
+            // btnSaveSettings
+            // 
+            this.btnSaveSettings.BackColor = System.Drawing.Color.Brown;
+            this.btnSaveSettings.FlatAppearance.BorderSize = 0;
+            this.btnSaveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveSettings.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveSettings.ForeColor = System.Drawing.Color.Black;
+            this.btnSaveSettings.Location = new System.Drawing.Point(868, 669);
+            this.btnSaveSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSaveSettings.Name = "btnSaveSettings";
+            this.btnSaveSettings.Size = new System.Drawing.Size(97, 24);
+            this.btnSaveSettings.TabIndex = 107;
+            this.btnSaveSettings.Text = "Save";
+            this.btnSaveSettings.UseVisualStyleBackColor = false;
+            this.btnSaveSettings.Visible = false;
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
             // panelKeyboardButtons
             // 
@@ -1331,96 +1639,6 @@
             this.btnLeftSquareBracketKey.UseVisualStyleBackColor = false;
             this.btnLeftSquareBracketKey.Click += new System.EventHandler(this.btnLeftSquareBracketKey_Click);
             // 
-            // btnResetCurrentPath
-            // 
-            this.btnResetCurrentPath.BackColor = System.Drawing.Color.Black;
-            this.btnResetCurrentPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetCurrentPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnResetCurrentPath.ForeColor = System.Drawing.Color.Brown;
-            this.btnResetCurrentPath.Location = new System.Drawing.Point(346, 137);
-            this.btnResetCurrentPath.Margin = new System.Windows.Forms.Padding(0);
-            this.btnResetCurrentPath.Name = "btnResetCurrentPath";
-            this.btnResetCurrentPath.Size = new System.Drawing.Size(106, 28);
-            this.btnResetCurrentPath.TabIndex = 98;
-            this.btnResetCurrentPath.Text = "Reset Path";
-            this.btnResetCurrentPath.UseVisualStyleBackColor = false;
-            this.btnResetCurrentPath.Visible = false;
-            // 
-            // btnPreviousImage
-            // 
-            this.btnPreviousImage.BackColor = System.Drawing.Color.Black;
-            this.btnPreviousImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreviousImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnPreviousImage.ForeColor = System.Drawing.Color.Brown;
-            this.btnPreviousImage.Location = new System.Drawing.Point(464, 128);
-            this.btnPreviousImage.Margin = new System.Windows.Forms.Padding(0);
-            this.btnPreviousImage.Name = "btnPreviousImage";
-            this.btnPreviousImage.Size = new System.Drawing.Size(106, 28);
-            this.btnPreviousImage.TabIndex = 97;
-            this.btnPreviousImage.Text = "Previous Image";
-            this.btnPreviousImage.UseVisualStyleBackColor = false;
-            this.btnPreviousImage.Visible = false;
-            // 
-            // btnOpenFavorites
-            // 
-            this.btnOpenFavorites.BackColor = System.Drawing.Color.Black;
-            this.btnOpenFavorites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenFavorites.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnOpenFavorites.ForeColor = System.Drawing.Color.Brown;
-            this.btnOpenFavorites.Location = new System.Drawing.Point(580, 84);
-            this.btnOpenFavorites.Margin = new System.Windows.Forms.Padding(0);
-            this.btnOpenFavorites.Name = "btnOpenFavorites";
-            this.btnOpenFavorites.Size = new System.Drawing.Size(106, 28);
-            this.btnOpenFavorites.TabIndex = 86;
-            this.btnOpenFavorites.Text = "Open Favorites";
-            this.btnOpenFavorites.UseVisualStyleBackColor = false;
-            this.btnOpenFavorites.Visible = false;
-            // 
-            // btnSetPathToParentOfMedia
-            // 
-            this.btnSetPathToParentOfMedia.BackColor = System.Drawing.Color.Black;
-            this.btnSetPathToParentOfMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetPathToParentOfMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnSetPathToParentOfMedia.ForeColor = System.Drawing.Color.Brown;
-            this.btnSetPathToParentOfMedia.Location = new System.Drawing.Point(464, 84);
-            this.btnSetPathToParentOfMedia.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSetPathToParentOfMedia.Name = "btnSetPathToParentOfMedia";
-            this.btnSetPathToParentOfMedia.Size = new System.Drawing.Size(106, 28);
-            this.btnSetPathToParentOfMedia.TabIndex = 85;
-            this.btnSetPathToParentOfMedia.Text = "Set Path to Parent of Media";
-            this.btnSetPathToParentOfMedia.UseVisualStyleBackColor = false;
-            this.btnSetPathToParentOfMedia.Visible = false;
-            // 
-            // btnSetPathToCurrentMedia
-            // 
-            this.btnSetPathToCurrentMedia.BackColor = System.Drawing.Color.Black;
-            this.btnSetPathToCurrentMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetPathToCurrentMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnSetPathToCurrentMedia.ForeColor = System.Drawing.Color.Brown;
-            this.btnSetPathToCurrentMedia.Location = new System.Drawing.Point(346, 84);
-            this.btnSetPathToCurrentMedia.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSetPathToCurrentMedia.Name = "btnSetPathToCurrentMedia";
-            this.btnSetPathToCurrentMedia.Size = new System.Drawing.Size(106, 28);
-            this.btnSetPathToCurrentMedia.TabIndex = 83;
-            this.btnSetPathToCurrentMedia.Text = "Set Path to Current Media";
-            this.btnSetPathToCurrentMedia.UseVisualStyleBackColor = false;
-            this.btnSetPathToCurrentMedia.Visible = false;
-            // 
-            // btnNextImage
-            // 
-            this.btnNextImage.BackColor = System.Drawing.Color.Black;
-            this.btnNextImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNextImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnNextImage.ForeColor = System.Drawing.Color.Brown;
-            this.btnNextImage.Location = new System.Drawing.Point(464, 171);
-            this.btnNextImage.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNextImage.Name = "btnNextImage";
-            this.btnNextImage.Size = new System.Drawing.Size(106, 28);
-            this.btnNextImage.TabIndex = 82;
-            this.btnNextImage.Text = "Next Image";
-            this.btnNextImage.UseVisualStyleBackColor = false;
-            this.btnNextImage.Visible = false;
-            // 
             // tblLPFormTopControls
             // 
             this.tblLPFormTopControls.BackColor = System.Drawing.Color.Black;
@@ -1490,224 +1708,6 @@
             this.lblCandyKeyboardShortcutTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblCandyKeyboardShortcutTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CandyKeyboardShortcutWindow_MouseDown);
             // 
-            // btnCancelSettings
-            // 
-            this.btnCancelSettings.BackColor = System.Drawing.Color.Black;
-            this.btnCancelSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelSettings.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelSettings.ForeColor = System.Drawing.Color.Brown;
-            this.btnCancelSettings.Location = new System.Drawing.Point(762, 669);
-            this.btnCancelSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.btnCancelSettings.Name = "btnCancelSettings";
-            this.btnCancelSettings.Size = new System.Drawing.Size(97, 24);
-            this.btnCancelSettings.TabIndex = 108;
-            this.btnCancelSettings.Text = "Cancel";
-            this.btnCancelSettings.UseVisualStyleBackColor = false;
-            this.btnCancelSettings.Visible = false;
-            this.btnCancelSettings.Click += new System.EventHandler(this.btnCancelSettings_Click);
-            // 
-            // btnSaveSettings
-            // 
-            this.btnSaveSettings.BackColor = System.Drawing.Color.Brown;
-            this.btnSaveSettings.FlatAppearance.BorderSize = 0;
-            this.btnSaveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveSettings.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveSettings.ForeColor = System.Drawing.Color.Black;
-            this.btnSaveSettings.Location = new System.Drawing.Point(868, 669);
-            this.btnSaveSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSaveSettings.Name = "btnSaveSettings";
-            this.btnSaveSettings.Size = new System.Drawing.Size(97, 24);
-            this.btnSaveSettings.TabIndex = 107;
-            this.btnSaveSettings.Text = "Save";
-            this.btnSaveSettings.UseVisualStyleBackColor = false;
-            this.btnSaveSettings.Visible = false;
-            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.IndianRed;
-            this.label1.Location = new System.Drawing.Point(2, 19);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 13);
-            this.label1.TabIndex = 109;
-            this.label1.Text = "Close/Collapse Current Window:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Visible = false;
-            // 
-            // panelShortcutActions
-            // 
-            this.panelShortcutActions.Controls.Add(this.labelPressedKeyInfo);
-            this.panelShortcutActions.Controls.Add(this.button6);
-            this.panelShortcutActions.Controls.Add(this.label4);
-            this.panelShortcutActions.Controls.Add(this.button5);
-            this.panelShortcutActions.Controls.Add(this.label3);
-            this.panelShortcutActions.Controls.Add(this.button4);
-            this.panelShortcutActions.Controls.Add(this.label2);
-            this.panelShortcutActions.Controls.Add(this.button3);
-            this.panelShortcutActions.Controls.Add(this.btnSeparator);
-            this.panelShortcutActions.Controls.Add(this.label1);
-            this.panelShortcutActions.Controls.Add(this.lblPreviousImageKey);
-            this.panelShortcutActions.Controls.Add(this.cmbBxPreviousImageKeyboardShortcut);
-            this.panelShortcutActions.Controls.Add(this.btnViewFavorite1);
-            this.panelShortcutActions.Controls.Add(this.btnOpenVidsFolder);
-            this.panelShortcutActions.Controls.Add(this.cmbBxNextImageKeyboardShortcut);
-            this.panelShortcutActions.Controls.Add(this.btnSetGifsFolder);
-            this.panelShortcutActions.Controls.Add(this.lblNextImageKey);
-            this.panelShortcutActions.Controls.Add(this.btnNextImage);
-            this.panelShortcutActions.Controls.Add(this.btnResetCurrentPath);
-            this.panelShortcutActions.Controls.Add(this.btnSetPathToCurrentMedia);
-            this.panelShortcutActions.Controls.Add(this.btnPreviousImage);
-            this.panelShortcutActions.Controls.Add(this.btnSetPathToParentOfMedia);
-            this.panelShortcutActions.Controls.Add(this.btnOpenFavorites);
-            this.panelShortcutActions.Location = new System.Drawing.Point(110, 57);
-            this.panelShortcutActions.Margin = new System.Windows.Forms.Padding(2);
-            this.panelShortcutActions.Name = "panelShortcutActions";
-            this.panelShortcutActions.Size = new System.Drawing.Size(749, 211);
-            this.panelShortcutActions.TabIndex = 123;
-            // 
-            // btnSeparator
-            // 
-            this.btnSeparator.BackColor = System.Drawing.Color.Brown;
-            this.btnSeparator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSeparator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeparator.ForeColor = System.Drawing.Color.Black;
-            this.btnSeparator.Location = new System.Drawing.Point(0, 202);
-            this.btnSeparator.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSeparator.Name = "btnSeparator";
-            this.btnSeparator.Size = new System.Drawing.Size(749, 3);
-            this.btnSeparator.TabIndex = 110;
-            this.btnSeparator.Text = "_";
-            this.btnSeparator.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Black;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.Brown;
-            this.button3.Location = new System.Drawing.Point(164, 11);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 28);
-            this.button3.TabIndex = 111;
-            this.button3.Text = "Esc";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.IndianRed;
-            this.label2.Location = new System.Drawing.Point(99, 46);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 112;
-            this.label2.Text = "Randomize:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Visible = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Brown;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(164, 39);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(65, 28);
-            this.button4.TabIndex = 113;
-            this.button4.Text = "Space";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Visible = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Brown;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(164, 67);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(65, 28);
-            this.button5.TabIndex = 115;
-            this.button5.Text = "A";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Black;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.IndianRed;
-            this.label3.Location = new System.Drawing.Point(79, 75);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
-            this.label3.TabIndex = 114;
-            this.label3.Text = "Previous Image:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label3.Visible = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Brown;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(164, 95);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(65, 28);
-            this.button6.TabIndex = 117;
-            this.button6.Text = "D";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Black;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.IndianRed;
-            this.label4.Location = new System.Drawing.Point(98, 103);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 13);
-            this.label4.TabIndex = 116;
-            this.label4.Text = "Next Image:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Visible = false;
-            // 
-            // labelPressedKeyInfo
-            // 
-            this.labelPressedKeyInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelPressedKeyInfo.AutoSize = true;
-            this.labelPressedKeyInfo.BackColor = System.Drawing.Color.Black;
-            this.labelPressedKeyInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPressedKeyInfo.ForeColor = System.Drawing.Color.IndianRed;
-            this.labelPressedKeyInfo.Location = new System.Drawing.Point(-3, 152);
-            this.labelPressedKeyInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelPressedKeyInfo.Name = "labelPressedKeyInfo";
-            this.labelPressedKeyInfo.Size = new System.Drawing.Size(240, 13);
-            this.labelPressedKeyInfo.TabIndex = 118;
-            this.labelPressedKeyInfo.Text = "Click a colored Key to show the mapped Shortcut";
-            this.labelPressedKeyInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // CandyKeyboardShortcutWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1719,16 +1719,15 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CandyKeyboardShortcutWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Candy Keyboard Shortcuts";
-            this.TopMost = true;
             this.panelFormBorder.ResumeLayout(false);
+            this.panelShortcutActions.ResumeLayout(false);
+            this.panelShortcutActions.PerformLayout();
             this.panelKeyboardButtons.ResumeLayout(false);
             this.tblLPFormTopControls.ResumeLayout(false);
             this.tblLPTitleContainer.ResumeLayout(false);
             this.tblLPTitleContainer.PerformLayout();
-            this.panelShortcutActions.ResumeLayout(false);
-            this.panelShortcutActions.PerformLayout();
             this.ResumeLayout(false);
 
         }

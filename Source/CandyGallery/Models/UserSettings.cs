@@ -59,6 +59,8 @@ namespace CandyGallery.Models
 
         public bool ApplyFilterToSubWindows { get; set; } = false;
 
+        public bool ApplyFiltersToMainViewerAsThumbnail { get; set; } = true;
+
         public bool ApplyImageFilter { get; set; } = false;
 
         public int SlideShowSpeed { get; set; } = 5;

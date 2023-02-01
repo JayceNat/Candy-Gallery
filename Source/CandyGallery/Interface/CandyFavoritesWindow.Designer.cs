@@ -68,7 +68,7 @@ namespace CandyGallery.Interface
             this.tblLPFormTopControls.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tblLPFormTopControls.ColumnCount = 2;
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tblLPFormTopControls.Controls.Add(this.btnExitFavorites, 1, 0);
@@ -89,10 +89,10 @@ namespace CandyGallery.Interface
             this.btnExitFavorites.FlatAppearance.BorderSize = 0;
             this.btnExitFavorites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExitFavorites.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitFavorites.Location = new System.Drawing.Point(1236, 1);
+            this.btnExitFavorites.Location = new System.Drawing.Point(1235, 1);
             this.btnExitFavorites.Margin = new System.Windows.Forms.Padding(0);
             this.btnExitFavorites.Name = "btnExitFavorites";
-            this.btnExitFavorites.Size = new System.Drawing.Size(47, 18);
+            this.btnExitFavorites.Size = new System.Drawing.Size(48, 18);
             this.btnExitFavorites.TabIndex = 7;
             this.btnExitFavorites.Text = "X";
             this.btnExitFavorites.UseVisualStyleBackColor = false;
@@ -111,7 +111,7 @@ namespace CandyGallery.Interface
             this.tblLPTitleContainer.Name = "tblLPTitleContainer";
             this.tblLPTitleContainer.RowCount = 1;
             this.tblLPTitleContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPTitleContainer.Size = new System.Drawing.Size(1234, 18);
+            this.tblLPTitleContainer.Size = new System.Drawing.Size(1233, 18);
             this.tblLPTitleContainer.TabIndex = 10;
             this.tblLPTitleContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CandyFavoritesWindow_MouseDown);
             // 
@@ -125,7 +125,7 @@ namespace CandyGallery.Interface
             this.lblCandyFavoritesTitle.Location = new System.Drawing.Point(46, 0);
             this.lblCandyFavoritesTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lblCandyFavoritesTitle.Name = "lblCandyFavoritesTitle";
-            this.lblCandyFavoritesTitle.Size = new System.Drawing.Size(1188, 18);
+            this.lblCandyFavoritesTitle.Size = new System.Drawing.Size(1187, 18);
             this.lblCandyFavoritesTitle.TabIndex = 10;
             this.lblCandyFavoritesTitle.Text = "Candy Favorites";
             this.lblCandyFavoritesTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -388,7 +388,7 @@ namespace CandyGallery.Interface
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CandyFavoritesWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CandyFavoritesWindow";
             this.tblLPFormTopControls.ResumeLayout(false);
             this.tblLPTitleContainer.ResumeLayout(false);

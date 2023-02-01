@@ -141,7 +141,7 @@ namespace CandyGallery.Interface
             this.tblLPFormContainer.SetColumnSpan(this.tblLPFormTopControls, 5);
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tblLPFormTopControls.Controls.Add(this.btnMaximizeMultiRandom, 0, 0);
             this.tblLPFormTopControls.Controls.Add(this.btnExitMultiRandom, 2, 0);
             this.tblLPFormTopControls.Controls.Add(this.tblLPTitleContainer, 0, 0);
@@ -162,7 +162,7 @@ namespace CandyGallery.Interface
             this.btnMaximizeMultiRandom.FlatAppearance.BorderSize = 0;
             this.btnMaximizeMultiRandom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximizeMultiRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaximizeMultiRandom.Location = new System.Drawing.Point(1210, 1);
+            this.btnMaximizeMultiRandom.Location = new System.Drawing.Point(1209, 1);
             this.btnMaximizeMultiRandom.Margin = new System.Windows.Forms.Padding(0);
             this.btnMaximizeMultiRandom.Name = "btnMaximizeMultiRandom";
             this.btnMaximizeMultiRandom.Size = new System.Drawing.Size(33, 18);
@@ -178,10 +178,10 @@ namespace CandyGallery.Interface
             this.btnExitMultiRandom.FlatAppearance.BorderSize = 0;
             this.btnExitMultiRandom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExitMultiRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitMultiRandom.Location = new System.Drawing.Point(1244, 1);
+            this.btnExitMultiRandom.Location = new System.Drawing.Point(1243, 1);
             this.btnExitMultiRandom.Margin = new System.Windows.Forms.Padding(0);
             this.btnExitMultiRandom.Name = "btnExitMultiRandom";
-            this.btnExitMultiRandom.Size = new System.Drawing.Size(37, 18);
+            this.btnExitMultiRandom.Size = new System.Drawing.Size(38, 18);
             this.btnExitMultiRandom.TabIndex = 7;
             this.btnExitMultiRandom.Text = "X";
             this.btnExitMultiRandom.UseVisualStyleBackColor = false;
@@ -200,7 +200,7 @@ namespace CandyGallery.Interface
             this.tblLPTitleContainer.Name = "tblLPTitleContainer";
             this.tblLPTitleContainer.RowCount = 1;
             this.tblLPTitleContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPTitleContainer.Size = new System.Drawing.Size(1208, 18);
+            this.tblLPTitleContainer.Size = new System.Drawing.Size(1207, 18);
             this.tblLPTitleContainer.TabIndex = 10;
             this.tblLPTitleContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CandyMultiRandomWindow_MouseDown);
             // 
@@ -214,7 +214,7 @@ namespace CandyGallery.Interface
             this.lblCandyMultiRandomTitle.Location = new System.Drawing.Point(66, 0);
             this.lblCandyMultiRandomTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lblCandyMultiRandomTitle.Name = "lblCandyMultiRandomTitle";
-            this.lblCandyMultiRandomTitle.Size = new System.Drawing.Size(1142, 18);
+            this.lblCandyMultiRandomTitle.Size = new System.Drawing.Size(1141, 18);
             this.lblCandyMultiRandomTitle.TabIndex = 10;
             this.lblCandyMultiRandomTitle.Text = "Candy Multi-Random";
             this.lblCandyMultiRandomTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -503,7 +503,7 @@ namespace CandyGallery.Interface
             this.addToMainViewerToolStripMenuItem,
             this.setAsUserAvatarToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStripFave";
-            this.contextMenuStrip.Size = new System.Drawing.Size(188, 70);
+            this.contextMenuStrip.Size = new System.Drawing.Size(188, 48);
             // 
             // addToMainViewerToolStripMenuItem
             // 
@@ -529,9 +529,8 @@ namespace CandyGallery.Interface
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CandyMultipleRandomWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Candy Multi-Random";
-            this.TopMost = true;
             this.panelFormBorder.ResumeLayout(false);
             this.tblLPFormContainer.ResumeLayout(false);
             this.tblLPFormTopControls.ResumeLayout(false);

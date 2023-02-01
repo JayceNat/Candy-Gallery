@@ -48,7 +48,7 @@
             this.tblLPFormTopControls.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tblLPFormTopControls.ColumnCount = 2;
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblLPFormTopControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblLPFormTopControls.Controls.Add(this.tblLPTitleContainer, 0, 0);
@@ -76,7 +76,7 @@
             this.tblLPTitleContainer.Name = "tblLPTitleContainer";
             this.tblLPTitleContainer.RowCount = 1;
             this.tblLPTitleContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLPTitleContainer.Size = new System.Drawing.Size(480, 18);
+            this.tblLPTitleContainer.Size = new System.Drawing.Size(479, 18);
             this.tblLPTitleContainer.TabIndex = 10;
             this.tblLPTitleContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CandySettingsViewerWindow_MouseDown);
             // 
@@ -90,7 +90,7 @@
             this.lblCandySettingsFileViewer.Location = new System.Drawing.Point(30, 0);
             this.lblCandySettingsFileViewer.Margin = new System.Windows.Forms.Padding(0);
             this.lblCandySettingsFileViewer.Name = "lblCandySettingsFileViewer";
-            this.lblCandySettingsFileViewer.Size = new System.Drawing.Size(450, 18);
+            this.lblCandySettingsFileViewer.Size = new System.Drawing.Size(449, 18);
             this.lblCandySettingsFileViewer.TabIndex = 32;
             this.lblCandySettingsFileViewer.Text = "Candy Settings Viewer";
             this.lblCandySettingsFileViewer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,10 +103,10 @@
             this.btnExitSettingsViewer.FlatAppearance.BorderSize = 0;
             this.btnExitSettingsViewer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExitSettingsViewer.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitSettingsViewer.Location = new System.Drawing.Point(482, 1);
+            this.btnExitSettingsViewer.Location = new System.Drawing.Point(481, 1);
             this.btnExitSettingsViewer.Margin = new System.Windows.Forms.Padding(0);
             this.btnExitSettingsViewer.Name = "btnExitSettingsViewer";
-            this.btnExitSettingsViewer.Size = new System.Drawing.Size(42, 18);
+            this.btnExitSettingsViewer.Size = new System.Drawing.Size(43, 18);
             this.btnExitSettingsViewer.TabIndex = 33;
             this.btnExitSettingsViewer.Text = "X";
             this.btnExitSettingsViewer.UseVisualStyleBackColor = false;
@@ -187,9 +187,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CandySettingsFileViewerWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Candy Settings: File Viewer";
-            this.TopMost = true;
             this.tblLPFormTopControls.ResumeLayout(false);
             this.tblLPTitleContainer.ResumeLayout(false);
             this.tblLPTitleContainer.PerformLayout();

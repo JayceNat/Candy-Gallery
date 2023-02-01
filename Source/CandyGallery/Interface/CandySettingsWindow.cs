@@ -20,9 +20,11 @@ namespace CandyGallery.Interface
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
         ////////// Used to make form draggable
+        public bool initializingData = false;
 
         public CandySettingsWindow()
         {
+            initializingData = true;
             Cursor.Current = null;
             Cursor = CandyGalleryHelpers.LoadCustomCursor();
             InitializeComponent();
@@ -32,10 +34,12 @@ namespace CandyGallery.Interface
             cmbBxImageFilterToApply.Text = Program.CandyGalleryWindow.UserSettings.ImageFilterType;
             cmbBxColorTheme.Text = Program.CandyGalleryWindow.UserSettings.UserInterfaceColorName;
             chkApplyFilterToSubWindows.Checked = Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows;
+            chkApplyFilterAsThumbnailToMainViewer.Checked = Program.CandyGalleryWindow.UserSettings.ApplyFiltersToMainViewerAsThumbnail;
             chkApplyColorToRandomButton.Checked = Program.CandyGalleryWindow.UserSettings.ApplyColorToRandomizeButton;
             chkPreserveHistory.Checked = Program.CandyGalleryWindow.UserSettings.PreserveSessionHistory;
             chkEncryptSettingsFile.Checked = Program.CandyGalleryWindow.UserSettings.EncryptSettingsFile;
             chkOpenVideosFullscreen.Checked = Program.CandyGalleryWindow.UserSettings.FullscreenVideosOnOpen;
+            initializingData = false;
         }
 
         #region Event Handlers
@@ -63,6 +67,10 @@ namespace CandyGallery.Interface
         private void ImageFilterToApply_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.CandyGalleryWindow.UserSettings.ImageFilterType = cmbBxImageFilterToApply.Text;
+            if (!initializingData && Program.CandyGalleryWindow.UserSettings.ApplyImageFilter && !string.IsNullOrWhiteSpace(Program.CandyGalleryWindow?.lblCurrentMediaPath?.Text))
+            {
+                Program.CandyGalleryWindow.picBxCandyGallery.Image = Program.CandyGalleryWindow.ApplyFilterToImageFromPath(Program.CandyGalleryWindow.lblCurrentMediaPath.Text, Program.CandyGalleryWindow.UserSettings.ApplyFiltersToMainViewerAsThumbnail);
+            }
         }
 
         private void ColorTheme_SelectedIndexChanged(object sender, EventArgs e)
@@ -78,6 +86,12 @@ namespace CandyGallery.Interface
         {
             Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows = chkApplyFilterToSubWindows.Checked;
         }
+
+        private void ApplyFilterAsThumbnailToMainViewer_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.CandyGalleryWindow.UserSettings.ApplyFiltersToMainViewerAsThumbnail = chkApplyFilterAsThumbnailToMainViewer.Checked;
+        }
+
         private void ApplyColorToRandomButton_CheckedChanged(object sender, EventArgs e)
         {
             Program.CandyGalleryWindow.UserSettings.ApplyColorToRandomizeButton = chkApplyColorToRandomButton.Checked;
@@ -322,6 +336,7 @@ namespace CandyGallery.Interface
             lblNewUsername.ForeColor = newUiColor;
             lblNewPassword.ForeColor = newUiColor;
             chkApplyFilterToSubWindows.ForeColor = newUiColor;
+            chkApplyFilterAsThumbnailToMainViewer.ForeColor = newUiColor;
             chkApplyColorToRandomButton.ForeColor = newUiColor;
             chkPreserveHistory.ForeColor = newUiColor;
             chkOpenVideosFullscreen.ForeColor = newUiColor;
