@@ -1252,7 +1252,7 @@ namespace CandyGallery.Interface
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CandyGalleryWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Candy Gallery";
             this.tblLPMainForm.ResumeLayout(false);
             this.tblLPRightSideControlContainer.ResumeLayout(false);

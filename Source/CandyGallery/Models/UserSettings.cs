@@ -43,7 +43,7 @@ namespace CandyGallery.Models
 
         public string CurrentMediaTypeToDisplay { get; set; } = MediaFilterType.All;
 
-        public int LimitCurrentMediaCount { get; set; } = 30;
+        public int LimitCurrentMediaCount { get; set; } = 5;
 
         public bool IncludeImageMediaType { get; set; } = true;
 

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using CandyGallery.Helpers;
 using CandyGallery.Models;
@@ -121,6 +122,7 @@ namespace CandyGallery.Interface
             listViewFolderBrowser.LargeImageList = imageList;
 
             CurrentFolderBeingViewed = folderPath;
+            //await Task.Run(() => SetBrowserIcons(folderPath, imageList));
             SetBrowserIcons(folderPath, imageList);
 
             Cursor.Current = cursor;
@@ -147,22 +149,13 @@ namespace CandyGallery.Interface
                         listViewItem.ImageIndex = counter - 1;
                         listViewItem.ToolTipText = cardThumb;
                         listViewItem.Name = cardName;
-                        listViewItem.Tag = folderPath + "\\" + cardName;
-
-                        //using (var objImage = Program.CandyGalleryWindow.UserSettings.ApplyImageFilter ? Program.CandyGalleryWindow.ApplyFilterToImage(cardThumb) : System.Drawing.Image.FromFile(cardThumb))
-                        //{
-                        //    imageList.Images.Add(counter.ToString(), objImage);
-                        //    listViewFolderBrowser.LargeImageList = imageList;
-                        //    listViewItem = listViewFolderBrowser.Items.Add(listViewItem);
-                        //}
-
-                        //listViewItem.ImageKey = counter.ToString();
-                        //counter++;                        
+                        listViewItem.Tag = folderPath + "\\" + cardName;                      
 
                         var bmpThumb = CandyGalleryHelpers.GetThumbnailFromFile(cardThumb);
                         if (Program.CandyGalleryWindow.UserSettings.ApplyImageFilter && Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows) bmpThumb = Program.CandyGalleryWindow.ApplyFilterToImage(bmpThumb, 4);
                         bmpThumb = CandyGalleryHelpers.ResizeImage(bmpThumb, nTileSize, nTileSize);
 
+                        //Invoke(new Action(() => {
                         imageList.Images.Add(bmpThumb);
 
                         listViewFolderBrowser.Items.Add(new ListViewItem
@@ -171,12 +164,15 @@ namespace CandyGallery.Interface
                             Text = cardName,
                             Tag = folderPath + "\\" + cardName
                         });
+
                         counter++;
+                        //}));
                     }
                 }
+                //Invoke(new Action(() => { listViewFolderBrowser.Sort(); }));
                 listViewFolderBrowser.Sort();
             }
-            
+
             if (files?.Any() == true)
             {
                 foreach (var file in files)
@@ -193,20 +189,11 @@ namespace CandyGallery.Interface
                         listViewItem.Name = cardName;
                         listViewItem.Tag = folderPath + "\\" + cardName;
 
-                        //using (var objImage = Program.CandyGalleryWindow.UserSettings.ApplyImageFilter ? Program.CandyGalleryWindow.ApplyFilterToImage(cardThumb) : System.Drawing.Image.FromFile(cardThumb))
-                        //{
-                        //    imageList.Images.Add(counter.ToString(), objImage);
-                        //    listViewFolderBrowser.LargeImageList = imageList;
-                        //    listViewItem = listViewFolderBrowser.Items.Add(listViewItem);
-                        //}
-
-                        //listViewItem.ImageKey = counter.ToString();
-                        //counter++;
-
                         var bmpThumb = CandyGalleryHelpers.GetThumbnailFromFile(cardThumb);
                         if (Program.CandyGalleryWindow.UserSettings.ApplyImageFilter && Program.CandyGalleryWindow.UserSettings.ApplyFilterToSubWindows) bmpThumb = Program.CandyGalleryWindow.ApplyFilterToImage(bmpThumb, 4);
                         bmpThumb = CandyGalleryHelpers.ResizeImage(bmpThumb, nTileSize, nTileSize);
 
+                        //Invoke(new Action(() => {
                         imageList.Images.Add(bmpThumb);
 
                         listViewFolderBrowser.Items.Add(new ListViewItem
@@ -215,10 +202,13 @@ namespace CandyGallery.Interface
                             Text = cardName,
                             Tag = folderPath + "\\" + cardName
                         });
+
                         counter++;
+                        //}));
                     }
                 }
-                //listViewFolderBrowser.Sort();
+                //Invoke(new Action(() => { listViewFolderBrowser.Sort(); }));
+                listViewFolderBrowser.Sort();
             }
         }
 
