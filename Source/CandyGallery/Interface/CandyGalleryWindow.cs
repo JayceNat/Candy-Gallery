@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using CandyGallery.Helpers;
@@ -429,19 +430,20 @@ namespace CandyGallery.Interface
         {
             var originalCursor = Cursor.Current;
             Cursor.Current = Cursors.WaitCursor;
-            if (lblCurrentMediaPath.Text != "")
-            {
-                if (UserSettings.ImageFilterAmount + 5 >= 100)
-                {
-                    UserSettings.ImageFilterAmount = 100;
-                    lblCurrentFilterStrength.Text = @"MAX";
-                }
-                else
-                {
-                    UserSettings.ImageFilterAmount += 5;
-                    lblCurrentFilterStrength.Text = UserSettings.ImageFilterAmount.ToString();
-                }
 
+            if (UserSettings.ImageFilterAmount + 5 >= 100)
+            {
+                UserSettings.ImageFilterAmount = 100;
+                lblCurrentFilterStrength.Text = @"MAX";
+            }
+            else
+            {
+                UserSettings.ImageFilterAmount += 5;
+                lblCurrentFilterStrength.Text = UserSettings.ImageFilterAmount.ToString();
+            }
+
+            if (!string.IsNullOrWhiteSpace(lblCurrentMediaPath.Text))
+            {
                 var filteredImage = ApplyFilterToImageFromPath(lblCurrentMediaPath.Text, UserSettings.ApplyFiltersToMainViewerAsThumbnail);
                 picBxCandyGallery.Image = filteredImage ?? picBxCandyGallery.ErrorImage;
             }
@@ -454,19 +456,20 @@ namespace CandyGallery.Interface
         {
             var originalCursor = Cursor.Current;
             Cursor.Current = Cursors.WaitCursor;
-            if (lblCurrentMediaPath.Text != "")
-            {
-                if (UserSettings.ImageFilterAmount - 5 <= 5)
-                {
-                    UserSettings.ImageFilterAmount = 5;
-                    lblCurrentFilterStrength.Text = @"MIN";
-                }
-                else
-                {
-                    UserSettings.ImageFilterAmount -= 5;
-                    lblCurrentFilterStrength.Text = UserSettings.ImageFilterAmount.ToString();
-                }
 
+            if (UserSettings.ImageFilterAmount - 5 <= 5)
+            {
+                UserSettings.ImageFilterAmount = 5;
+                lblCurrentFilterStrength.Text = @"MIN";
+            }
+            else
+            {
+                UserSettings.ImageFilterAmount -= 5;
+                lblCurrentFilterStrength.Text = UserSettings.ImageFilterAmount.ToString();
+            }
+
+            if (!string.IsNullOrWhiteSpace(lblCurrentMediaPath.Text))
+            {
                 var filteredImage = ApplyFilterToImageFromPath(lblCurrentMediaPath.Text, UserSettings.ApplyFiltersToMainViewerAsThumbnail);
                 picBxCandyGallery.Image = filteredImage ?? picBxCandyGallery.ErrorImage;
             }
@@ -595,7 +598,7 @@ namespace CandyGallery.Interface
             var currentMedia = lblCurrentMediaPath.Text;
             if (!string.IsNullOrWhiteSpace(currentMedia))
             {
-                UncheckResultsFilters();
+                //UncheckResultsFilters();
                 ResetFolderTypeButtonsColor();
                 btnAllType.ForeColor = Color.Black;
                 btnAllType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
@@ -616,7 +619,7 @@ namespace CandyGallery.Interface
                 var parentFolderPath = Directory.GetParent(currentMediaFolder).FullName;
                 var isSubDirOfStartFolder = parentFolderPath.StartsWith(UserSettings.StartFolderPath);
 
-                UncheckResultsFilters();
+                //UncheckResultsFilters();
                 ResetFolderTypeButtonsColor();
                 btnAllType.ForeColor = Color.Black;
                 btnAllType.BackColor = CandyInterfaceColors.GetInterfaceColorByName(UserSettings.UserInterfaceColorName);
@@ -649,36 +652,15 @@ namespace CandyGallery.Interface
 
         // **************************************************************************************************
 
-        private void Slideshow_CheckedChanged(object sender, EventArgs e)
+        private async void Slideshow_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkSlideShow.Checked && UserSettings.PerSessionSettings.CurrentWorkingDirectory.EndsWith("ZV"))
-            {
-                chkSlideShow.Checked = false;
-                btnRandomize.Focus();
-                return;
-            }
-            if (chkSlideShow.Checked)
+            UserSettings.PerSessionSettings.RunSlideshow = chkSlideShow.Checked;
+            if (UserSettings.PerSessionSettings.RunSlideshow)
             {
                 btnSlideSpeedDown.Show();
                 btnSlideSpeedUp.Show();
                 lblCurrentSlideSpeed.Show();
-                while (chkSlideShow.Checked)
-                {
-                    if (ModifierKeys == Keys.Alt || !chkSlideShow.Checked) //it should stop now
-                    {
-                        chkSlideShow.Checked = false;
-                        btnSlideSpeedDown.Hide();
-                        btnSlideSpeedUp.Hide();
-                        lblCurrentSlideSpeed.Hide();
-                        break;
-                    }
-                    else
-                    {
-                        Application.DoEvents();
-                        btnRandomize.PerformClick();
-                        System.Threading.Thread.Sleep(3000 - UserSettings.SlideShowSpeed * 250);
-                    }
-                }
+                await Task.Run(() => Slideshow());
             }
             else
             {
@@ -690,28 +672,47 @@ namespace CandyGallery.Interface
             btnRandomize.Focus();
         }
 
+        public async void Slideshow()
+        {
+            await Task.Run(() => {
+                while (UserSettings.PerSessionSettings.RunSlideshow)
+                {
+                    Application.DoEvents();
+                    
+                    var time = 3000 - UserSettings.SlideShowSpeed * 250;
+                    time = time > 150 ? time : 150;
+
+                    Invoke(new Action(() => {
+                        Randomize();
+                    }));
+
+                    System.Threading.Thread.Sleep(time);
+                }
+            });
+            
+        }
+
         private void ApplyImageFilter_CheckedChanged(object sender, EventArgs e)
         {
             var originalCursor = Cursor.Current;
             Cursor.Current = Cursors.WaitCursor;
             UserSettings.ApplyImageFilter = chkApplyImageFilter.Checked;
-            if (UserSettings.ApplyImageFilter && !string.IsNullOrWhiteSpace(lblCurrentMediaPath.Text))
+            if (UserSettings.ApplyImageFilter)
             {
                 btnFilterStrengthUp.Show();
                 btnFilterStrengthDown.Show();
                 lblCurrentFilterStrength.Show();
-                picBxCandyGallery.Image = ApplyFilterToImageFromPath(lblCurrentMediaPath.Text, UserSettings.ApplyFiltersToMainViewerAsThumbnail);
-            }
-            else if (!string.IsNullOrWhiteSpace(lblCurrentMediaPath.Text))
-            {
-                btnFilterStrengthUp.Hide();
-                btnFilterStrengthDown.Hide();
-                lblCurrentFilterStrength.Hide();
-                GC.Collect();
-                picBxCandyGallery.ImageLocation = lblCurrentMediaPath.Text;
+                if (!string.IsNullOrWhiteSpace(lblCurrentMediaPath.Text))  picBxCandyGallery.Image = ApplyFilterToImageFromPath(lblCurrentMediaPath.Text, UserSettings.ApplyFiltersToMainViewerAsThumbnail);
             }
             else
             {
+                if (!string.IsNullOrWhiteSpace(lblCurrentMediaPath.Text))
+                {
+                    GC.Collect();
+                    picBxCandyGallery.ImageLocation = lblCurrentMediaPath.Text;
+
+                }
+
                 btnFilterStrengthUp.Hide();
                 btnFilterStrengthDown.Hide();
                 lblCurrentFilterStrength.Hide();
@@ -783,7 +784,7 @@ namespace CandyGallery.Interface
 
         private void AllType_Click(object sender, EventArgs e)
         {
-            UncheckResultsFilters();
+            //UncheckResultsFilters();
             picBxCandyGallery.Image = picBxCandyGallery.InitialImage;
             TypeMediaChangeButtonPressHelper("");
             ResetFolderTypeButtonsColor();
@@ -796,7 +797,7 @@ namespace CandyGallery.Interface
 
         private void OtherType_Click(object sender, EventArgs e)
         {
-            UncheckResultsFilters();
+            //UncheckResultsFilters();
             if (UserSettings.PerSessionSettings.UserHasOtherFolder)
             {
                 TypeMediaChangeButtonPressHelper(OtherFolderName);
@@ -825,7 +826,7 @@ namespace CandyGallery.Interface
 
         private void GifType_Click(object sender, EventArgs e)
         {
-            UncheckResultsFilters();
+            //UncheckResultsFilters();
             if (UserSettings.PerSessionSettings.UserHasGifsFolder)
             {
                 TypeMediaChangeButtonPressHelper(GifsFolderName);
@@ -853,7 +854,7 @@ namespace CandyGallery.Interface
 
         private void VideosType_Click(object sender, EventArgs e)
         {
-            UncheckResultsFilters();
+            //UncheckResultsFilters();
             if (UserSettings.PerSessionSettings.UserHasVideosFolder)
             {
                 TypeMediaChangeButtonPressHelper(VideosFolderName);

@@ -12,6 +12,7 @@ namespace CandyGallery.Models
         public bool EnableHotKeys { get; set; } = true;
         public bool GalleryMaximized { get; set; } = false;
         public bool PictureBoxMaximized { get; set; } = false;
+        public bool RunSlideshow { get; set; } = false;
         public Control ControlParentToRestoreViewForMaximizedPicture { get; set; }
         public Control ControlParentToRestoreViewForSidePanel { get; set; }
         public BorderStyle DefaultBorderStyle { get; set; } = BorderStyle.FixedSingle;
