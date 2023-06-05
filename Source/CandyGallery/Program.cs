@@ -2,6 +2,7 @@
 using System.Drawing.Text;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using CandyGallery.Interface;
@@ -14,6 +15,10 @@ namespace CandyGallery
     {
         public static CandyGalleryWindow CandyGalleryWindow;
         public static XmlSerializer UserSettingsSerializer = new XmlSerializer(typeof(UserSettings));
+        public static bool IsAdministrator()
+        {
+            return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
+        }
 
         public Program(XmlSerializer userSettingsSerializer)
         {
@@ -24,7 +29,11 @@ namespace CandyGallery
         private static void Main()
         {
             // Requires being run as admin
-            //CheckFontInstall("Magneto.ttf");
+            if (IsAdministrator())
+            {
+                CheckFontInstall("Magneto.ttf");
+            }
+
             Application.Run(new LoginWindow());
         }
 
@@ -49,19 +58,27 @@ namespace CandyGallery
 
             if (!File.Exists(fontDestination))
             {
-                // Copies font to destination
-                File.Copy(Path.Combine(Application.StartupPath, contentFontName), fontDestination);
+                try
+                {
+                    // Copies font to destination
+                    File.Copy(Path.Combine(Application.StartupPath, contentFontName), fontDestination);
 
-                // Retrieves font name
-                // Makes sure you reference System.Drawing
-                PrivateFontCollection fontCol = new PrivateFontCollection();
-                fontCol.AddFontFile(fontDestination);
-                var actualFontName = fontCol.Families[0].Name;
+                    // Retrieves font name
+                    // Makes sure you reference System.Drawing
+                    PrivateFontCollection fontCol = new PrivateFontCollection();
+                    fontCol.AddFontFile(fontDestination);
+                    var actualFontName = fontCol.Families[0].Name;
 
-                //Add font
-                AddFontResource(fontDestination);
-                //Add registry entry   
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts", actualFontName, contentFontName, RegistryValueKind.String);
+                    //Add font
+                    AddFontResource(fontDestination);
+                    //Add registry entry   
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts", actualFontName, contentFontName, RegistryValueKind.String);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error: Failed to install 'Magneto.ttf' font...", "Candy Gallery: Font Install Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
         }
     }
